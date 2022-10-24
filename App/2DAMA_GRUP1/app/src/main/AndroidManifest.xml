@@ -14,6 +14,33 @@
         android:theme="@style/Theme.2DAMA_GRUP1"
         tools:targetApi="31">
         <activity
+            android:name=".historial"
+            android:exported="false" />
+        <activity
+            android:name=".reservas"
+            android:exported="false" />
+        <activity
+            android:name=".user_profile"
+            android:exported="false" />
+        <activity
+            android:name=".resenyas"
+            android:exported="false" />
+        <activity
+            android:name=".upload_product"
+            android:exported="false" />
+        <activity
+            android:name=".product_info"
+            android:exported="false" />
+        <activity
+            android:name=".user_update"
+            android:exported="false" />
+        <activity
+            android:name=".carrito"
+            android:exported="false" />
+        <activity
+            android:name=".main_page"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
