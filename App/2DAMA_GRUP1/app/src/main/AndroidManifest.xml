@@ -41,7 +41,7 @@
             android:name=".main_page"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".sign_up"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
