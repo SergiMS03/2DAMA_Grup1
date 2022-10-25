@@ -12,7 +12,7 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CARRITO"
+        android:text="@string/carritoTitulo"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -29,7 +29,7 @@
             android:layout_margin="10dp"
             android:backgroundTint="#77EC62"
             android:fontFamily="sans-serif"
-            android:text="PRODUCTE"
+            android:text="@string/carritoProducto"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:backgroundTint="#77EC62"
-            android:text="CANTIDAD"
+            android:text="@string/carritoCantidad"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -51,9 +51,41 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:backgroundTint="#62ECC0"
-            android:text="PRECIO"
+            android:text="@string/carritoPrecio"
             android:textColor="#000000"
             android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Producte 1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -71,12 +103,13 @@
             android:layout_marginRight="100dp"
             android:layout_weight="1"
             android:backgroundTint="#77EC62"
-            android:text="RESERVAR"
+            android:text="@string/carritoReservar"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="bold"
             app:icon="@android:drawable/ic_menu_send"
             app:iconTint="#FFFFFF" />
+
     </LinearLayout>
 
 </LinearLayout>

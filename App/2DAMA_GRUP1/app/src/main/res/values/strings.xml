@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">2DAMA_GRUP1</string>
+    <string name="loginButton">Iniciar Sesión</string>
+    <string name="registerButton">Registrarse</string>
+    <string name="InputLogin1">Usuario / Email</string>
+    <string name="InputLogin2">Contraseña</string>
+    <string name="carritoTitulo">Carrito</string>
+    <string name="carritoProducto">Producto</string>
+    <string name="carritoCantidad">Cantidad</string>
+    <string name="carritoPrecio">Precio</string>
+    <string name="carritoReservar">Reservar</string>
 </resources>
