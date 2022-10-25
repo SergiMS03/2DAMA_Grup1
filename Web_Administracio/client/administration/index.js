@@ -25,7 +25,7 @@ var app = new Vue({
                 ).then((data) => {
                         console.log(data.rol);
                         if(data.rol == 'admin'){
-                            window.location.href = "administration/index.html";
+                            window.location.href = "https://www.youtube.com";
                         }
                     }
                 ).catch((error) => {

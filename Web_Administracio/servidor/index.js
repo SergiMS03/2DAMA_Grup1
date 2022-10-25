@@ -94,28 +94,28 @@ app.post("/logInAdmin", (req, res) => {
 });
 
 
-app.post("/signUp", (req, res) => {
+app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista", (req, res) => {
     var success = false;
     con = getCon();
     con.connect(function(err){
         if (err){
             console.log(err)
         }else{
-            con.query("INSERT INTO USUARI VALUES (NULL,'"+ req.body.nom + "', '" + req.body.cognoms + "', '" + req.body.email + "', '"
-             + req.body.pwd + "', 'client', '" + req.body.descripcio +"', '"+ req.body.tel +"')", (err) => {
+            con.query("INSERT INTO USUARI VALUES (NULL,'"+ req.params.nom + "', '" + req.params.cognoms + "', '" + req.params.email + "', '"
+             + req.params.pwd + "', 'client', '" + req.params.descripcio +"', '"+ req.params.tel +"')", (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
                 }
                 con.end();
-                res.json(true);
+                res.send(true);
              });   
         }
     });
-    
+    if(req.params.solicitar_artista){
+        
+    }
 });
-
-app.post("/artistRequest")
 
 
 app.listen(PORT, () =>{
