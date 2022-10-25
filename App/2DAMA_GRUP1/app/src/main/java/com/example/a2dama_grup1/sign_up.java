@@ -39,7 +39,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
         nom = (EditText) (findViewById(R.id.editText_nom));
-        cognoms = (EditText) (findViewById(R.id.editText_cognoms);
+        cognoms = (EditText) (findViewById(R.id.editText_cognoms));
         email = (EditText) (findViewById(R.id.editText_email));
         pwd = (EditText) (findViewById(R.id.editText_pwd));
         tlf = (EditText) (findViewById(R.id.editText_tlf));
@@ -72,7 +72,6 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
                 URL url = new URL ("http://192.168.207.154:3000/signUp/"+nom+"/"+cognoms+"/"+email+"/"+pwd+"/"+descripcio+"/"+tlf+"/"+solicitar_artista);
                 con = (HttpURLConnection) url.openConnection();
                 con.connect();
-
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
