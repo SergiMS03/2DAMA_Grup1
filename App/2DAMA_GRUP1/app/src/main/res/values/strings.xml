@@ -9,4 +9,10 @@
     <string name="carritoCantidad">Cantidad</string>
     <string name="carritoPrecio">Precio</string>
     <string name="carritoReservar">Reservar</string>
+    <string name="profileDatosButton">DATOS</string>
+    <string name="profileProductosButton">Productos</string>
+    <string name="profileReservasButton">Reservas</string>
+    <string name="profileHistorialButton">Historial</string>
+    <string name="profileArtistaButton">ARTISTA</string>
+    <string name="profileDeleteButton">Eliminar Cuenta</string>
 </resources>

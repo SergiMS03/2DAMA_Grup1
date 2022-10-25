@@ -16,7 +16,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/inputUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -34,7 +34,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/inputPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
