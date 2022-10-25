@@ -14,22 +14,33 @@
     <title>Plastic Preciós Admin</title>
 </head>
 <body>
-    <v-app id="app">
+    <v-app align="center" id="app">
+        <v-container fill-height class="spacing-playground mb-16">
         <v-row justify = "center" align-items = "center">
         <v-col cols = "10" sm = "5">
+            <v-sheet class = "mx-auto">
+                <v-img src="./imgs/plastic_precios_login.png" alt="Plastic_Precios" width="250" height="250"></v-img><br>
+            </v-sheet>
         <v-text-field
-              id="email"
-              label="email"
+                id="email"
+                label="Email"
+                outlined
             ></v-text-field>  
             <v-text-field
-              id="pwd"
-              label="Contraseña"
+                id="pwd"
+                type="password"
+                label="Contraseña"
+                outlined
             ></v-text-field>  
-        <v-btn @click="logIn">
-            Try
-        </v-btn>
+            <v-sheet class = "mx-auto">
+                <v-btn @click="logIn"
+                color="#A1F9A5">
+                    Log In
+                </v-btn>
+             </v-sheet>
     </v-cols>
     </v-row>
+    </v-container>
         <script src="index.js"></script>
     </v-app>
 </body>

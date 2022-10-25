@@ -9,14 +9,6 @@ const PORT = 3000;
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
-
-var con = mysql.createConnection({
-    host:"labs.inspedralbes.cat",
-    user:"a19sermelseg_user",
-    password:"Ausias1234",
-    database:"a19sermelseg_plastic_precios"
-});
-
 function getCon(){
     var con = mysql.createConnection({
         host:"labs.inspedralbes.cat",
@@ -38,11 +30,14 @@ app.post("/logInClient", (req, res) => {
     var arrRes = {};
     con = getCon();
     con.connect(function(err){
-        if (err){
-            console.log(err)
+        if(err){
+            res.json(false);
         }else{
             con.query("SELECT * FROM USUARI", (err, result, fields)=> {
                 for (let i = 0; i < result.length && !auth; i++) {
+                    if(err){
+                        res.json(false);
+                    }
                     if(result[i].email == req.body.email){
                         if(result[i].pwd == req.body.pwd){
                             auth = true
@@ -52,6 +47,7 @@ app.post("/logInClient", (req, res) => {
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
                             arrRes.descripcio = (result[i].descripcio);
+                            arrRes.tel = (result[i].tel);
                         }
                     }
                 }
@@ -69,9 +65,12 @@ app.post("/logInAdmin", (req, res) => {
     con = getCon();
     con.connect(function(err){
         if (err){
-            console.log(err)
+            res.json(false);
         }else{
             con.query("SELECT * FROM USUARI WHERE rol = 'admin'", (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
                 for (let i = 0; i < result.length && !auth; i++) {
                     if(result[i].email == req.body.email){
                         if(result[i].pwd == req.body.pwd){
@@ -82,6 +81,7 @@ app.post("/logInAdmin", (req, res) => {
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
                             arrRes.descripcio = (result[i].descripcio);
+                            arrRes.tel = (result[i].tel);
                         }
                     }
                 }
@@ -101,14 +101,21 @@ app.post("/signUp", (req, res) => {
         if (err){
             console.log(err)
         }else{
-            con.query("INSERT INTO USUARI VALUES ("+ req.nom + ", " + req.cognoms + ", " + req.email + ", "
-             + req.pwd + ", 'client', " + req.descripcio +")", (err) => {//NO FUNCIONA EL AUTOINCREMENT
+            con.query("INSERT INTO USUARI VALUES (NULL,'"+ req.body.nom + "', '" + req.body.cognoms + "', '" + req.body.email + "', '"
+             + req.body.pwd + "', 'client', '" + req.body.descripcio +"', '"+ req.body.tel +"')", (err) => {
+                if(err){
+                    console.log(err);
+                    res.json(false)
+                }
                 con.end();
+                res.json(true);
              });   
         }
     });
     
 });
+
+app.post("/artistRequest")
 
 
 app.listen(PORT, () =>{

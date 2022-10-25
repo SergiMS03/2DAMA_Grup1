@@ -3,7 +3,6 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data:{
         credentials: {email:"", pwd:""},
-        pruebaSU: {}
     },
     methods: {
     logIn: function(){
