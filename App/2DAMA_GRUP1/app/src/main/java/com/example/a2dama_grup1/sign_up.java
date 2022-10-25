@@ -45,7 +45,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         tlf = (EditText) (findViewById(R.id.editText_tlf));
         descripcio = (EditText) (findViewById(R.id.editText_nom));
         solicitar_artista = (RadioButton) (findViewById(R.id.btn_solicitar_artista));
-        registrarse = (Button) findViewById(R.id.registerButton);
+        registrarse = (Button) findViewById(R.id.registerButton_signUp);
         registrarse.setOnClickListener(this);
 
     }

@@ -8,17 +8,14 @@ import android.view.View;
 import android.widget.Button;
 
 public class login extends AppCompatActivity {
-    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        button = (Button) findViewById(R.id.registerButton);
-        button.setOnClickListener(this);
     }
 
-    public void openSignUp(){
+    public void openSignUp(View view){
         Intent intent = new Intent(this, sign_up.class);
         startActivity(intent);
     }
