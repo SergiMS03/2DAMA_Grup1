@@ -13,13 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/nom_signUp"
+        android:text="Nombre"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_nom"
+        android:id="@+id/inputUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -31,31 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="@string/cognoms_signUp"
+        android:text="Apellidos"
         android:textAlignment="viewStart"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_cognoms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#77EC62"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/pwd_signUp"
-        android:textAlignment="viewStart"
-        android:textColor="#000000"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editText_pwd"
+        android:id="@+id/inputPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -63,65 +45,59 @@
         android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/email_signUp"
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="@string/email_signUp"
+        android:text="Contraseña"
         android:textAlignment="viewStart"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/editTextTextPassword2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/tlf_signUp"
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="@string/tlf_signUp"
+        android:text="Email"
         android:textAlignment="viewStart"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_tlf"
+        android:id="@+id/editTextTextPassword3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="@string/descripcio_signUp"
+        android:text="Descripción (Opcional)"
         android:textAlignment="viewStart"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_descripcio"
+        android:id="@+id/editTextTextMultiLine"
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:background="#77EC62"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
-
-    <RadioButton
-        android:id="@+id/btn_solicitar_artista"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_solicitar_artista" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,11 +108,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/registerButton_signUp"
+            android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#62ECC0"
-            android:text="@string/registrarse_btn_signUp"
+            android:text="Registrarse"
             android:textColor="#000000" />
     </LinearLayout>
 

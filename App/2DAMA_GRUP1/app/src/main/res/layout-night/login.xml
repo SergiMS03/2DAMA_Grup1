@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".sign_up">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nom_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="User / Email"
+        android:text="@string/InputLogin1"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/inputUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -28,13 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Password"
+        android:text="@string/InputLogin2"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/inputPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -55,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
             android:backgroundTint="#77EC62"
-            android:text="Login"
+            android:text="@string/loginButton"
             android:textColor="#000000" />
 
         <Button
@@ -64,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:backgroundTint="#62ECC0"
-            android:text="Register"
+            android:text="@string/registerButton"
             android:textColor="#000000" />
     </LinearLayout>
 
