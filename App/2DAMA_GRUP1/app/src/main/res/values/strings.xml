@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">2DAMA_GRUP1</string>
+    <string name="nom_signUp">Nombre</string>
+    <string name="cognoms_signUp">Apellidos</string>
+    <string name="pwd_signUp">Contraseña</string>
+    <string name="email_signUp">Email</string>
+    <string name="tlf_signUp">Teléfono</string>
+    <string name="descripcio_signUp">Descripción (Opcional)</string>
+    <string name="btn_solicitar_artista">Solicitar Artista</string>
+    <string name="registrarse_btn_signUp">Registrarse</string>
     <string name="loginButton">Iniciar Sesión</string>
     <string name="registerButton">Registrarse</string>
     <string name="InputLogin1">Usuario / Email</string>

@@ -9,17 +9,17 @@
     tools:context=".sign_up">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nom_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Nombre"
+        android:text="@string/nom_signUp"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/inputUserLogin"
+        android:id="@+id/editText_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -31,31 +31,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Apellidos"
+        android:text="@string/cognoms_signUp"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/inputPasswordLogin"
+        android:id="@+id/editText_cognoms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Contraseña"
+        android:text="@string/pwd_signUp"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/editText_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
@@ -63,41 +63,65 @@
         android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/email_signUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Email"
+        android:text="@string/email_signUp"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/editText_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#77EC62"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tlf_signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tlf_signUp"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText_tlf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#77EC62"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Descripción (Opcional)"
+        android:text="@string/descripcio_signUp"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editText_descripcio"
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:background="#77EC62"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
+
+    <RadioButton
+        android:id="@+id/btn_solicitar_artista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_solicitar_artista" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,11 +132,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/registerButton_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#62ECC0"
-            android:text="Registrarse"
+            android:text="@string/registrarse_btn_signUp"
             android:textColor="#000000" />
     </LinearLayout>
 
