@@ -9,12 +9,26 @@
     android:orientation="vertical"
     tools:context=".main_page">
 
-    <SearchView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#77EC62">
+        android:layout_height="match_parent">
 
-    </SearchView>
+        <SearchView
+            android:layout_width="294dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="#77EC62">
+
+        </SearchView>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView10"
@@ -22,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:text="Productos Destacados"
+        android:text="@string/mainpageProductosDestacados"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -81,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:text="Productos por Poximidad"
+        android:text="@string/mainpageProductosProx"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold" />

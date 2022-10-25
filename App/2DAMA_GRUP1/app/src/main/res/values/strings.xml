@@ -24,4 +24,11 @@
     <string name="profileArtistaButton">ARTISTA</string>
     <string name="profileDeleteButton">Eliminar Cuenta</string>
     <string name="userUpdateButton">Actualizar Perfil</string>
+    <string name="uploadProdcutName">Nombre del Producto</string>
+    <string name="uploadName">Nombre del Producto</string>
+    <string name="uploadProductPrice">Precio</string>
+    <string name="uploadStock">Stock</string>
+    <string name="uploadDescripcion">Descripción</string>
+    <string name="mainpageProductosDestacados">Productos Destacados</string>
+    <string name="mainpageProductosProx">Productos por Proximidad</string>
 </resources>
