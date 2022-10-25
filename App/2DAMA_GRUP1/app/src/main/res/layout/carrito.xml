@@ -70,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Producte 1"
+            android:textColor="#000000"
             android:textStyle="bold" />
 
         <TextView
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="4"
+            android:textColor="#000000"
             android:textStyle="bold" />
 
         <TextView
@@ -86,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="5"
+            android:textColor="#000000"
             android:textStyle="bold" />
 
     </LinearLayout>
