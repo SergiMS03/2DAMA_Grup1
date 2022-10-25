@@ -25,7 +25,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/nom_signUp"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <EditText
@@ -43,7 +43,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/cognoms_signUp"
             android:textAlignment="viewStart"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <EditText
@@ -59,9 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/cognoms_signUp"
+            android:text="@string/pwd_signUp"
             android:textAlignment="viewStart"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <EditText
@@ -79,7 +79,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/email_signUp"
             android:textAlignment="viewStart"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <EditText
@@ -97,7 +97,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/descripcio_signUp"
             android:textAlignment="viewStart"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <EditText
