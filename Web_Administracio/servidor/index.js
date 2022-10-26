@@ -19,6 +19,15 @@ function getCon(){
     return con;
 }
 
+app.use(session({
+    secret: "TermoTanqueDeÑoquis",
+    resave: true,
+    saveUninitialized: true,
+    cookie:{
+        rol: ''
+    }
+}));
+
 app.use(cors({
     origin: function(origin, callback){
         return callback(null, true);
@@ -80,6 +89,8 @@ app.post("/logInAdmin", (req, res) => {
                             arrRes.cognoms = (result[i].cognoms);
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
+                            req.session.cookie.rol = result[i].rol;
+                            console.log(req.session.cookie.rol);
                             arrRes.descripcio = (result[i].descripcio);
                             arrRes.tel = (result[i].tel);
                         }
@@ -96,6 +107,7 @@ app.post("/logInAdmin", (req, res) => {
 
 app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista", (req, res) => {
     var success = false;
+    console.log("Conexió realitzada");
     con = getCon();
     con.connect(function(err){
         if (err){
@@ -107,6 +119,7 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista",
                     console.log(err);
                     res.json(false)
                 }
+                console.log("Succesfull");
                 con.end();
                 res.send(true);
              });   
