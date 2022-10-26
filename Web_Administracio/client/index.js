@@ -2,7 +2,7 @@ var app = new Vue({
     el: "#app",
     vuetify: new Vuetify(),
     data:{
-        credentials: {email:"", pwd:""},
+        credentials: {email:"", pwd:""}
     },
     methods: {
     logIn: function(){

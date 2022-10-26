@@ -2,34 +2,27 @@ var app = new Vue({
     el: "#app",
     vuetify: new Vuetify(),
     data:{
-        credentials: {email:"", pwd:""},
+        users: []
     },
     methods: {
-    logIn: function(){
-        this.credentials.email = document.getElementById('email').value;
-        this.credentials.pwd = document.getElementById('pwd').value;
-        console.log(this.credentials.email);
-        console.log(this.credentials.pwd);
-        fetch("http://192.168.207.154:3000/logInAdmin", {
+    getUsers: function(){
+        fetch("http://localhost:3000/getUsers", {
                     method:"POST",
                     headers: {
                         'Content-Type' : 'application/json',
                         'Accept':'application/json'
                     },
                     mode: 'cors',
-                    cache: 'default',
-                    body: JSON.stringify(this.credentials)
+                    cache: 'default'
                 }).then(
                     (response) =>
                         response.json()
                 ).then((data) => {
-                        console.log(data.rol);
-                        if(data.rol == 'admin'){
-                            window.location.href = "https://www.youtube.com";
-                        }
-                    }
+                    this.users = data
+                }
                 ).catch((error) => {
                     console.log(error)
                 });
         }}
-});
+ });
+ 

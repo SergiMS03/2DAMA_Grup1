@@ -126,7 +126,7 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista",
         }
     });
     if(req.params.solicitar_artista){
-        
+        //EN CAS D'HABER SOLICITAT ARTISTA ENTRARIA A UNA FUNCIO PER SOLICITAR-HO
     }
 });
 
@@ -134,3 +134,56 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista",
 app.listen(PORT, () =>{
     console.log("Servidor arrancat pel port "+ PORT);
 });
+
+
+app.post("/delUser", (req, res) => {
+    if(req.session.cookie.rol == 'admin'){
+        con = getCon();
+        con.connect(function(err){
+            if (err){
+                console.log(err)
+            }else{
+                con.query("DELETE FROM USUARI WHERE id_usuari = "+ req.body.id_usuari, (err) => {
+                    if(err){
+                        console.log(err);
+                        res.json(false)
+                    }
+                    con.end();
+                    res.json(true);
+                });   
+            }
+        });
+    }else{
+        res.json(false);
+    }
+});
+
+app.post("/getUsers", (req, res) => {
+    console.log("Entra");
+        var arrRes = {};
+        con = getCon();
+        con.connect(function(err){
+            if (err){
+                res.json(false);
+            }else{
+                con.query("SELECT * FROM USUARI", (err, result, fields)=> {
+                    if(err){
+                        res.json(false);
+                    }
+                    for (let i = 0; i < result.length; i++) {
+                        arrRes.id_usuari = (result[i].id_usuari);
+                        arrRes.nom = (result[i].nom);
+                        arrRes.cognoms = (result[i].cognoms);
+                        arrRes.email = (result[i].email);
+                        arrRes.rol = (result[i].rol);
+                        arrRes.descripcio = (result[i].descripcio);
+                        arrRes.tel = (result[i].tel);
+                    }
+                    res.json(arrRes);
+                    con.end;
+                });           
+            }
+        });
+    
+ });
+ 
