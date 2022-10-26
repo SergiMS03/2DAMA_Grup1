@@ -3,7 +3,17 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data:{
         credentials: {email:"", pwd:""},
-    },
+                items: [
+                  { title: 'Usuarios', icon: 'mdi-view-dashboard' },
+                  { title: 'Solicitudes de Artista', icon: 'mdi-image' },
+                  { title: 'Productos', icon: 'mdi-help-box' },
+                ],
+                right: null,
+              
+            
+          },
+    
+    
     methods: {
     logIn: function(){
         this.credentials.email = document.getElementById('email').value;
