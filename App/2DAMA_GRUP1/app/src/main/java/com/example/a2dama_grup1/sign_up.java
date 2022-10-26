@@ -6,6 +6,7 @@ import androidx.loader.content.AsyncTaskLoader;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,7 +53,10 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        new signUp();
+        Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        new signUp().execute();
+
+
     }
 
 
@@ -62,14 +66,17 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
 
         @Override
         protected String doInBackground(String... strings) {
+            Log.i("LOGINFO", "do in Background: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
             dades();
             return null;
         }
 
         private void dades(){
             try{
+                Log.i("LOGINFO", "dades: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-                URL url = new URL ("http://192.168.207.154:3000/signUp/"+nom+"/"+cognoms+"/"+email+"/"+pwd+"/"+descripcio+"/"+tlf+"/"+solicitar_artista);
+                URL url = new URL ("http://localhost:3000/signUp/"+nom+"/"+cognoms+"/"+email+"/"+pwd+"/"+descripcio+"/"+tlf+"/"+solicitar_artista);
                 con = (HttpURLConnection) url.openConnection();
                 con.connect();
 
