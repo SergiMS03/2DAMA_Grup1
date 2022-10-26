@@ -37,7 +37,7 @@
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:text="@string/mainpageProductosDestacados"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -96,7 +96,7 @@
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:text="@string/mainpageProductosProx"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
 
