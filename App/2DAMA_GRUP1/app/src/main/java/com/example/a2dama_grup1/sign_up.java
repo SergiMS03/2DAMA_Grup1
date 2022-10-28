@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.AsyncTaskLoader;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,15 +14,20 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.Buffer;
 
 
 public class sign_up extends AppCompatActivity implements View.OnClickListener{
@@ -55,40 +61,81 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         new signUp().execute();
-
-
     }
 
 
     private class signUp extends AsyncTask<String, Void, String>{
 
-        HttpURLConnection con;
+        HttpURLConnection con = null;
+        BufferedReader reader = null;
+
 
         @Override
         protected String doInBackground(String... strings) {
             Log.i("LOGINFO", "do in Background: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-            dades();
-            return null;
+            return dades(strings[0]);
         }
 
-        private void dades(){
+        private String dades(String queryString){
+
+            String result = null;
+
             try{
                 Log.i("LOGINFO", "dades: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-                URL url = new URL ("http://localhost:3000/signUp/"+nom+"/"+cognoms+"/"+email+"/"+pwd+"/"+descripcio+"/"+tlf+"/"+solicitar_artista);
-                con = (HttpURLConnection) url.openConnection();
+                String url = "http://192.168.250.102:3000/signUp/"+nom+"/"+cognoms+"/"+email+"/"+pwd+"/"
+                        +descripcio+"/"+tlf+"/"+solicitar_artista;
+                Uri builtURI = Uri.parse(url).buildUpon().build();
+                URL requestURL = new URL(builtURI.toString());
+                con = (HttpURLConnection) requestURL.openConnection();
+                con.setRequestMethod("GET");
                 con.connect();
+
+                InputStream inputStream = con.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder builder = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                    builder.append("\n");
+                }
+                if (builder.length() == 0) {
+                    // Stream was empty. No point in parsing.
+                    return null;
+                }
+                result = builder.toString();
+
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }finally{
-                con.disconnect();
+                if (con != null)
+                    con.disconnect();
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
+            return result;
         }
 
+        /*protected void onPostExecute(String s){
+            super.onPostExecute(s);
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                JSONArray itemsArray = jsonObject.getJSONArray("items");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }*/
     }
 }
