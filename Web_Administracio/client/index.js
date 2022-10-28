@@ -10,7 +10,7 @@ var app = new Vue({
         this.credentials.pwd = document.getElementById('pwd').value;
         console.log(this.credentials.email);
         console.log(this.credentials.pwd);
-        fetch("http://192.168.207.154:3000/logInAdmin", {
+        fetch("http://localhost:3000/logInAdmin", {
                     method:"POST",
                     headers: {
                         'Content-Type' : 'application/json',

@@ -160,7 +160,7 @@ app.post("/delUser", (req, res) => {
 
 app.post("/getUsers", (req, res) => {
     console.log("Entra");
-        var arrRes = {};
+        var arrRes = [];
         con = getCon();
         con.connect(function(err){
             if (err){
@@ -171,13 +171,7 @@ app.post("/getUsers", (req, res) => {
                         res.json(false);
                     }
                     for (let i = 0; i < result.length; i++) {
-                        arrRes.id_usuari = (result[i].id_usuari);
-                        arrRes.nom = (result[i].nom);
-                        arrRes.cognoms = (result[i].cognoms);
-                        arrRes.email = (result[i].email);
-                        arrRes.rol = (result[i].rol);
-                        arrRes.descripcio = (result[i].descripcio);
-                        arrRes.tel = (result[i].tel);
+                        arrRes.push(result[i]);
                     }
                     res.json(arrRes);
                     con.end;

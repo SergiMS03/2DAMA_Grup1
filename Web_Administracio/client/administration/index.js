@@ -2,11 +2,9 @@ var app = new Vue({
     el: "#app",
     vuetify: new Vuetify(),
     data:{
-<<<<<<< HEAD
         users: []
     },
-=======
-        credentials: {email:"", pwd:""},
+    /*credentials:{ {email:"", pwd:""},
                 items: [
                   { title: 'Usuarios', icon: 'mdi-view-dashboard' },
                   { title: 'Solicitudes de Artista', icon: 'mdi-image' },
@@ -16,9 +14,7 @@ var app = new Vue({
               
             
           },
-    
-    
->>>>>>> fbd739fef7769fee5826b05c8aff6446be4ffb5e
+          */
     methods: {
     getUsers: function(){
         fetch("http://localhost:3000/getUsers", {
