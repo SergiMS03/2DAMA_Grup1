@@ -34,21 +34,24 @@ app.use(cors({
     }
 }));
 
-app.post("/logInClient", (req, res) => {
+
+app.get("/logInClient/:email/:pwd", (req, res) => {
     var auth = false;
     var arrRes = {};
+    let email = req.params.email;
+    let pwd = req.params.pwd;
     con = getCon();
     con.connect(function(err){
-        if(err){
+        if (err){
             res.json(false);
         }else{
             con.query("SELECT * FROM USUARI", (err, result, fields)=> {
+                if(err){
+                    res.send(false);
+                }
                 for (let i = 0; i < result.length && !auth; i++) {
-                    if(err){
-                        res.json(false);
-                    }
-                    if(result[i].email == req.body.email){
-                        if(result[i].pwd == req.body.pwd){
+                    if(result[i].email == email){
+                        if(result[i].pwd == pwd){
                             auth = true
                             arrRes.id_usuari = (result[i].id_usuari);
                             arrRes.nom = (result[i].nom);
@@ -60,12 +63,11 @@ app.post("/logInClient", (req, res) => {
                         }
                     }
                 }
-                res.json(arrRes);
+                res.send(arrRes);
                 con.end;
             });            
         }
     });
-    
 });
 
 app.post("/logInAdmin", (req, res) => {
