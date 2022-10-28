@@ -2,17 +2,23 @@ var app = new Vue({
     el: "#app",
     vuetify: new Vuetify(),
     data:{
-       // credentials: {email:"", pwd:""}
+        credentials: {email:"", pwd:""}
     },
     methods: {
     logIn: function(){
-        const myHeaders = new Headers();
+        this.credentials.email = document.getElementById('email').value;
+        this.credentials.pwd = document.getElementById('pwd').value;
+        console.log(this.credentials.email);
+        console.log(this.credentials.pwd);
         fetch("http://localhost:3000/logInAdmin", {
                     method:"POST",
-                    headers: myHeaders,
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Accept':'application/json'
+                    },
                     mode: 'cors',
-                    cache: 'default'
-
+                    cache: 'default',
+                    body: JSON.stringify(this.credentials)
                 }).then(
                     (response) =>
                         response.json()

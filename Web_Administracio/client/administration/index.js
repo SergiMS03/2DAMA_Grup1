@@ -17,12 +17,10 @@ var app = new Vue({
           */
     methods: {
     getUsers: function(){
+        const myHeaders = new Headers();
         fetch("http://localhost:3000/getUsers", {
                     method:"POST",
-                    headers: {
-                        'Content-Type' : 'application/json',
-                        'Accept':'application/json'
-                    },
+                    headers: myHeaders,
                     mode: 'cors',
                     cache: 'default'
                 }).then(
