@@ -35,6 +35,12 @@ app.use(cors({
 }));
 
 
+
+app.listen(PORT, () =>{
+    console.log("Servidor arrancat pel port "+ PORT);
+});
+
+
 app.get("/logInClient/:email/:pwd", (req, res) => {
     var auth = false;
     var arrRes = {};
@@ -68,6 +74,31 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
             });            
         }
     });
+});
+
+app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista", (req, res) => {
+    var success = false;
+    console.log("Conexió realitzada");
+    con = getCon();
+    con.connect(function(err){
+        if (err){
+            console.log(err)
+        }else{
+            con.query("INSERT INTO USUARI VALUES (NULL,'"+ req.params.nom + "', '" + req.params.cognoms + "', '" + req.params.email + "', '"
+             + req.params.pwd + "', 'client', '" + req.params.descripcio +"', '"+ req.params.tel +"')", (err) => {
+                if(err){
+                    console.log(err);
+                    res.json(false)
+                }
+                console.log("Succesfull");
+                con.end();
+                res.send(true);
+             });   
+        }
+    });
+    if(req.params.solicitar_artista){
+        //EN CAS D'HABER SOLICITAT ARTISTA ENTRARIA A UNA FUNCIO PER SOLICITAR-HO
+    }
 });
 
 app.post("/logInAdmin", (req, res) => {
@@ -104,37 +135,6 @@ app.post("/logInAdmin", (req, res) => {
         }
     });
     
-});
-
-
-app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista", (req, res) => {
-    var success = false;
-    console.log("Conexió realitzada");
-    con = getCon();
-    con.connect(function(err){
-        if (err){
-            console.log(err)
-        }else{
-            con.query("INSERT INTO USUARI VALUES (NULL,'"+ req.params.nom + "', '" + req.params.cognoms + "', '" + req.params.email + "', '"
-             + req.params.pwd + "', 'client', '" + req.params.descripcio +"', '"+ req.params.tel +"')", (err) => {
-                if(err){
-                    console.log(err);
-                    res.json(false)
-                }
-                console.log("Succesfull");
-                con.end();
-                res.send(true);
-             });   
-        }
-    });
-    if(req.params.solicitar_artista){
-        //EN CAS D'HABER SOLICITAT ARTISTA ENTRARIA A UNA FUNCIO PER SOLICITAR-HO
-    }
-});
-
-
-app.listen(PORT, () =>{
-    console.log("Servidor arrancat pel port "+ PORT);
 });
 
 
