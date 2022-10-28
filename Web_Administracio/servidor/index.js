@@ -139,7 +139,8 @@ app.post("/logInAdmin", (req, res) => {
 
 
 app.post("/delUser", (req, res) => {
-    if(req.session.cookie.rol == 'admin'){
+    console.log(req.body.id_usuari);
+    /*if(req.session.cookie.rol == 'admin'){*/
         con = getCon();
         con.connect(function(err){
             if (err){
@@ -155,9 +156,9 @@ app.post("/delUser", (req, res) => {
                 });   
             }
         });
-    }else{
+    /*}else{
         res.json(false);
-    }
+    }*/
 });
 
 app.post("/getUsers", (req, res) => {

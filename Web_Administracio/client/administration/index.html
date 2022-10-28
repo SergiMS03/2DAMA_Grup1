@@ -16,7 +16,24 @@
 <body>
     <v-app align="center" id="app">
         <template>
-            <v-card height="350px">
+            <v-container>
+              <template>
+                <v-data-table
+                  :headers="headers"
+                  :items="desserts"
+                  :items-per-page="5"
+                  class="elevation-1"
+                ></v-data-table>
+              </template>
+              <v-container v-for="(user) in users">{{user.id_usuari}} {{user.nom}} {{user.cognoms}} {{user.email}} {{user.tel}} {{user.rol}}
+                <v-btn
+                elevation="2"
+                raised
+                rounded
+                x-small
+                @click="delUser(user.id_usuari)"
+                color="red"
+              >BAN</v-btn></v-container>
               <v-navigation-drawer
                 absolute
                 permanent
@@ -25,9 +42,29 @@
                 <template v-slot:prepend>
                   <v-list-item two-line>
                     <v-list-item-avatar>
-                      <img src="https://randomuser.me/api/portraits/men/82.jpg">
+                      <img src="https://randomuser.me/api/portraits/men/80.jpg">
                     </v-list-item-avatar>
-          
+                      <!--SIDE BAR-->
+                    <v-list-item-content>
+                      <v-list-item-title>Jane Smith</v-list-item-title>
+                      <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item two-line>
+                    <v-list-item-avatar>
+                      <img src="https://randomuser.me/api/portraits/men/70.jpg">
+                    </v-list-item-avatar>
+                      <!--SIDE BAR-->
+                    <v-list-item-content>
+                      <v-list-item-title>Jane Smith</v-list-item-title>
+                      <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item two-line>
+                    <v-list-item-avatar>
+                      <img src="https://randomuser.me/api/portraits/men/60.jpg">
+                    </v-list-item-avatar>
+                      <!--SIDE BAR-->
                     <v-list-item-content>
                       <v-list-item-title>Jane Smith</v-list-item-title>
                       <v-list-item-subtitle>Logged In</v-list-item-subtitle>
@@ -38,7 +75,7 @@
                 <v-divider></v-divider>
           
                 <v-list dense>
-                  <v-list-item
+                  <!-- <v-list-item
                     v-for="item in items"
                     :key="item.title"
                   >
@@ -49,14 +86,15 @@
                     <v-list-item-content>
                       <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
-                  </v-list-item>
+                  </v-list-item> -->
                 </v-list>
               </v-navigation-drawer>
-            </v-card>
+            </v-container>
           </template>
-          <v-container>{{users}}</v-container>
-        <script src="index.js"></script>
+          
     </v-app>
+    <script src="index.js"></script>
+
     <script>app.getUsers()</script>
 </body>
 </html>
