@@ -36,11 +36,10 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     private EditText cognoms;
     private EditText email;
     private EditText pwd;
-    private EditText tlf;
+    private EditText tel;
     private EditText descripcio;
     private RadioButton solicitar_artista;
     private Button registrarse;
-    private final String HOST = "http://192.168.250.102:3000/signUp";
 
  @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         cognoms = (EditText) (findViewById(R.id.editText_cognoms));
         email = (EditText) (findViewById(R.id.editText_email));
         pwd = (EditText) (findViewById(R.id.editText_pwd));
-        tlf = (EditText) (findViewById(R.id.editText_tlf));
+        tel = (EditText) (findViewById(R.id.editText_tlf));
         descripcio = (EditText) (findViewById(R.id.editText_nom));
         solicitar_artista = (RadioButton) (findViewById(R.id.btn_solicitar_artista));
         registrarse = (Button) findViewById(R.id.registerButton_signUp);
@@ -61,17 +60,13 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        String json = "{\"id_usuari\": \"" + nom.getText() + ", \"cognoms\": \"" + cognoms.getText() +", \"email\": "+ email.getText() +", \"pwd\": "+ pwd.getText() +" \",}";
-
-        new signUp().execute(HOST, json);
+        String HOST = "http://192.168.1.45:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
+                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+solicitar_artista.getText();
+        new signUp().execute(HOST);
     }
 
 
-    private class signUp extends AsyncTask<String, Void, String>{
-
-        HttpURLConnection con = null;
-        BufferedReader reader = null;
-
+    public class signUp extends AsyncTask<String, Void, String>{
 
         @Override
         protected String doInBackground(String... strings) {
@@ -81,14 +76,15 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         }
 
         private String dades(String queryString){
-
+            HttpURLConnection con = null;
+            BufferedReader reader = null;
             String result = null;
 
             try{
                 Log.i("LOGINFO", "dades: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-                String url = "http://192.168.250.102:3000/signUp/"+nom+"/"+cognoms+"/"+email+"/"+pwd+"/"
-                        +descripcio+"/"+tlf+"/"+solicitar_artista;
+                String url = queryString;
+                //String url = "http://192.168.1.45:3000/signUp/Moises/Garcia/email/pwd/descripcio/66866666/false";
                 Uri builtURI = Uri.parse(url).buildUpon().build();
                 URL requestURL = new URL(builtURI.toString());
                 con = (HttpURLConnection) requestURL.openConnection();
@@ -109,8 +105,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
                     // Stream was empty. No point in parsing.
                     return null;
                 }
-                result = builder.toString();
 
+                result = builder.toString();
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -131,14 +127,15 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
             return result;
         }
 
-        /*protected void onPostExecute(String s){
+        protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-                JSONObject jsonObject = new JSONObject(s);
-                JSONArray itemsArray = jsonObject.getJSONArray("items");
+                if(s.equals("true")){
+
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }*/
+        }
     }
 }
