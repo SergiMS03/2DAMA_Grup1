@@ -40,6 +40,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     private EditText descripcio;
     private RadioButton solicitar_artista;
     private Button registrarse;
+    private final String HOST = "http://192.168.250.102:3000/signUp";
 
  @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +59,11 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        new signUp().execute();
+        String json = "{\"id_usuari\": \"" + nom.getText() + ", \"cognoms\": \"" + cognoms.getText() +", \"email\": "+ email.getText() +", \"pwd\": "+ pwd.getText() +" \",}";
+
+        new signUp().execute(HOST, json);
     }
 
 
