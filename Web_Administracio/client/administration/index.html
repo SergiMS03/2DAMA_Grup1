@@ -20,20 +20,33 @@
               <template>
                 <v-data-table
                   :headers="headers"
-                  :items="desserts"
+                  :items="users"
                   :items-per-page="5"
                   class="elevation-1"
-                ></v-data-table>
+                  v-for="(user) in users"
+                >
+                <template v-slot:item="row">
+                  <tr>
+                    <td>{{user.id_usuari}}</td>
+                    <td>{{user.nom}}</td>
+                    <td>{{user.cognoms}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.tel}}</td>
+                    <td>{{user.rol}}</td>
+                    <td>
+                      <v-btn
+                      elevation="2"
+                      raised
+                      rounded
+                      x-small
+                      @click="delUser(user.id_usuari)"
+                      color="red"
+                    >BAN</v-btn>
+                    </td>
+                  </tr>
               </template>
-              <v-container v-for="(user) in users">{{user.id_usuari}} {{user.nom}} {{user.cognoms}} {{user.email}} {{user.tel}} {{user.rol}}
-                <v-btn
-                elevation="2"
-                raised
-                rounded
-                x-small
-                @click="delUser(user.id_usuari)"
-                color="red"
-              >BAN</v-btn></v-container>
+              </v-data-table>
+              </template>
               <v-navigation-drawer
                 absolute
                 permanent

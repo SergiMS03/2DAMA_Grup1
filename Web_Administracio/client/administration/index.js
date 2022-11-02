@@ -3,18 +3,21 @@ var app = new Vue({
   vuetify: new Vuetify(),
   data: {
     users: [],
+    headers: [
+      {
+        text: 'ID Usuari',
+        align: 'start',
+        sortable: true,
+        value: 'id_usuari',
+      },
+      { text: 'nom', value: 'nom' },
+      { text: 'cognoms', value: 'cognoms' },
+      { text: 'email', value: 'email' },
+      { text: 'tel', value: 'tel' },
+      { text: 'rol', value: 'rol' },
+      { text: "BAN", value: "controls", sortable: false }
+    ],
   },
-  /*credentials:{ {email:"", pwd:""},
-                items: [
-                  { title: 'Usuarios', icon: 'mdi-view-dashboard' },
-                  { title: 'Solicitudes de Artista', icon: 'mdi-image' },
-                  { title: 'Productos', icon: 'mdi-help-box' },
-                ],
-                right: null,
-              
-            
-          },
-          */
   methods: {
     getUsers: function () {
       const myHeaders = new Headers();
@@ -26,6 +29,7 @@ var app = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
+          this.users = data;
           this.users = data;
         })
         .catch((error) => {
