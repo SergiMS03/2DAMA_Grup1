@@ -59,6 +59,7 @@
             android:layout_marginRight="15dp"
             android:backgroundTint="#77EC62"
             android:text="@string/loginButton"
+            android:onClick="checkLogIn"
             android:textColor="#000000" />
 
         <Button
