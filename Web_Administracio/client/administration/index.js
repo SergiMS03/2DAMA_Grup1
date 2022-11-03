@@ -30,7 +30,7 @@ var app = new Vue({
         .then((response) => response.json())
         .then((data) => {
           this.users = data;
-          this.users = data;
+          console.log(data);
         })
         .catch((error) => {
           console.log(error);
@@ -50,6 +50,7 @@ var app = new Vue({
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          this.getUsers();
         })
         .catch((error) => {
           console.log(error);

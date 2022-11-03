@@ -23,23 +23,22 @@
                   :items="users"
                   :items-per-page="5"
                   class="elevation-1"
-                  v-for="(user) in users"
                 >
                 <template v-slot:item="row">
                   <tr>
-                    <td>{{user.id_usuari}}</td>
-                    <td>{{user.nom}}</td>
-                    <td>{{user.cognoms}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.tel}}</td>
-                    <td>{{user.rol}}</td>
+                    <td>{{row.item.id_usuari}}</td>
+                    <td>{{row.item.nom}}</td>
+                    <td>{{row.item.cognoms}}</td>
+                    <td>{{row.item.email}}</td>
+                    <td>{{row.item.tel}}</td>
+                    <td>{{row.item.rol}}</td>
                     <td>
                       <v-btn
                       elevation="2"
                       raised
                       rounded
                       x-small
-                      @click="delUser(user.id_usuari)"
+                      @click="delUser(row.item.id_usuari)"
                       color="red"
                     >BAN</v-btn>
                     </td>
@@ -47,61 +46,43 @@
               </template>
               </v-data-table>
               </template>
-              <v-navigation-drawer
-                absolute
-                permanent
-                left
-              >
-                <template v-slot:prepend>
-                  <v-list-item two-line>
-                    <v-list-item-avatar>
-                      <img src="https://randomuser.me/api/portraits/men/80.jpg">
-                    </v-list-item-avatar>
-                      <!--SIDE BAR-->
-                    <v-list-item-content>
-                      <v-list-item-title>Jane Smith</v-list-item-title>
-                      <v-list-item-subtitle>Logged In</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item two-line>
-                    <v-list-item-avatar>
-                      <img src="https://randomuser.me/api/portraits/men/70.jpg">
-                    </v-list-item-avatar>
-                      <!--SIDE BAR-->
-                    <v-list-item-content>
-                      <v-list-item-title>Jane Smith</v-list-item-title>
-                      <v-list-item-subtitle>Logged In</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item two-line>
-                    <v-list-item-avatar>
-                      <img src="https://randomuser.me/api/portraits/men/60.jpg">
-                    </v-list-item-avatar>
-                      <!--SIDE BAR-->
-                    <v-list-item-content>
-                      <v-list-item-title>Jane Smith</v-list-item-title>
-                      <v-list-item-subtitle>Logged In</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-                </template>
-          
-                <v-divider></v-divider>
-          
-                <v-list dense>
-                  <!-- <v-list-item
-                    v-for="item in items"
-                    :key="item.title"
-                  >
-                    <v-list-item-icon>
-                      <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
-          
-                    <v-list-item-content>
-                      <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item> -->
-                </v-list>
-              </v-navigation-drawer>
+              <template>
+                  <v-navigation-drawer permanent
+                  left
+                  absolute>
+                    <v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title class="text-h6">
+                          Application
+                        </v-list-item-title>
+                        <v-list-item-subtitle>
+                          subtext
+                        </v-list-item-subtitle>
+                      </v-list-item-content>
+                    </v-list-item>
+              
+                    <v-divider></v-divider>
+              
+                    <v-list
+                      dense
+                      nav
+                    >
+                      <v-list-item
+                        v-for="item in items"
+                        :key="item.title"
+                        link
+                      >
+                        <v-list-item-icon>
+                          <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-icon>
+              
+                        <v-list-item-content>
+                          <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list>
+                  </v-navigation-drawer>
+              </template>
             </v-container>
           </template>
           
