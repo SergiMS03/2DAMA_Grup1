@@ -134,7 +134,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-                if(s.equals("true")){
+                if(s.equals("0\n")){
                     displayToast("Registre correcte");
                     Intent intent = new Intent(sign_up.this, main_page.class);
                     startActivity(intent);
