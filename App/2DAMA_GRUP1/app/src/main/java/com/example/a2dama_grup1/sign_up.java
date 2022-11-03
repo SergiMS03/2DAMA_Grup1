@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.AsyncTaskLoader;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,11 +62,14 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        String HOST = "http://192.168.1.45:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
+        String HOST = "http://192.168.207.154:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
                 +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+solicitar_artista.getText();
         new signUp().execute(HOST);
     }
 
+    public void displayToast (String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 
     public class signUp extends AsyncTask<String, Void, String>{
 
@@ -84,7 +89,6 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
                 Log.i("LOGINFO", "dades: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
                 String url = queryString;
-                //String url = "http://192.168.1.45:3000/signUp/Moises/Garcia/email/pwd/descripcio/66866666/false";
                 Uri builtURI = Uri.parse(url).buildUpon().build();
                 URL requestURL = new URL(builtURI.toString());
                 con = (HttpURLConnection) requestURL.openConnection();
@@ -131,7 +135,12 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
             super.onPostExecute(s);
             try {
                 if(s.equals("true")){
-
+                    displayToast("Registre correcte");
+                    Intent intent = new Intent(sign_up.this, main_page.class);
+                    startActivity(intent);
+                }
+                else{
+                    displayToast("Alguna dada no és correcte");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
