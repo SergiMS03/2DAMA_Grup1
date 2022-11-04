@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');
 const PORT = 3000;
 var userTools = require("./percistence/users.js");
+var productTools = require("./percistence/products.js");
 var conexion = require("./percistence/bdConnection.js");
 
 app.use(bp.json())
@@ -184,9 +185,6 @@ app.post("/getUsers", (req, res) => {
 });
 
 app.post("/manageArtist", (req, res) => {
-    response = false;
-    console.log(req.body.reply);
-    console.log(req.body.id_usuari);
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
@@ -196,19 +194,42 @@ app.post("/manageArtist", (req, res) => {
                 con.query(userTools.isArtist(req.body.id_usuari) , (err, fields)=> {
                     if(err){
                         console.log(err);
+                        res.json(false);
                     }
-                    response = true
+                    res.json(true);  
                 }); 
             }else if(req.body.reply == 1){
                 con.query(userTools.declineArtist(req.body.id_usuari) , (err, fields)=> {
                     if(err){
+                        console.log(err);
                         res.json(false);
                     }
-                    response = true
+                    res.json(true);  
                 }); 
             }
-            con.end();
-            res.json(response);          
+            con.end();       
+        }
+    });
+
+});
+
+app.post("/getProducts", (req, res) => {
+    var arrRes = [];
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.json(false);
+        }else{
+            con.query(productTools.getAllProducts() , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                con.end();
+            });           
         }
     });
 

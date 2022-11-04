@@ -50,52 +50,49 @@
               <template>
                 <!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS -->
                 <v-data-table
-                v-if="mode == 0"
+               
                   :headers="headers"
                   :items="users"
                   :items-per-page="5"
                   class="elevation-1"
                 >
                 <template v-slot:item="row">
-                  <tr>
+                  <tr v-if="mode == 0 || mode == 1">
                     <td>{{row.item.id_usuari}}</td>
-                    <td>{{row.item.nom}}</td>
-                    <td>{{row.item.cognoms}}</td>
-                    <td>{{row.item.email}}</td>
-                    <td>{{row.item.tel}}</td>
-                    <td>{{row.item.rol}}</td>
-                    <td>
-                      <v-btn
+                    <td><v-layout justify-center>
+                        {{row.item.nom}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.cognoms}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.email}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.tel}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.rol}}
+                        </v-layout>
+                    </td>
+                    <td v-if="mode == 0">
+                        <v-layout justify-center>
+                            <v-btn
                       elevation="2"
                       raised
                       rounded
                       x-small
                       @click="delUser(row.item.id_usuari)"
                       color="red"
-                    >BAN</v-btn>
+                    >ELIMINA</v-btn>
+                        </v-layout>
                     </td>
-                  </tr>
-              </template>
-              </v-data-table>
-              <!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS -->
-              </template>
-              <!-- ARTIST_REQ --><!-- ARTIST_REQ --><!-- ARTIST_REQ --><!-- ARTIST_REQ --><!-- ARTIST_REQ -->
-              <v-data-table
-                v-if="mode == 1"
-                  :headers="headers"
-                  :items="users"
-                  :items-per-page="5"
-                  class="elevation-1"
-                >
-                <template v-slot:item="row">
-                  <tr>
-                    <td>{{row.item.id_usuari}}</td>
-                    <td>{{row.item.nom}}</td>
-                    <td>{{row.item.cognoms}}</td>
-                    <td>{{row.item.email}}</td>
-                    <td>{{row.item.tel}}</td>
-                    <td>{{row.item.rol}}</td>
-                    <td>
+                    <td v-if="mode == 1">
+                        <v-layout justify-center>
                         <v-btn
                         elevation="2"
                         raised
@@ -112,17 +109,87 @@
                         @click="acceptDeclineArtist(row.item.id_usuari, 1)"
                         color="red"
                       >Decline</v-btn>
+                      <td v-if="mode == 2">
+                        <v-layout justify-center>
+                        </v-layout>
+                    </td>
+                    </v-layout>
                       </td>
                   </tr>
+
+
+
+
+
+
+
+
+                  <tr v-if="mode == 2">
+                    <td><v-layout justify-center>
+                        {{row.item.id_producte}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.nom_producte}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.preu}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.stock}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.path_img}}
+                        </v-layout>
+                    </td>
+                    <td><v-layout justify-center>
+                        {{row.item.id_vendedor}}
+                        </v-layout>
+                    </td>
+                      <td v-if="mode == 2">
+                        <v-layout justify-center>
+                            <v-btn
+                      elevation="2"
+                      raised
+                      rounded
+                      x-small
+                      @click=""
+                      color="red"
+                    >ELIMINA</v-btn>
+                        </v-layout>
+                    </td>
+                    </v-layout>
+                      </td>
+                  </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
               </template>
               </v-data-table>
-              <!-- ARTIST_REQ --><!-- ARTIST_REQ --><!-- ARTIST_REQ --><!-- ARTIST_REQ --><!-- ARTIST_REQ -->
+              <!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS -->
+              </template>
               <template>
                   <v-navigation-drawer permanent
                   left
                   absolute>
                     <v-list-item>
                       <v-list-item-content>
+                        <v-sheet class = "mx-auto">
+                            <v-img src="./imgs/plastic_precios_login.png" alt="Plastic_Precios" width="100" height="100"></v-img><br>
+                        </v-sheet>
                         <v-list-item-title class="text-h6">
                           ADMIN PANEL
                         </v-list-item-title>
@@ -151,6 +218,15 @@
                     @click="getArtistRequest"
                     color="#A1F9A5"
                     >ARTIST_REQ</v-btn>
+                    <br>
+                    <v-divider></v-divider>
+                    <br>
+                    <v-btn
+                    block
+                    elevation="2"
+                    @click="getProducts"
+                    color="#A1F9A5"
+                    >PRODUCTES</v-btn>
                     <br>
                     <v-divider></v-divider>
                     </v-list>

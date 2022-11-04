@@ -6,20 +6,7 @@ var app = new Vue({
         rol: 'admin',//CAMBIAR ESTO, SOLO PARA TRBAJAR MÁS COMODO
         mode: 0,
         users: [],
-        headers: [
-        {
-            text: 'ID Usuari',
-            align: 'start',
-            sortable: true,
-            value: 'id_usuari',
-        },
-        { text: 'nom', value: 'nom' },
-        { text: 'cognoms', value: 'cognoms' },
-        { text: 'email', value: 'email' },
-        { text: 'tel', value: 'tel' },
-        { text: 'rol', value: 'rol' },
-        { text: "BAN", value: "controls", sortable: false }
-        ],
+        headers:[]
     },
     methods: {
     logIn: function(){
@@ -61,6 +48,20 @@ var app = new Vue({
               .then((response) => response.json())
               .then((data) => {
                 this.users = data;
+                this.headers = [
+                    {
+                        text: 'ID Usuari',
+                        align: 'center',
+                        sortable: true,
+                        value: 'id_usuari',
+                    },
+                    { text: 'nom', value: 'nom', align: 'center'},
+                    { text: 'cognoms', value: 'cognoms', align: 'center' },
+                    { text: 'email', value: 'email', align: 'center' },
+                    { text: 'tel', value: 'tel', align: 'center' },
+                    { text: 'rol', value: 'rol', align: 'center' },
+                    { text: "ELIMINA", value: "controls", sortable: false, align: 'center' }
+                    ],
                 console.log(data);
                 console.log(this.mode);
               })
@@ -102,6 +103,20 @@ var app = new Vue({
               .then((response) => response.json())
               .then((data) => {
                 this.users = data;
+                this.headers = [
+                    {
+                        text: 'ID Usuari',
+                        align: 'center',
+                        sortable: true,
+                        value: 'id_usuari',
+                    },
+                    { text: 'nom', value: 'nom', align: 'center'},
+                    { text: 'cognoms', value: 'cognoms', align: 'center' },
+                    { text: 'email', value: 'email', align: 'center' },
+                    { text: 'tel', value: 'tel', align: 'center' },
+                    { text: 'rol', value: 'rol', align: 'center' },
+                    { text: "PETITION", value: "controls", sortable: false, align: 'center' }
+                    ],
                 console.log(data);
               })
               .catch((error) => {
@@ -121,9 +136,41 @@ var app = new Vue({
             })
               .then((response) => response.json())
               .then((data) => {
-                this.users = data;
-                console.log(data);
+                console.log(data)
                 this.getArtistRequest();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          },
+          getProducts: function () {
+            this.mode = 2;
+            const myHeaders = new Headers();
+            fetch("http://localhost:3000/getProducts", {
+              method: "POST",
+              headers: myHeaders,
+              mode: "cors",
+              cache: "default",
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                this.users = data;
+                this.headers = [
+                    {
+                        text: 'ID Producte',
+                        align: 'center',
+                        sortable: true,
+                        value: 'id_usuari',
+                    },
+                    { text: 'nom', value: 'nom', align: 'center'},
+                    { text: 'preu', value: 'preu', align: 'center' },
+                    { text: 'stock', value: 'stock', align: 'center' },
+                    { text: 'path IMG', value: 'path IMG', align: 'center' },
+                    { text: 'Venedor ID', value: 'Venedor ID', align: 'center' },
+                    { text: "ELIMINA", value: "controls", sortable: false, align: 'center' }
+                    ],
+                console.log(data);
+                console.log(this.mode);
               })
               .catch((error) => {
                 console.log(error);
