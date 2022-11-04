@@ -23,7 +23,7 @@ function delUser (usuari_id) {
 /*DELETES*/
 
 /*INSERTS*/
-function insertClient (nom, cognoms, email, pwd, descripcio, tel) {
+function insertClient (nom, cognoms, email, pwd, descripcio, tel, artist_req) {
   return ("INSERT INTO USUARI VALUES (NULL,'"+ nom + "', '" + cognoms + "', '" + email + "', '"
   + pwd + "', 'client', '" + descripcio +"', '"+ tel +"', '"+ artist_req +"')");//PROVAR EL ARTIST_REQ
 };

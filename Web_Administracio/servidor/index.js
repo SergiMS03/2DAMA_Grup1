@@ -25,13 +25,10 @@ app.use(cors({
     }
 }));
 
-
-
 app.listen(PORT, () =>{
     console.log("Servidor arrancat pel port "+ PORT);
 });
 
-/*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*/
 app.get("/logInClient/:email/:pwd", (req, res) => {
     var auth = 1;
     console.log("LOGIN CLIENT INICIAT!!!");
@@ -60,16 +57,16 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
         }
     });
 });
-/*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*//*NO TOCAR AUN*/
 
-app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista", (req, res) => {
+app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req", (req, res) => {
     console.log("Conexió realitzada");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
             console.log(err)
         }else{
-            con.query(userTools.insertClient(req.params.nom, req.params.cognoms, req.params.email, req.params.pwd, req.params.descripcio, req.params.tel), (err) => {
+            con.query(userTools.insertClient(req.params.nom, req.params.cognoms, req.params.email, req.params.pwd, 
+                req.params.descripcio, req.params.tel, req.params.artist_req), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
@@ -80,9 +77,6 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:solicitar_artista",
              });   
         }
     });
-    if(req.params.solicitar_artista){
-        //EN CAS D'HABER SOLICITAT ARTISTA ENTRARIA A UNA FUNCIO PER SOLICITAR-HO
-    }
 });
 
 app.post("/logInAdmin", (req, res) => {
@@ -166,4 +160,26 @@ app.post("/getUsers", (req, res) => {
         });
     
  });
+
+ app.post("/artistRequest", (req, res) => {
+    var arrRes = [];
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.json(false);
+        }else{
+            con.query(userTools.getArtistReq() , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                con.end();
+            });           
+        }
+    });
+
+});
  

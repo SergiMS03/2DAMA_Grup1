@@ -56,5 +56,24 @@ var app = new Vue({
           console.log(error);
         });
     },
+    getArtistRequest: function () {
+      fetch("http://localhost:3000/artistRquest", {
+        method:"POST",
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Accept':'application/json'
+                    },
+                    mode: 'cors',
+                    cache: 'default',
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.users = data;
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
 });

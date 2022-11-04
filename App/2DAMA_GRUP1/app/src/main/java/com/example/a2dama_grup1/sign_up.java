@@ -1,8 +1,6 @@
 package com.example.a2dama_grup1;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.AsyncTaskLoader;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,23 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.nio.Buffer;
 
 
 public class sign_up extends AppCompatActivity implements View.OnClickListener{
@@ -40,7 +30,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     private EditText pwd;
     private EditText tel;
     private EditText descripcio;
-    private RadioButton solicitar_artista;
+    private RadioButton artist_req;
     private Button registrarse;
 
  @Override
@@ -53,7 +43,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         pwd = (EditText) (findViewById(R.id.editText_pwd));
         tel = (EditText) (findViewById(R.id.editText_tlf));
         descripcio = (EditText) (findViewById(R.id.editText_nom));
-        solicitar_artista = (RadioButton) (findViewById(R.id.btn_solicitar_artista));
+        artist_req = (RadioButton) (findViewById(R.id.btn_solicitar_artista));
         registrarse = (Button) findViewById(R.id.registerButton_signUp);
         registrarse.setOnClickListener(this);
 
@@ -62,8 +52,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        String HOST = "http://192.168.207.154:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
-                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+solicitar_artista.getText();
+        String HOST = "http://192.168.1.45:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
+                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.getText();
         new signUp().execute(HOST);
     }
 
@@ -106,7 +96,6 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
                     builder.append("\n");
                 }
                 if (builder.length() == 0) {
-                    // Stream was empty. No point in parsing.
                     return null;
                 }
 
