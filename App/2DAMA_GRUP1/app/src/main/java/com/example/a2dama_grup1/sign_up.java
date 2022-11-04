@@ -42,7 +42,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
         email = (EditText) (findViewById(R.id.editText_email));
         pwd = (EditText) (findViewById(R.id.editText_pwd));
         tel = (EditText) (findViewById(R.id.editText_tlf));
-        descripcio = (EditText) (findViewById(R.id.editText_nom));
+        descripcio = (EditText) (findViewById(R.id.editText_descripcio));
         artist_req = (RadioButton) (findViewById(R.id.btn_solicitar_artista));
         registrarse = (Button) findViewById(R.id.registerButton_signUp);
         registrarse.setOnClickListener(this);
@@ -53,7 +53,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         String HOST = "http://192.168.1.45:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
-                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.getText();
+                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.isChecked();
         new signUp().execute(HOST);
     }
 
