@@ -182,4 +182,35 @@ app.post("/getUsers", (req, res) => {
     });
 
 });
+
+app.post("/manageArtist", (req, res) => {
+    response = false;
+    console.log(req.body.reply);
+    console.log(req.body.id_usuari);
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            console.log(err);
+        }else{
+            if(req.body.reply == 0){
+                con.query(userTools.isArtist(req.body.id_usuari) , (err, fields)=> {
+                    if(err){
+                        console.log(err);
+                    }
+                    response = true
+                }); 
+            }else if(req.body.reply == 1){
+                con.query(userTools.declineArtist(req.body.id_usuari) , (err, fields)=> {
+                    if(err){
+                        res.json(false);
+                    }
+                    response = true
+                }); 
+            }
+            con.end();
+            res.json(response);          
+        }
+    });
+
+});
  

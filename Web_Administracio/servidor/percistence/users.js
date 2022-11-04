@@ -25,8 +25,18 @@ function delUser (usuari_id) {
 /*INSERTS*/
 function insertClient (nom, cognoms, email, pwd, descripcio, tel, artist_req) {
   return ("INSERT INTO USUARI VALUES (NULL,'"+ nom + "', '" + cognoms + "', '" + email + "', '"
-  + pwd + "', 'client', '" + descripcio +"', '"+ tel +"', '"+ artist_req +"')");//PROVAR EL ARTIST_REQ
+  + pwd + "', 'client', '" + descripcio +"', '"+ tel +"', '"+ artist_req +"')");
 };
 /*INSERTS*/
 
-module.exports = {getAllUsers, getUser, delUser, getAdmins, insertClient, getArtistReq};
+/* UPDATES */
+function isArtist (usuari_id) {
+  return ("UPDATE USUARI SET rol = 'artist', artist_req = false WHERE id_usuari = "+ usuari_id);
+};
+
+function declineArtist (usuari_id) {
+  return ("UPDATE USUARI SET artist_req = false WHERE id_usuari = "+ usuari_id);
+};
+/* UPDATES */
+
+module.exports = {getAllUsers, getUser, delUser, getAdmins, insertClient, getArtistReq, isArtist, declineArtist};
