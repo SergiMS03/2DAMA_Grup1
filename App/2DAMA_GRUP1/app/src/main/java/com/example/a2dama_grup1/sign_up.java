@@ -53,7 +53,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         String HOST = "http://192.168.1.45:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
-                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.getText();
+                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.isChecked();
         new signUp().execute(HOST);
     }
 
