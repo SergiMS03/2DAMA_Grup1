@@ -175,6 +175,26 @@ var app = new Vue({
               .catch((error) => {
                 console.log(error);
               });
+          },
+          delProduct: function (id_producte) {
+            fetch("http://localhost:3000/delProduct", {
+              method:"POST",
+                          headers: {
+                              'Content-Type' : 'application/json',
+                              'Accept':'application/json'
+                          },
+                          mode: 'cors',
+                          cache: 'default',
+              body: JSON.stringify({ id_producte: id_producte }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                this.getProducts();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           }
         }}
 );
