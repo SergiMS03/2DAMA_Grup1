@@ -234,4 +234,22 @@ app.post("/getProducts", (req, res) => {
     });
 
 });
- 
+
+
+app.post("/delProduct", (req, res) => {
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            console.log(err)
+        }else{
+            con.query(productTools.delProduct(req.body.id_producte), (err) => {
+                if(err){
+                    console.log(err);
+                    res.json(false)
+                }
+                res.json(true);
+                con.end();
+            });   
+        }
+    });
+});
