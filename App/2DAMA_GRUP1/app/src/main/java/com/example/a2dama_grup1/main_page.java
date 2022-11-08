@@ -27,6 +27,7 @@ public class main_page extends AppCompatActivity {
         recyclerViewVertical.setAdapter(myAdapter);
         recyclerViewHoritzontal.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewVertical.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewVertical.setFocusable(false);
     }
 
 }
