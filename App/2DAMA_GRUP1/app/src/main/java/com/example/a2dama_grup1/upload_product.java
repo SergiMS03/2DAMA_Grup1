@@ -41,7 +41,7 @@ public class upload_product extends AppCompatActivity {
     private ImageView image;
 
     private static Retrofit retrofit;
-    private static String url_pushImage =  "http://192.168.207.154:3000/pushImage";
+    private static String url_pushImage =  "http://192.168.207.155:3000/pushImage";
     Date fecha = new Date();
     String filePath = fecha + ".jpeg";
     @Override
@@ -71,7 +71,7 @@ public class upload_product extends AppCompatActivity {
     }
 
     public void clickUploadProduct(View view){
-        String HOST = "http://192.168.207.154:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
+        String HOST = "http://192.168.207.155:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
                 +stock.getText()+"/"+product_description.getText()+"/"+filePath;
         new productToServer().execute(HOST);
     }
