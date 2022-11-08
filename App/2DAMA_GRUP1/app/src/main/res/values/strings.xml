@@ -46,5 +46,7 @@
 =======
     <string name="productNameMissatge">Product name</string>
     <string name="inputMissatge">Escribe un mensaje</string>
->>>>>>> 8606458824988abedfdbada54a14feb9c778a0d6
+    <string name="subir_producto">Upload</string>
+    <string name="profile_upload_product">UPLOAD</string>
+    >>>>>>> 8606458824988abedfdbada54a14feb9c778a0d6
 </resources>
