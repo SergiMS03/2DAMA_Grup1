@@ -31,7 +31,6 @@
     <string name="uploadDescripcion">Descripción</string>
     <string name="mainpageProductosDestacados">Productos Destacados</string>
     <string name="mainpageProductosProx">Productos por Proximidad</string>
-<<<<<<< HEAD
 
     <string-array name="ProductTitles">
         <item>A</item>
@@ -43,8 +42,8 @@
         <item>G</item>
         <item>H</item>
     </string-array>
-=======
+
     <string name="productNameMissatge">Product name</string>
     <string name="inputMissatge">Escribe un mensaje</string>
->>>>>>> 8606458824988abedfdbada54a14feb9c778a0d6
+
 </resources>
