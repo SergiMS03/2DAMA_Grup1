@@ -30,7 +30,7 @@
             android:name=".resenyas"
             android:exported="false" />
         <activity
-            android:name=".upload_product"
+            android:name=".missatge"
             android:exported="false" />
         <activity
             android:name=".product_info"
@@ -49,7 +49,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".missatge"
+            android:name=".upload_product"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
