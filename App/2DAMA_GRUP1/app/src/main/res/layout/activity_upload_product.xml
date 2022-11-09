@@ -121,13 +121,13 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/id_imageView_upload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:onClick="clickUploadImage"
-        tools:srcCompat="@tools:sample/avatars" />
+    <ImageButton
+        android:id="@+id/uploadImage_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <Button
         android:id="@+id/id_btn_upload"

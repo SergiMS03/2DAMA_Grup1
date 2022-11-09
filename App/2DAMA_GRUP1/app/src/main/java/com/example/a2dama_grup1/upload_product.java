@@ -1,15 +1,20 @@
 package com.example.a2dama_grup1;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -38,12 +43,13 @@ public class upload_product extends AppCompatActivity {
     private EditText price;
     private EditText stock;
     private EditText product_description;
-    private ImageView image;
-
+    private ImageButton image;
+    private int SELECT_PICTURE = 200;
     private static Retrofit retrofit;
     private static String url_pushImage =  "http://192.168.207.155:3000/pushImage";
     Date fecha = new Date();
     String filePath = fecha + ".jpeg";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,28 +59,103 @@ public class upload_product extends AppCompatActivity {
         price = (EditText) (findViewById(R.id.editText_precio_upload));
         stock = (EditText) (findViewById(R.id.editText_stock_upload));
         product_description = (EditText) (findViewById(R.id.editText_descripcio_upload));
-        image = (ImageView) (findViewById(R.id.id_imageView_upload));
+        image = (ImageButton) (findViewById(R.id.uploadImage_btn));
 
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageChooser();
+            }
+        });
     }
-    
+    //NO FUNCIONA
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
     }
+    //////////////
 
     public void displayToast (String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    public void clickUploadImage(View view){
-        uploadImage();
+
+    //**********UPLOAD IMAGE ***********
+    private void imageChooser()
+    {
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        launchSomeActivity.launch(i);
     }
 
+    ActivityResultLauncher<Intent> launchSomeActivity = registerForActivityResult(
+        new ActivityResultContracts
+                .StartActivityForResult(),
+        result -> {
+            if (result.getResultCode() == Activity.RESULT_OK) {
+                Intent data = result.getData();
+                if (data != null  && data.getData() != null) {
+                    Uri selectedImageUri = data.getData();
+                    Bitmap selectedImageBitmap = null;
+                    try {
+                        selectedImageBitmap = MediaStore.Images.Media.getBitmap(
+                                            this.getContentResolver(),
+                                            selectedImageUri);
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    image.setImageBitmap(selectedImageBitmap);
+                }
+            }
+    });
+
+    private void uploadImage() {
+        File file = new File(filePath);
+
+        Retrofit retrofit = getRetrofit();
+
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+        MultipartBody.Part parts = MultipartBody.Part.createFormData("newimage", file.getName(), requestBody);
+
+        RequestBody someData = RequestBody.create(MediaType.parse("text/plain"), "This is a new image");
+
+        UploadApis uploadApis = retrofit.create(UploadApis.class);
+        Call call = uploadApis.uploadImage(parts, someData);
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public static Retrofit getRetrofit(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        if(retrofit == null) {
+            retrofit = new Retrofit.Builder().baseUrl(url_pushImage).
+                    addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build();
+        }
+        return retrofit;
+    }
+
+    //********UPLOAD PRODUCT********
+
     public void clickUploadProduct(View view){
+        uploadImage();
         String HOST = "http://192.168.207.155:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
-                +stock.getText()+"/"+product_description.getText()+"/"+filePath;
+                +stock.getText()+"/"+product_description.getText()+"/"+filePath+"/"+image;
         new productToServer().execute(HOST);
     }
+
 
     public class productToServer extends AsyncTask<String, Void, String> {
 
@@ -148,38 +229,5 @@ public class upload_product extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }
-    private void uploadImage() {
-        File file = new File(filePath);
-
-        Retrofit retrofit = getRetrofit();
-
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part parts = MultipartBody.Part.createFormData("newimage", file.getName(), requestBody);
-
-        RequestBody someData = RequestBody.create(MediaType.parse("text/plain"), "This is a new image");
-
-        UploadApis uploadApis = retrofit.create(UploadApis.class);
-        Call call = uploadApis.uploadImage(parts, someData);
-        call.enqueue(new Callback(){
-            @Override
-            public void onResponse (Call call, Response response){
-
-            }
-            @Override
-            public void onFailure(Call call, Throwable t){
-
-            }
-        });
-    }
-
-
-    public static Retrofit getRetrofit(){
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-        if(retrofit == null) {
-            retrofit = new Retrofit.Builder().baseUrl(url_pushImage).
-                    addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build();
-        }
-        return retrofit;
     }
 }
