@@ -11,15 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
+public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProductsAdapter.MyViewHolder> {
+    int id;
     String data1[];
+    String data2[];
     int images[];
     Context context;
 
-    public MyAdapter(Context ct, String s1[], int img[]){
+    public ProximityProductsAdapter(Context ct, int id, String s1[], String s2[], int img[]){
         context = ct;
+        this.id = id;
         data1 = s1;
+        data2 = s2;
         images = img;
     }
 
@@ -27,13 +30,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.my_row, parent, false);
+        View view = inflater.inflate(R.layout.proximity_products, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.myText1.setText(data1[position]);
+        holder.myText2.setText(data2[position]);
         holder.myImage.setImageResource(images[position]);
     }
 
@@ -43,13 +47,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-
+        int id_producte;
         TextView myText1;
+        TextView myText2;
         ImageView myImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            id_producte = id;
             myText1 = itemView.findViewById(R.id.myText1);
+            myText2 = itemView.findViewById(R.id.myText2);
             myImage = itemView.findViewById(R.id.myImageView);
         }
     }

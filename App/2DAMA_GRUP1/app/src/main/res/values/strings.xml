@@ -41,6 +41,33 @@
         <item>F</item>
         <item>G</item>
         <item>H</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+    </string-array>
+
+    <string-array name="ProductPrices">
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
+        <item>100€</item>
     </string-array>
 
     <string name="productNameMissatge">Product name</string>
