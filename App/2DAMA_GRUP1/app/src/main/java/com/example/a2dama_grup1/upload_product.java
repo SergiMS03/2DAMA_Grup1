@@ -27,12 +27,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -112,9 +112,6 @@ public class upload_product extends AppCompatActivity {
             }
     });
 
-    public void clickUploadImage(View view){
-        uploadImage();
-    }
     private void uploadImage() {
         File file = new File(filePath);
 
@@ -127,13 +124,14 @@ public class upload_product extends AppCompatActivity {
 
         UploadApis uploadApis = retrofit.create(UploadApis.class);
         Call call = uploadApis.uploadImage(parts, someData);
-        call.enqueue(new Callback(){
+        call.enqueue(new Callback() {
             @Override
-            public void onResponse (Call call, Response response){
+            public void onResponse(Call call, Response response) {
 
             }
+
             @Override
-            public void onFailure(Call call, Throwable t){
+            public void onFailure(Call call, Throwable t) {
 
             }
         });
@@ -152,6 +150,7 @@ public class upload_product extends AppCompatActivity {
     //********UPLOAD PRODUCT********
 
     public void clickUploadProduct(View view){
+        uploadImage();
         String HOST = "http://192.168.207.155:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
                 +stock.getText()+"/"+product_description.getText()+"/"+filePath+"/"+image;
         new productToServer().execute(HOST);
