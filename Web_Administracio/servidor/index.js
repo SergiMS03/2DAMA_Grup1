@@ -4,6 +4,11 @@ const session = require('express-session');
 const app = express();
 const cors = require('cors');
 const PORT = 3000;
+///////
+const multiparty = require("multiparty");
+const IMAGE_UPLOAD_DIR = "./image"
+const IMAGE_BASE_URL = "http://localhost:3000/web_administracio/servidor/image"
+///////
 var userTools = require("./percistence/users.js");
 var productTools = require("./percistence/products.js");
 var conexion = require("./percistence/bdConnection.js");
@@ -100,6 +105,20 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:filePath", (req
         }
     });
 });
+
+app.post("/pushImage", (req,res) => {
+    let form = new multiparty.form({uploadDir: IMAGE_UPLOAD_DIR})
+
+    form.parse(req, function (err, fields, files){
+        if(err) return res.json(false);
+
+        const imagePath = files.image[0].path;
+        const imageFileName = imagePath.slice(imagePath.lastIndexOf("\\") + 1);
+        const imageURL = IMAGE_BASE_URL + imageFileName;
+
+
+    })
+})
 
 app.post("/logInAdmin", (req, res) => {
     var auth = false;
