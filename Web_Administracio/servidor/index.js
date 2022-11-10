@@ -87,15 +87,15 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req", (req, 
     });
 });
 
-app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:filePath", (req, res) => {
+app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/", (req, res) => {
     console.log("Conexió realitzada");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
             console.log(err)
         }else{
-            con.query(productTools.insertProduct(req.params.product_name, req.params.price, req.params.stock, req.params.descripcio, 
-                req.params.filePath), (err) => {
+            con.query(productTools.insertProduct(req.params.product_name, req.params.price, req.params.stock, 
+                req.params.descripcio, ), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
