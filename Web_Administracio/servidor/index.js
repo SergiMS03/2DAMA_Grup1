@@ -11,6 +11,7 @@ const IMAGE_BASE_URL = "http://localhost:3000/web_administracio/servidor/image"
 ///////
 var userTools = require("./percistence/users.js");
 var productTools = require("./percistence/products.js");
+var missatgeTools = require("./percistence/missatges.js");
 var conexion = require("./percistence/bdConnection.js");
 
 app.use(bp.json())
@@ -292,4 +293,26 @@ app.post("/delProduct", (req, res) => {
             });   
         }
     });
+});
+
+app.post("/getMissatges", (req, res) => {
+    var arrRes = [];
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.json(false);
+        }else{
+            con.query(missatgeTools.getAllMissatges() , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                con.end();
+            });           
+        }
+    });
+
 });
