@@ -34,6 +34,10 @@ public class main_page extends AppCompatActivity {
         }
     }
 
+    public void displayToast (String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,7 @@ public class main_page extends AppCompatActivity {
         recyclerViewVertical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Toast.makeText(getApplicationContext(), "Seleccion: " + ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte());*/
+                displayToast("Seleccion: " + ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte());
             }
         });
 

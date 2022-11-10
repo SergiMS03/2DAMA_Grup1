@@ -46,7 +46,7 @@ public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProd
     }
 
     public void setOnClickListener(View.OnClickListener listener){
-        this.listener = listener;
+        this.listener = listener;//LINEA 31 NO LLAMA A ESTE SETONCLICKLISTENER
     }
 
     @Override
