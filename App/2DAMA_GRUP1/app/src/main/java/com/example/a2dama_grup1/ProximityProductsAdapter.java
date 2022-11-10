@@ -11,12 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProductsAdapter.MyViewHolder> {
+public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProductsAdapter.MyViewHolder> implements View.OnClickListener {
     int id;
     String data1[];
     String data2[];
     int images[];
     Context context;
+    private View.OnClickListener listener;
 
     public ProximityProductsAdapter(Context ct, int id, String s1[], String s2[], int img[]){
         context = ct;
@@ -31,11 +32,13 @@ public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProd
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.proximity_products, parent, false);
+        view.setOnClickListener(this);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.id_producte = id;
         holder.myText1.setText(data1[position]);
         holder.myText2.setText(data2[position]);
         holder.myImage.setImageResource(images[position]);
@@ -44,6 +47,17 @@ public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProd
     @Override
     public int getItemCount() {
         return data1.length;
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener!=null){
+            listener.onClick(view);
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

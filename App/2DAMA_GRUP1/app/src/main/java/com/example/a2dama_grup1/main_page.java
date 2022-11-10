@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class main_page extends AppCompatActivity {
 
@@ -45,6 +46,15 @@ public class main_page extends AppCompatActivity {
 
         ProximityProductsAdapter ProximityProducts = new ProximityProductsAdapter(this, 1, s1, s2, images);
         FeaturedProductsAdapter FeaturedProducts = new FeaturedProductsAdapter(this, 1, s2, images);
+
+        recyclerViewVertical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText()
+            }
+        });
+
         recyclerViewHoritzontal.setAdapter(FeaturedProducts);
         recyclerViewVertical.setAdapter(ProximityProducts);
         recyclerViewHoritzontal.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -52,7 +62,4 @@ public class main_page extends AppCompatActivity {
         recyclerViewVertical.setFocusable(false);
     }
 
-    public void onClick(View view){
-        //view.    id??? PROBAR A COJER LA ID DEL PRODUCTO
-    }
 }
