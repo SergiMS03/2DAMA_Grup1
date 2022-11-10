@@ -7,17 +7,17 @@ public class objectProduct {
     float preu;
     int stock;
     String descripcio;
-    String path_img;
+    int img;
     int id_vendedor;
 
 
-    public objectProduct(int id_producte, String nom_producte, float preu, int stock, String descripcio, String path_img, int id_vendedor){
+    public objectProduct(int id_producte, String nom_producte, float preu, int stock, String descripcio, int img, int id_vendedor){
         this.id_producte = id_producte;
         this.nom_producte = nom_producte;
         this.preu = preu;
         this.stock = stock;
         this.descripcio = descripcio;
-        this.path_img = path_img;
+        this.img = img;
         this.id_vendedor = id_vendedor;
     }
 
@@ -69,12 +69,12 @@ public class objectProduct {
         this.descripcio = descripcio;
     }
 
-    public String getPath_img() {
-        return path_img;
+    public int getImg() {
+        return img;
     }
 
-    public void setPath_img(String path_img) {
-        this.path_img = path_img;
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public int getId_vendedor() {

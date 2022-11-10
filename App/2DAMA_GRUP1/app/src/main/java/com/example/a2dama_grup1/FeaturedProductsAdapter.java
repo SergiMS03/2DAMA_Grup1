@@ -11,17 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProductsAdapter.MyViewHolder> {
-    int id;
-    String data1[];
-    int images[];
-    Context context;
+import java.util.ArrayList;
 
-    public FeaturedProductsAdapter(Context ct, int id, String s1[], int img[]){
+public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProductsAdapter.MyViewHolder> implements View.OnClickListener {
+    ArrayList<objectProduct> ppProducts;
+    Context context;
+    private View.OnClickListener listener;
+
+    public FeaturedProductsAdapter(Context ct, ArrayList<objectProduct> ppProducts){
         context = ct;
-        this.id = id;;
-        data1 = s1;
-        images = img;
+        this.ppProducts = ppProducts;
     }
 
     @NonNull
@@ -29,29 +28,41 @@ public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProduc
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.featured_products, parent, false);
-        return new MyViewHolder(view);
+        view.setOnClickListener(this);
+        return new FeaturedProductsAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myText1.setText(data1[position]);
-        holder.myImage.setImageResource(images[position]);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+        holder.id_producte = ppProducts.get(i).getId_producte();
+        holder.productPrice.setText(ppProducts.get(i).priceToString());
+        holder.myImage.setImageResource(ppProducts.get(i).getImg());
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return ppProducts.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener!=null){
+            listener.onClick(view);
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         int id_producte;
-        TextView myText1;
+        TextView productPrice;
         ImageView myImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            id_producte = id;
-            myText1 = itemView.findViewById(R.id.myText1);
+            productPrice = itemView.findViewById(R.id.productPrice);
             myImage = itemView.findViewById(R.id.myImageView);
         }
     }

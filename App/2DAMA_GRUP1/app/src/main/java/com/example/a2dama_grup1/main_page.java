@@ -12,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class main_page extends AppCompatActivity {
 
     objectProduct product = new objectProduct();
-    String s1[];
-    String s2[];
-    int images[] = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f,R.drawable.g,R.drawable.h,R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f,R.drawable.g,R.drawable.h};
+    ArrayList<objectProduct> ppProducts= new ArrayList<>();
+
     RecyclerView recyclerViewHoritzontal;
     RecyclerView recyclerViewVertical;
 
@@ -36,22 +37,18 @@ public class main_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        demoProducts();
         setContentView(R.layout.activity_main_page);
         recyclerViewHoritzontal = findViewById(R.id.recyclerHoritzontal);
         recyclerViewVertical = findViewById(R.id.recyclerVertical);
 
-        s1 = getResources().getStringArray(R.array.ProductTitles);
-        s2 = getResources().getStringArray(R.array.ProductPrices);
-
-        ProximityProductsAdapter ProximityProducts = new ProximityProductsAdapter(this, 1, s1, s2, images);
-        FeaturedProductsAdapter FeaturedProducts = new FeaturedProductsAdapter(this, 1, s2, images);
+        ProximityProductsAdapter ProximityProducts = new ProximityProductsAdapter(this, ppProducts);
+        FeaturedProductsAdapter FeaturedProducts = new FeaturedProductsAdapter(this, ppProducts);
 
         recyclerViewVertical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText()
+                /*Toast.makeText(getApplicationContext(), "Seleccion: " + ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte());*/
             }
         });
 
@@ -62,4 +59,14 @@ public class main_page extends AppCompatActivity {
         recyclerViewVertical.setFocusable(false);
     }
 
+    private void demoProducts(){//8 productos
+        ppProducts.add(new objectProduct(1, "a", (float)1.20, 1, "a", R.drawable.a, 4));
+        ppProducts.add(new objectProduct(2, "b", (float)10.20, 1, "b", R.drawable.b, 4));
+        ppProducts.add(new objectProduct(3, "c", (float)100.20, 1, "c", R.drawable.c, 4));
+        ppProducts.add(new objectProduct(4, "d", (float)2.20, 1, "d", R.drawable.d, 4));
+        ppProducts.add(new objectProduct(5, "e", (float)20.20, 1, "e", R.drawable.e, 4));
+        ppProducts.add(new objectProduct(6, "f", (float)200.20, 1, "f", R.drawable.f, 4));
+        ppProducts.add(new objectProduct(7, "g", (float)3.20, 1, "g", R.drawable.g, 4));
+        ppProducts.add(new objectProduct(8, "h", (float)30.20, 1, "h", R.drawable.h, 4));
+    }
 }

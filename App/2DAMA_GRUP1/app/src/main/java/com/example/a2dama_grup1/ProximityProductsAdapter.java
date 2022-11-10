@@ -11,20 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProductsAdapter.MyViewHolder> implements View.OnClickListener {
-    int id;
-    String data1[];
-    String data2[];
-    int images[];
+    ArrayList<objectProduct> ppProducts;
     Context context;
     private View.OnClickListener listener;
 
-    public ProximityProductsAdapter(Context ct, int id, String s1[], String s2[], int img[]){
+    public ProximityProductsAdapter(Context ct, ArrayList<objectProduct> ppProducts){
         context = ct;
-        this.id = id;
-        data1 = s1;
-        data2 = s2;
-        images = img;
+        this.ppProducts = ppProducts;
     }
 
     @NonNull
@@ -37,16 +33,16 @@ public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.id_producte = id;
-        holder.myText1.setText(data1[position]);
-        holder.myText2.setText(data2[position]);
-        holder.myImage.setImageResource(images[position]);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+        holder.id_producte = ppProducts.get(i).getId_producte();
+        holder.productName.setText(ppProducts.get(i).getNom_producte());
+        holder.productPrice.setText(ppProducts.get(i).priceToString());
+        holder.myImage.setImageResource(ppProducts.get(i).getImg());
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return ppProducts.size();
     }
 
     public void setOnClickListener(View.OnClickListener listener){
@@ -62,15 +58,14 @@ public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProd
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         int id_producte;
-        TextView myText1;
-        TextView myText2;
+        TextView productName;
+        TextView productPrice;
         ImageView myImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            id_producte = id;
-            myText1 = itemView.findViewById(R.id.myText1);
-            myText2 = itemView.findViewById(R.id.myText2);
+            productName = itemView.findViewById(R.id.productName);
+            productPrice = itemView.findViewById(R.id.productPrice);
             myImage = itemView.findViewById(R.id.myImageView);
         }
     }
