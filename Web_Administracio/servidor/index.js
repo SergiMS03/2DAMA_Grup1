@@ -4,6 +4,7 @@ const session = require('express-session');
 const app = express();
 const cors = require('cors');
 const PORT = 3000;
+const fs = require('fs')
 ///////
 const multiparty = require("multiparty");
 const IMAGE_UPLOAD_DIR = "./image"
@@ -106,18 +107,37 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:filePath", (req
     });
 });
 
-app.post("/pushImage", (req,res) => {
-    let form = new multiparty.form({uploadDir: IMAGE_UPLOAD_DIR})
+function rawBody(req, res, next) {
+    var chunks = [];
 
-    form.parse(req, function (err, fields, files){
-        if(err) return res.json(false);
+    req.on('data', function(chunk) {
+        chunks.push(chunk);
+    });
 
-        const imagePath = files.image[0].path;
-        const imageFileName = imagePath.slice(imagePath.lastIndexOf("\\") + 1);
-        const imageURL = IMAGE_BASE_URL + imageFileName;
+    req.on('end', function() {
+        var buffer = Buffer.concat(chunks);
 
+        req.bodyLength = buffer.length;
+        req.rawBody = buffer;
+        next();
+    });
 
-    })
+    req.on('error', function (err) {
+        console.log(err);
+        res.status(500);
+    });
+}
+
+app.post("/pushImage", rawBody, (req,res) => {
+    if (req.rawBody && req.bodyLength > 0) {
+        fs.writeFile('prueba.png', imagedata, 'binary', function(err){
+            if (err) throw err;
+            console.log("File saved")
+        })
+        res.send(200, {status: 'OK'});
+    } else {
+        res.send(500);
+    }
 })
 
 app.post("/logInAdmin", (req, res) => {
