@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,11 +18,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -112,7 +115,9 @@ public class upload_product extends AppCompatActivity {
             }
     });
 
-    private void uploadImage() {
+    /*private void uploadImage() {
+
+
         File file = new File(filePath);
 
         Retrofit retrofit = getRetrofit();
@@ -145,14 +150,63 @@ public class upload_product extends AppCompatActivity {
                     addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build();
         }
         return retrofit;
+    }*/
+
+    public static void postData(Bitmap imageToSend) {
+        try
+        {
+            URL url = new URL("http://myserver/myapp/upload-image");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+            conn.setRequestProperty("Connection", "Keep-Alive");
+            conn.setRequestProperty("Cache-Control", "no-cache");
+
+            conn.setReadTimeout(35000);
+            conn.setConnectTimeout(35000);
+
+            // directly let .compress write binary image data
+            // to the output-stream
+            OutputStream os = conn.getOutputStream();
+            imageToSend.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            os.flush();
+            os.close();
+
+            System.out.println("Response Code: " + conn.getResponseCode());
+
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            Log.d("sdfs", "sfsd");
+            BufferedReader responseStreamReader = new BufferedReader(new InputStreamReader(in));
+            String line = "";
+            StringBuilder stringBuilder = new StringBuilder();
+            while ((line = responseStreamReader.readLine()) != null)
+                stringBuilder.append(line).append("\n");
+            responseStreamReader.close();
+
+            String response = stringBuilder.toString();
+            System.out.println(response);
+
+            conn.disconnect();
+        }
+        catch(MalformedURLException e) {
+            e.printStackTrace();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //********UPLOAD PRODUCT********
 
     public void clickUploadProduct(View view){
-        uploadImage();
+        //uploadImage();
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        postData(bitmap);
         String HOST = "http://192.168.207.155:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
-                +stock.getText()+"/"+product_description.getText()+"/"+filePath+"/"+image;
+                +stock.getText()+"/"+product_description.getText();
         new productToServer().execute(HOST);
     }
 
