@@ -275,6 +275,7 @@ app.post("/manageArtist", (req, res) => {
 });
 
 app.post("/getProducts", (req, res) => {
+    console.log("INICIAT GETPRODUCTS");
     var arrRes = [];
     con = conexion.getCon();
     con.connect(function(err){
@@ -289,6 +290,7 @@ app.post("/getProducts", (req, res) => {
                     arrRes.push(result[i]);
                 }
                 res.json(arrRes);
+                console.log(arrRes);
                 con.end();
             });           
         }
