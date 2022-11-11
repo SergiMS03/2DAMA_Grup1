@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +37,7 @@ public class main_page extends AppCompatActivity {
     }
 
     public void displayToast (String message){
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -49,10 +51,12 @@ public class main_page extends AppCompatActivity {
         ProximityProductsAdapter ProximityProducts = new ProximityProductsAdapter(this, ppProducts);
         FeaturedProductsAdapter FeaturedProducts = new FeaturedProductsAdapter(this, ppProducts);
 
-        recyclerViewVertical.setOnClickListener(new View.OnClickListener() {
+        ProximityProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                displayToast("Seleccion: " + ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte());
+                Intent intent = new Intent(main_page.this, product_info.class);
+                intent.putExtra("ID_PRODUCTO", ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte());
+                startActivity(intent);
             }
         });
 
@@ -64,13 +68,13 @@ public class main_page extends AppCompatActivity {
     }
 
     private void demoProducts(){//8 productos
-        ppProducts.add(new objectProduct(1, "a", (float)1.20, 1, "a", R.drawable.a, 4));
-        ppProducts.add(new objectProduct(2, "b", (float)10.20, 1, "b", R.drawable.b, 4));
-        ppProducts.add(new objectProduct(3, "c", (float)100.20, 1, "c", R.drawable.c, 4));
-        ppProducts.add(new objectProduct(4, "d", (float)2.20, 1, "d", R.drawable.d, 4));
-        ppProducts.add(new objectProduct(5, "e", (float)20.20, 1, "e", R.drawable.e, 4));
-        ppProducts.add(new objectProduct(6, "f", (float)200.20, 1, "f", R.drawable.f, 4));
-        ppProducts.add(new objectProduct(7, "g", (float)3.20, 1, "g", R.drawable.g, 4));
-        ppProducts.add(new objectProduct(8, "h", (float)30.20, 1, "h", R.drawable.h, 4));
+        ppProducts.add(new objectProduct(15, "a", (float)1.20, 1, "a", R.drawable.a, 4));
+        ppProducts.add(new objectProduct(23, "b", (float)10.20, 1, "b", R.drawable.b, 4));
+        ppProducts.add(new objectProduct(36, "c", (float)100.20, 1, "c", R.drawable.c, 4));
+        ppProducts.add(new objectProduct(40, "d", (float)2.20, 1, "d", R.drawable.d, 4));
+        ppProducts.add(new objectProduct(56, "e", (float)20.20, 1, "e", R.drawable.e, 4));
+        ppProducts.add(new objectProduct(64, "f", (float)200.20, 1, "f", R.drawable.f, 4));
+        ppProducts.add(new objectProduct(73, "g", (float)3.20, 1, "g", R.drawable.g, 4));
+        ppProducts.add(new objectProduct(81, "h", (float)30.20, 1, "h", R.drawable.h, 4));
     }
 }

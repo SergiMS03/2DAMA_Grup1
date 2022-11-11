@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="/dades/dades/Sergi/Android/2DAMA_Grup1/App/2DAMA_GRUP1" />
+            <option value="/dades/dades/Sergi/Android/2DAMA_Grup1/App/2DAMA_GRUP1/app" />
           </set>
         </option>
       </GradleProjectSettings>
