@@ -5,11 +5,10 @@ const app = express();
 const cors = require('cors');
 const PORT = 3000;
 const fs = require('fs')
-///////
-const multiparty = require("multiparty");
+const multer = require('multer');
+
 const IMAGE_UPLOAD_DIR = "./image"
-const IMAGE_BASE_URL = "http://localhost:3000/web_administracio/servidor/image"
-///////
+
 var userTools = require("./percistence/users.js");
 var productTools = require("./percistence/products.js");
 var missatgeTools = require("./percistence/missatges.js");
@@ -32,6 +31,49 @@ app.use(cors({
         return callback(null, true);
     }
 }));
+
+/////////////////////////////////
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './image')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now()+'.jpg')
+    }
+})
+
+var upload = multer({ storage: storage })
+
+// Upload Single File
+app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+const file = req.file
+if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    console.log("error", 'Please upload a file');
+    
+    res.send({code:500, msg:'Please upload a file'})
+    return next({code:500, msg:error})
+
+}
+res.send({code:200, msg:file})
+
+})
+//Uploading multiple files
+app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
+const files = req.files
+if (!files) {
+    const error = new Error('Please choose files')
+    error.httpStatusCode = 400
+    return next(error)
+}
+
+res.send(files)
+
+})
+
+////////////////////////////
 
 app.listen(PORT, () =>{
     console.log("Servidor arrancat pel port "+ PORT);
@@ -108,38 +150,7 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/", (req, res) =>
     });
 });
 
-function rawBody(req, res, next) {
-    var chunks = [];
 
-    req.on('data', function(chunk) {
-        chunks.push(chunk);
-    });
-
-    req.on('end', function() {
-        var buffer = Buffer.concat(chunks);
-
-        req.bodyLength = buffer.length;
-        req.rawBody = buffer;
-        next();
-    });
-
-    req.on('error', function (err) {
-        console.log(err);
-        res.status(500);
-    });
-}
-
-app.post("/pushImage", rawBody, (req,res) => {
-    if (req.rawBody && req.bodyLength > 0) {
-        fs.writeFile('prueba.png', imagedata, 'binary', function(err){
-            if (err) throw err;
-            console.log("File saved")
-        })
-        res.send(200, {status: 'OK'});
-    } else {
-        res.send(500);
-    }
-})
 
 app.post("/logInAdmin", (req, res) => {
     var auth = false;
