@@ -47,18 +47,18 @@ var upload = multer({ storage: storage })
 
 // Upload Single File
 app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
-const file = req.file
-if (!file) {
-    const error = new Error('Please upload a file')
-    error.httpStatusCode = 400
-    console.log("error", 'Please upload a file');
-    
-    res.send({code:500, msg:'Please upload a file'})
-    return next({code:500, msg:error})
+    console.log("hola")
+    const file = req.file
+    if (!file) {
+        const error = new Error('Please upload a file')
+        error.httpStatusCode = 400
+        console.log("error", 'Please upload a file');
+        
+        res.send({code:500, msg:'Please upload a file'})
+        return next({code:500, msg:error})
 
-}
-res.send({code:200, msg:file})
-
+    }
+    res.send({code:200, msg:file})
 })
 //Uploading multiple files
 app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {

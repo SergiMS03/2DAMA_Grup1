@@ -66,18 +66,11 @@ public class upload_product extends AppCompatActivity{
     private EditText product_description;
     private ImageButton image;
     private static Retrofit retrofit;
-    private static String url_pushImage =  "http://localhost:3000/uploadFile";
     Date fecha = new Date();
     String filePath = fecha + ".jpeg";
-
     ApiService apiService;
-    Uri picUri;
-    private ArrayList<String> permissionsToRequest;
     private ArrayList<String> permissionsRejected = new ArrayList<>();
     private ArrayList<String> permissions = new ArrayList<>();
-    private final static int ALL_PERMISSIONS_RESULT = 107;
-    private final static int IMAGE_RESULT = 200;
-    FloatingActionButton fabCamera, fabUpload;
     Bitmap mBitmap;
     TextView textView;
 
@@ -121,7 +114,7 @@ public class upload_product extends AppCompatActivity{
         }
         String HOST = "http://localhost:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
                 +stock.getText()+"/"+product_description.getText();
-        new productToServer().execute(HOST);
+        //new productToServer().execute(HOST);
     }
 
 
@@ -227,7 +220,7 @@ public class upload_product extends AppCompatActivity{
     private void initRetrofitClient() {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-        apiService = new Retrofit.Builder().baseUrl("http://localhost:3000").client(client).build().create(ApiService.class);
+        apiService = new Retrofit.Builder().baseUrl("http://192.168.1.45:3000").client(client).build().create(ApiService.class);
     }
 
 
