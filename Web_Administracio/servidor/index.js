@@ -58,6 +58,21 @@ app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
         return next({code:500, msg:error})
 
     }
+    con.connect(function(err){
+        if (err){
+            console.log(err)
+        }else{
+            con.query(productTools.updatePathImage("./image/"+file), (err) => {
+                if(err){
+                    console.log(err);
+                    res.json(false)
+                }
+                console.log("Succesfull");
+                res.send('0');
+                con.end();
+             });   
+        }
+    });
     res.send({code:200, msg:file})
 })
 //Uploading multiple files
@@ -129,7 +144,7 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req", (req, 
     });
 });
 
-app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/", (req, res) => {
+app.get("/uploadProduct/:product_name/:price/:stock/:descripcio", (req, res) => {
     console.log("Conexió realitzada");
     con = conexion.getCon();
     con.connect(function(err){
@@ -137,7 +152,7 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/", (req, res) =>
             console.log(err)
         }else{
             con.query(productTools.insertProduct(req.params.product_name, req.params.price, req.params.stock, 
-                req.params.descripcio, ), (err) => {
+                req.params.descripcio), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
