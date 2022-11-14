@@ -65,12 +65,9 @@ public class upload_product extends AppCompatActivity{
     private EditText stock;
     private EditText product_description;
     private ImageButton image;
-    private static Retrofit retrofit;
     Date fecha = new Date();
-    String filePath = fecha + ".jpeg";
+    String pathImage;
     ApiService apiService;
-    private ArrayList<String> permissionsRejected = new ArrayList<>();
-    private ArrayList<String> permissions = new ArrayList<>();
     Bitmap mBitmap;
     TextView textView;
 
@@ -106,15 +103,18 @@ public class upload_product extends AppCompatActivity{
 
 
     public void clickUploadProduct(View view){
+        String HOST = "http://192.168.207.154:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
+                +stock.getText()+"/"+product_description.getText()+"/"+pathImage;
+        new productToServer().execute(HOST);
+    }
+
+    public void startUploadImage(){
         initRetrofitClient();
         if (mBitmap != null)
             multipartImageUpload();
         else {
             Toast.makeText(getApplicationContext(), "Bitmap is null. Try again", Toast.LENGTH_SHORT).show();
         }
-        String HOST = "http://localhost:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
-                +stock.getText()+"/"+product_description.getText();
-        //new productToServer().execute(HOST);
     }
 
 
@@ -154,7 +154,7 @@ public class upload_product extends AppCompatActivity{
         });
 
 
-    private void multipartImageUpload() {
+    private String multipartImageUpload() {
         try {
             File filesDir = getApplicationContext().getFilesDir();
             File file = new File(filesDir, "image" + ".png");
@@ -208,19 +208,20 @@ public class upload_product extends AppCompatActivity{
                     Log.e("ERROR", t.toString());
                 }
             });
-
+            pathImage = name.toString();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return pathImage;
     }
 
     private void initRetrofitClient() {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-        apiService = new Retrofit.Builder().baseUrl("http://192.168.1.45:3000").client(client).build().create(ApiService.class);
+        apiService = new Retrofit.Builder().baseUrl("http://192.168.207.154:3000").client(client).build().create(ApiService.class);
     }
 
 
@@ -297,6 +298,7 @@ public class upload_product extends AppCompatActivity{
             try {
                 if(s.equals("0\n")){
                     displayToast("Upload successful");
+                    startUploadImage();
                 }
                 else{
                     displayToast("Alguna dada no és correcte");
