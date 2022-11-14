@@ -5,9 +5,9 @@ function getAllProducts () {
 /*SELECTS*/
 
 /*INSERTS*/
-function insertProduct (nom_producte, preu, stock, descripcio, path_img){
+function insertProduct (nom_producte, preu, stock, descripcio){
   return ("INSERT INTO PRODUCTE VALUES (NULL,'"+ nom_producte + "', '" + preu + "', '" + stock + "', '"
-  + descripcio + "', '"+ path_img +"', 4)");
+  + descripcio + "', '"+ null +"', 4)");
 }
 /*INSERTS*/
 
@@ -16,4 +16,11 @@ function delProduct (product_id) {
   return ("DELETE FROM PRODUCTE WHERE id_producte= "+ product_id);
 };
 /*DELETES*/
-  module.exports = {getAllProducts, delProduct, insertProduct};
+
+/*UPDATE*/
+function updatePathImage(path_img){
+  return ("UPDATE PRODUCTE SET path_img="+ path_img +"WHERE id_producte = MAX(id_producte)")
+}
+/*UPDATE*/
+  module.exports = {getAllProducts, delProduct, insertProduct, updatePathImage};
+
