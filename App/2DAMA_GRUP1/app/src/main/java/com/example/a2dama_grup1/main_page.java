@@ -7,27 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class main_page extends AppCompatActivity {
     ArrayList<objectProduct> ppProducts= new ArrayList<>();
@@ -50,9 +40,22 @@ public class main_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String HOST = "http://192.168.1.129:3000/getProducts";
-        new verifyLogIn().execute(HOST);
+        String host = "http://192.168.207.155:3000/getProducts";
+        String method = "POST";
+        new apiConnection().execute(host, method);
+        try {
+            String str_result= new apiConnection().execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         //demoProducts();
+    }
+
+    public void createRecycler() {
         setContentView(R.layout.activity_main_page);
         recyclerViewHoritzontal = findViewById(R.id.recyclerHoritzontal);
         recyclerViewVertical = findViewById(R.id.recyclerVertical);
@@ -86,82 +89,5 @@ public class main_page extends AppCompatActivity {
         ppProducts.add(new objectProduct(73, "g", (float)3.20, 1, "g", R.drawable.g, 4));
         ppProducts.add(new objectProduct(81, "h", (float)30.20, 1, "h", R.drawable.h, 4));
     }*/
-
-    public class verifyLogIn extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            return dades(strings[0]);
-        }
-
-        private String dades(String queryString){
-            HttpURLConnection con = null;
-            BufferedReader reader = null;
-            String result = null;
-
-            try{
-                String url = queryString;
-                Uri builtURI = Uri.parse(url).buildUpon().build();
-                URL requestURL = new URL(builtURI.toString());
-                con = (HttpURLConnection) requestURL.openConnection();
-                con.setRequestMethod("POST");
-                con.connect();
-
-                InputStream inputStream = con.getInputStream();
-
-                reader = new BufferedReader(new InputStreamReader(inputStream));
-                StringBuilder builder = new StringBuilder();
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    builder.append(line);
-                    builder.append("\n");
-                }
-                if (builder.length() == 0) {
-                    // Stream was empty. No point in parsing.
-                    return null;
-                }
-
-                result = builder.toString();
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally{
-                if (con != null)
-                    con.disconnect();
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            return result;
-        }
-
-        protected void onPostExecute(String s){
-            super.onPostExecute(s);
-            try {
-                JSONArray productArr = new JSONArray(s);
-                for (int i = 0; i < productArr.length(); i++) {
-                    JSONObject productObj = productArr.getJSONObject(i);
-                    ppProducts.add(new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), R.drawable.a, productObj.getInt("id_vendedor")));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-
-
-
-
-
 
 }
