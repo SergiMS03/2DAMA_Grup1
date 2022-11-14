@@ -20,7 +20,11 @@ import java.net.URL;
 
 public  class apiConnection extends AsyncTask<String, Void, String> {
 
-    String result;
+    public String result;
+
+    public String getResult() {
+        return result;
+    }
 
     @Override
     protected String doInBackground(String... strings) {

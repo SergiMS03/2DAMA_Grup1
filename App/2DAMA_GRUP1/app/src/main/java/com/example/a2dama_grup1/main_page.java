@@ -42,17 +42,10 @@ public class main_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         String host = "http://192.168.207.155:3000/getProducts";
         String method = "POST";
-        new apiConnection().execute(host, method);
-        try {
-            String str_result= new apiConnection().execute().get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        //demoProducts();
+        apiConnection api = new apiConnection();
+        api.execute(host, method);
+        while(api.getResult() == null){};
+        createRecycler();
     }
 
     public void createRecycler() {
