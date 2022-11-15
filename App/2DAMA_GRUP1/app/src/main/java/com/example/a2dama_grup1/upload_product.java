@@ -70,7 +70,7 @@ public class upload_product extends AppCompatActivity{
     ApiService apiService;
     Bitmap mBitmap;
     TextView textView;
-    String URL = "http://192.168.17.135:3000";
+    String URL = "http://192.168.17.135:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,7 @@ public class upload_product extends AppCompatActivity{
 
 
     public void clickUploadProduct(View view){
-        String HOST = URL+"/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
+        String HOST = URL+"3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
                 +stock.getText()+"/"+product_description.getText();
         if(product_name.getText()==null || price.getText() == null || stock.getText() ==null){
             displayToast("Les dades del nom, preu o stock estan buides");
@@ -219,7 +219,7 @@ public class upload_product extends AppCompatActivity{
     private void initRetrofitClient() {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-        apiService = new Retrofit.Builder().baseUrl(URL).client(client).build().create(ApiService.class);
+        apiService = new Retrofit.Builder().baseUrl(URL+"3000").client(client).build().create(ApiService.class);
     }
 
 

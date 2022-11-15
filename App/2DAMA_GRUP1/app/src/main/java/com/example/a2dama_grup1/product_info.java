@@ -27,6 +27,7 @@ public class product_info extends AppCompatActivity {
     TextView price;
     TextView stock;
     objectProduct product = new objectProduct();
+    String URL = "http://192.168.1.45:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class product_info extends AppCompatActivity {
         price = findViewById(R.id.productInfoPrice);
         stock = findViewById(R.id.productInfoStock);
 
-        String host = "http://192.168.17.135:3000/getProduct/"+ idProduct;
+        String host = URL+"3000/getProduct/"+ idProduct;
         new getProduct().execute(host);
     }
 

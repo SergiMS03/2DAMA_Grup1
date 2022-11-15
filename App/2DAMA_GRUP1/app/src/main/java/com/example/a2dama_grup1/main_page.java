@@ -36,6 +36,7 @@ public class main_page extends AppCompatActivity {
 
     RecyclerView recyclerViewHoritzontal;
     RecyclerView recyclerViewVertical;
+    String URL = "http://192.168.1.45:";
 
     public class ScreenSlidePageFragment extends Fragment {
 
@@ -52,7 +53,7 @@ public class main_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String host = "http://192.168.17.135:3000/getProducts";
+        String host = URL+"3000/getProducts";
         new getProducts().execute(host);
     }
 
@@ -154,7 +155,7 @@ public class main_page extends AppCompatActivity {
                 for (int i = 0; i < productArr.length(); i++) {
                     JSONObject productObj = productArr.getJSONObject(i);
                     ppProducts.add(new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor")));
-                    DownloadImageFromPath("http://192.168.17.135:5500/servidor/"+ ppProducts.get(i).getPathImg(), i);
+                    DownloadImageFromPath(URL+":5500/servidor/"+ ppProducts.get(i).getPathImg(), i);
                 }
                 createRecycler();
             } catch (JSONException e) {
