@@ -70,6 +70,7 @@ public class upload_product extends AppCompatActivity{
     ApiService apiService;
     Bitmap mBitmap;
     TextView textView;
+    String URL = "http://192.168.17.135:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +104,13 @@ public class upload_product extends AppCompatActivity{
 
 
     public void clickUploadProduct(View view){
-        String HOST = "http://192.168.207.154:3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
-                +stock.getText()+"/"+product_description.getText()+"/"+pathImage;
-        new productToServer().execute(HOST);
+        String HOST = URL+"/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
+                +stock.getText()+"/"+product_description.getText();
+        if(product_name.getText()==null || price.getText() == null || stock.getText() ==null){
+            displayToast("Les dades del nom, preu o stock estan buides");
+        }else{
+            new productToServer().execute(HOST);
+        }
     }
 
     public void startUploadImage(){
@@ -190,13 +195,6 @@ public class upload_product extends AppCompatActivity{
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                     Log.e("Upload", String.valueOf(response.body()));
-
-                    if (response.code() == 200) {
-                        textView.setText("Uploaded Successfully!");
-                        textView.setTextColor(Color.BLUE);
-                    }
-
-                    Toast.makeText(getApplicationContext(), response.code() + " ", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -221,7 +219,7 @@ public class upload_product extends AppCompatActivity{
     private void initRetrofitClient() {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-        apiService = new Retrofit.Builder().baseUrl("http://192.168.207.154:3000").client(client).build().create(ApiService.class);
+        apiService = new Retrofit.Builder().baseUrl(URL).client(client).build().create(ApiService.class);
     }
 
 
