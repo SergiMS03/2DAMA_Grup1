@@ -58,22 +58,25 @@ app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
         return next({code:500, msg:error})
 
     }
+    con = conexion.getCon();
     con.connect(function(err){
         if (err){
             console.log(err)
         }else{
-            con.query(productTools.updatePathImage("./image/"+file), (err) => {
+            console.log("Canvian path");
+            console.log(file.path);
+            con.query(productTools.updatePathImage(file.path), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
                 }
                 console.log("Succesfull");
-                res.send('0');
+                res.json('0');
                 con.end();
              });   
         }
     });
-    res.send({code:200, msg:file})
+    //res.send({code:200, msg:file})
 })
 //Uploading multiple files
 app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
@@ -317,6 +320,25 @@ app.post("/getProducts", (req, res) => {
                 }
                 res.json(arrRes);
                 console.log(arrRes);
+                con.end();
+            });           
+        }
+    });
+
+});
+
+app.post("/getProduct", (req, res) => {
+    console.log("INICIAT GETPRODUCT");
+    var queryResult;
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.json(false);
+        }else{
+            con.query(productTools.getProduct() , (err, result, fields)=> {
+                queryResult = result
+                res.json(queryResult);
+                console.log(queryResult);
                 con.end();
             });           
         }

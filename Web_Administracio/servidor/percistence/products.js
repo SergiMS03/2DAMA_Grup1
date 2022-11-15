@@ -2,6 +2,10 @@
 function getAllProducts () {
     return ("SELECT * FROM PRODUCTE");
   };
+
+  function getProduct (product_id) {
+    return ("SELECT * FROM PRODUCTE WHERE id_producte = "+ product_id);
+};
 /*SELECTS*/
 
 /*INSERTS*/
@@ -19,8 +23,8 @@ function delProduct (product_id) {
 
 /*UPDATE*/
 function updatePathImage(path_img){
-  return ("UPDATE PRODUCTE SET path_img="+ path_img +"WHERE id_producte = MAX(id_producte)")
+  return ("UPDATE PRODUCTE SET path_img='"+ path_img +"' WHERE id_producte = (SELECT MAX(id_producte) FROM PRODUCTE)")
 }
 /*UPDATE*/
-  module.exports = {getAllProducts, delProduct, insertProduct, updatePathImage};
+  module.exports = {getAllProducts, delProduct, insertProduct, updatePathImage, getProduct};
 
