@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,7 +68,7 @@ public class main_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(main_page.this, product_info.class);
-                intent.putExtra("ID_PRODUCTO", ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte());
+                intent.putExtra("ID_PRODUCTO", Integer.toString(ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte()));
                 startActivity(intent);
             }
         });
@@ -149,12 +153,39 @@ public class main_page extends AppCompatActivity {
                 JSONArray productArr = new JSONArray(s);
                 for (int i = 0; i < productArr.length(); i++) {
                     JSONObject productObj = productArr.getJSONObject(i);
-                    ppProducts.add(new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), R.drawable.a, productObj.getInt("id_vendedor")));
+                    ppProducts.add(new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor")));
+                    DownloadImageFromPath("http://192.168.17.135:5500/servidor/"+ ppProducts.get(i).getPathImg(), i);
                 }
                 createRecycler();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void DownloadImageFromPath(String path, int position){
+        InputStream in =null;
+        Bitmap bmp=null;
+        int responseCode = -1;
+        try{
+
+            URL url = new URL(path);
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            con.setDoInput(true);
+            con.connect();
+            responseCode = con.getResponseCode();
+            if(responseCode == HttpURLConnection.HTTP_OK)
+            {
+                //download
+                in = con.getInputStream();
+                bmp = BitmapFactory.decodeStream(in);
+                in.close();
+                ppProducts.get(position).setImg(bmp);
+            }
+
+        }
+        catch(Exception ex){
+            Log.e("Exception",ex.toString());
         }
     }
 

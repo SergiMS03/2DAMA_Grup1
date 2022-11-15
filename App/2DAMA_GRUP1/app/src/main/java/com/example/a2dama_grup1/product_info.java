@@ -2,6 +2,7 @@ package com.example.a2dama_grup1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,16 +24,22 @@ public class product_info extends AppCompatActivity {
 
     TextView title;
     TextView description;
-    TextView preu;
+    TextView price;
     TextView stock;
+    objectProduct product = new objectProduct();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_info);
+        Intent intent = getIntent();
+        String idProduct = intent.getStringExtra("ID_PRODUCTO");
         title = findViewById(R.id.productInfoName);
-        title = findViewById(R.id.productInfoName);
-        String host = "http://192.168.17.135:3000/getProducts";
+        description = findViewById(R.id.productInfoDescription);
+        price = findViewById(R.id.productInfoPrice);
+        stock = findViewById(R.id.productInfoStock);
+
+        String host = "http://192.168.17.135:3000/getProduct/"+ idProduct;
         new getProduct().execute(host);
     }
 
@@ -53,7 +60,7 @@ public class product_info extends AppCompatActivity {
                 Uri builtURI = Uri.parse(url).buildUpon().build();
                 URL requestURL = new URL(builtURI.toString());
                 con = (HttpURLConnection) requestURL.openConnection();
-                con.setRequestMethod("POST");
+                con.setRequestMethod("GET");
                 con.connect();
 
                 InputStream inputStream = con.getInputStream();
@@ -93,11 +100,21 @@ public class product_info extends AppCompatActivity {
         }
 
         protected void onPostExecute(String s){
-            buildProductInfo();
+            try {
+                JSONArray productArr = new JSONArray(s);
+                JSONObject productObj = productArr.getJSONObject(0);
+                product = new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            buildProductInfo(product);
         }
     }
 
-    private void buildProductInfo() {
-
+    private void buildProductInfo(objectProduct product) {
+        title.setText(product.getNom_producte());
+        description.setText(product.getDescripcio());
+        price.setText(product.priceToString());
+        stock.setText(product.stockToString());
     }
 }

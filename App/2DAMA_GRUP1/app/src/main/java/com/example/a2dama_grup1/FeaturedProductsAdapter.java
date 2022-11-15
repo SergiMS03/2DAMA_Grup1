@@ -36,7 +36,7 @@ public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProduc
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
         holder.id_producte = ppProducts.get(i).getId_producte();
         holder.productPrice.setText(ppProducts.get(i).priceToString());
-        holder.myImage.setImageResource(ppProducts.get(i).getImg());
+        holder.myImage.setImageBitmap(ppProducts.get(i).getImg());
     }
 
     @Override

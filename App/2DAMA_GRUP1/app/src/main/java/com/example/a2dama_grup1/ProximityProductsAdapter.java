@@ -1,6 +1,7 @@
 package com.example.a2dama_grup1;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,8 @@ public class ProximityProductsAdapter extends RecyclerView.Adapter<ProximityProd
         holder.id_producte = ppProducts.get(i).getId_producte();
         holder.productName.setText(ppProducts.get(i).getNom_producte());
         holder.productPrice.setText(ppProducts.get(i).priceToString());
-        holder.myImage.setImageResource(ppProducts.get(i).getImg());
+        Bitmap img = ppProducts.get(i).getImg();
+        holder.myImage.setImageBitmap(img);
     }
 
     @Override

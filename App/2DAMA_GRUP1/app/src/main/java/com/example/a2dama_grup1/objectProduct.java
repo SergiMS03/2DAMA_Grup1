@@ -1,5 +1,7 @@
 package com.example.a2dama_grup1;
 
+import android.graphics.Bitmap;
+
 public class objectProduct {
 
     int id_producte;
@@ -7,17 +9,30 @@ public class objectProduct {
     float preu;
     int stock;
     String descripcio;
-    int img;
+    String pathImg;
+    Bitmap img;
     int id_vendedor;
 
 
-    public objectProduct(int id_producte, String nom_producte, float preu, int stock, String descripcio, int img, int id_vendedor){
+    public objectProduct(int id_producte, String nom_producte, float preu, int stock, String descripcio, String pathImage, Bitmap img, int id_vendedor){
         this.id_producte = id_producte;
         this.nom_producte = nom_producte;
         this.preu = preu;
         this.stock = stock;
         this.descripcio = descripcio;
+        this.pathImg = pathImage;
         this.img = img;
+        this.id_vendedor = id_vendedor;
+    }
+
+    public objectProduct(int id_producte, String nom_producte, float preu, int stock, String descripcio, String pathImage, int id_vendedor){
+        this.id_producte = id_producte;
+        this.nom_producte = nom_producte;
+        this.preu = preu;
+        this.stock = stock;
+        this.descripcio = descripcio;
+        this.pathImg = pathImage;
+        this.img = null;
         this.id_vendedor = id_vendedor;
     }
 
@@ -27,6 +42,11 @@ public class objectProduct {
     public String priceToString(){
         String price = preu + "€";
         return price;
+    }
+
+    public String stockToString(){
+        String stock = Integer.toString(this.stock);
+        return stock;
     }
 
     public int getId_producte() {
@@ -69,11 +89,11 @@ public class objectProduct {
         this.descripcio = descripcio;
     }
 
-    public int getImg() {
+    public Bitmap getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(Bitmap img) {
         this.img = img;
     }
 
@@ -83,6 +103,14 @@ public class objectProduct {
 
     public void setId_vendedor(int id_vendedor) {
         this.id_vendedor = id_vendedor;
+    }
+
+    public String getPathImg() {
+        return pathImg;
+    }
+
+    public void setPathImg(String pathImg) {
+        this.pathImg = pathImg;
     }
 
 }

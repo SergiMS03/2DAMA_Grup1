@@ -327,7 +327,7 @@ app.post("/getProducts", (req, res) => {
 
 });
 
-app.post("/getProduct", (req, res) => {
+app.get("/getProduct/:id_producte", (req, res) => {
     console.log("INICIAT GETPRODUCT");
     var queryResult;
     con = conexion.getCon();
@@ -335,7 +335,7 @@ app.post("/getProduct", (req, res) => {
         if (err){
             res.json(false);
         }else{
-            con.query(productTools.getProduct() , (err, result, fields)=> {
+            con.query(productTools.getProduct(req.params.id_producte) , (err, result, fields)=> {
                 queryResult = result
                 res.json(queryResult);
                 console.log(queryResult);
