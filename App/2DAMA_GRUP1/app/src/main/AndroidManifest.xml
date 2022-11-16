@@ -57,7 +57,8 @@
         </activity>
         <activity
             android:name=".main_page"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.2DAMA_GRUP1.NoActionBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

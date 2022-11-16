@@ -24,8 +24,10 @@
         <entry key="app/src/main/res/layout/login.xml" value="0.5" />
         <entry key="app/src/main/res/layout/missatge_row.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/my_row.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.28894927536231885" />
         <entry key="app/src/main/res/layout/proximity_products.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.32760416666666664" />
       </map>
     </option>
   </component>
