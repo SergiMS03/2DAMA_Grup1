@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +27,7 @@ public class login extends AppCompatActivity {
 
     private EditText email;
     private EditText pwd;
+    String URL = "http://192.168.17.135:";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +42,7 @@ public class login extends AppCompatActivity {
     }
 
     public void checkLogIn(View view){
-        String HOST = "http://192.168.207.154:3000/logInClient/" +email.getText()+"/"+pwd.getText();
+        String HOST = URL+ "3000/logInClient/" +email.getText()+"/"+pwd.getText();
         new verifyLogIn().execute(HOST);
     }
 
@@ -50,8 +54,6 @@ public class login extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            Log.i("LOGINFO", "do in Background: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
             return dades(strings[0]);
         }
 
@@ -109,13 +111,17 @@ public class login extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-                if(s.equals("0\n")){
+                if(s.equals("{}\n") || s == null || s.equals("false\n")){
+                    displayToast("Alguna dada no és correcte");
+                }
+                else{
+                    JSONArray userArr = new JSONArray(s);
+                    for (int i = 0; i < userArr.length(); i++) {
+                        JSONObject userObj = userArr.getJSONObject(i);
+                        }
                     displayToast("Benvigut!");
                     Intent intent = new Intent(login.this, main_page.class);
                     startActivity(intent);
-                }
-                else{
-                    displayToast("Alguna dada no és correcte");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

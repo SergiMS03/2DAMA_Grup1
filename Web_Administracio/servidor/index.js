@@ -98,28 +98,35 @@ app.listen(PORT, () =>{
 });
 
 app.get("/logInClient/:email/:pwd", (req, res) => {
-    var auth = 1;
-    console.log("LOGIN CLIENT INICIAT!!!");
-    let email = req.params.email;
-    let pwd = req.params.pwd;
+    var auth = false;
+    var arrRes = {};
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
             res.json(false);
         }else{
-            con.query(userTools.getAllUsers(), (err, result, fields)=> {
+            con.query(userTools.getAllUser(), (err, result, fields)=> {
                 if(err){
-                    res.send(false);
+                    res.json(false);
                 }
-                for (let i = 0; i < result.length && auth == 1; i++) {
-                    if(result[i].email == email){
-                        if(result[i].pwd == pwd){
-                            auth = 0;
+                for (let i = 0; i < result.length && !auth; i++) {
+                    if(result[i].email == req.body.email){
+                        if(result[i].pwd == req.body.pwd){
+                            auth = true
+                            arrRes.id_usuari = (result[i].id_usuari);
+                            arrRes.nom = (result[i].nom);
+                            arrRes.cognoms = (result[i].cognoms);
+                            arrRes.email = (result[i].email);
+                            arrRes.rol = (result[i].rol);
+                            req.session.cookie.rol = result[i].rol;
+                            console.log(req.session.cookie.rol);
+                            arrRes.descripcio = (result[i].descripcio);
+                            arrRes.tel = (result[i].tel);
                         }
                     }
                 }
-                res.send(JSON.stringify(auth));
-                console.log(auth);
+                res.json(arrRes);
+                console.log(arrRes);
                 con.end();
             });            
         }
@@ -372,7 +379,7 @@ app.post("/getMissatges", (req, res) => {
         if (err){
             res.json(false);
         }else{
-            con.query(missatgeTools.getAllMissatges() , (err, result, fields)=> {
+            con.query(missatgeTools.getMissatges() , (err, result, fields)=> {
                 if(err){
                     res.json(false);
                 }
