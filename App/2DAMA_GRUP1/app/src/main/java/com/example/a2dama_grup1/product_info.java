@@ -3,9 +3,11 @@ package com.example.a2dama_grup1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -26,8 +28,9 @@ public class product_info extends AppCompatActivity {
     TextView description;
     TextView price;
     TextView stock;
+    ImageView img;
     objectProduct product = new objectProduct();
-    String URL = "http://192.168.1.45:";
+    String URL = "http://192.168.17.135:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class product_info extends AppCompatActivity {
         description = findViewById(R.id.productInfoDescription);
         price = findViewById(R.id.productInfoPrice);
         stock = findViewById(R.id.productInfoStock);
+        img = findViewById(R.id.productInfoImage);
 
         String host = URL+"3000/getProduct/"+ idProduct;
         new getProduct().execute(host);
@@ -105,6 +109,7 @@ public class product_info extends AppCompatActivity {
                 JSONArray productArr = new JSONArray(s);
                 JSONObject productObj = productArr.getJSONObject(0);
                 product = new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor"));
+                product.setImg(new Image().Download("http://192.168.17.135:5500/servidor/"+ product.getPathImg()));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -117,5 +122,6 @@ public class product_info extends AppCompatActivity {
         description.setText(product.getDescripcio());
         price.setText(product.priceToString());
         stock.setText(product.stockToString());
+        img.setImageBitmap(product.getImg());
     }
 }

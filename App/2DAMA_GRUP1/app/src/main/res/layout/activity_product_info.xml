@@ -10,9 +10,9 @@
     tools:context=".product_info">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/productInfoImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginBottom="20dp"
         tools:srcCompat="@tools:sample/avatars" />
 

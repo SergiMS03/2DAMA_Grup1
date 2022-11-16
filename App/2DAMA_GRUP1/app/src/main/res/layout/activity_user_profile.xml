@@ -9,7 +9,7 @@
     tools:context=".user_profile">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/productInfoImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
