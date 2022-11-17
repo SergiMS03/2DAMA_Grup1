@@ -77,5 +77,8 @@
 
     <string name="subir_producto">Upload</string>
     <string name="profile_upload_product">UPLOAD</string>
+    <string name="menu_my_profile">My Profile</string>
+    <string name="menu_upload">Upload</string>
+    <string name="menu_logOut">Log Out</string>
 
 </resources>

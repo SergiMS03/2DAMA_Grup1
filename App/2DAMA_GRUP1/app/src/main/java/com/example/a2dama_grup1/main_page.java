@@ -17,6 +17,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,7 +43,7 @@ public class main_page extends AppCompatActivity{
     ArrayList<objectProduct> ppProducts= new ArrayList<>();
     RecyclerView recyclerViewHoritzontal;
     RecyclerView recyclerViewVertical;
-    String URL = "http://192.168.17.135:";
+    String URL = "http://192.168.1.45:";
 
     private DrawerLayout drawer;
 
@@ -60,27 +62,22 @@ public class main_page extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-
         String host = URL+"3000/getProducts";
         new getProducts().execute(host);
     }
 
-    public void onBackPressed(){
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.menu_upload_id){
+            Intent intent = new Intent(main_page.this, upload_product.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void createRecycler() {
@@ -171,7 +168,7 @@ public class main_page extends AppCompatActivity{
                 for (int i = 0; i < productArr.length(); i++) {
                     JSONObject productObj = productArr.getJSONObject(i);
                     ppProducts.add(new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float) productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor")));
-                    ppProducts.get(i).setImg(new Image().Download("http://192.168.17.135:5500/servidor/" + ppProducts.get(i).getPathImg()));
+                    ppProducts.get(i).setImg(new Image().Download(URL+":5500/servidor/" + ppProducts.get(i).getPathImg()));
                 }
                 createRecycler();
             } catch (JSONException e) {
