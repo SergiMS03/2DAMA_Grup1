@@ -23,7 +23,7 @@ function delUser (usuari_id) {
 /*DELETES*/
 
 /*INSERTS*/
-function insertClient (nom, cognoms, email, pwd, descripcio, tel, artistRequest) {
+function insertClient (nom, cognoms, email, pwd, descripcio, tel, artistRequest, ubiLat, ubiLong) {
   if(artistRequest){
     artist_req = 1;
   }
@@ -31,7 +31,7 @@ function insertClient (nom, cognoms, email, pwd, descripcio, tel, artistRequest)
     artist_req = 0;
   }
   return ("INSERT INTO USUARI VALUES (NULL,'"+ nom + "', '" + cognoms + "', '" + email + "', '"
-  + pwd + "', 'client', '" + descripcio +"', '"+ tel +"', '"+ artist_req +"')");
+  + pwd + "', 'client', '" + descripcio +"', '"+ tel +"', '"+ artist_req +"', 0 ,"+ ubiLat +", "+ ubiLong +")");
 };
 /*INSERTS*/
 

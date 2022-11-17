@@ -8,8 +8,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -30,8 +28,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
-import java.util.Locale;
 
 
 public class sign_up extends AppCompatActivity implements View.OnClickListener{
@@ -45,6 +41,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     private RadioButton artist_req;
     private Button registrarse;
     private LocationManager ubicacion;
+    private double ubiLat;
+    private double ubiLong;
     TextView coordenadas;
 
 
@@ -69,8 +67,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        String HOST = "http://192.168.1.45:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
-                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.isChecked();
+        String HOST = "http://192.168.43.56:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
+                +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.isChecked()+"/"+ubiLat+"/"+ubiLong;
         new signUp().execute(HOST);
     }
 
@@ -91,6 +89,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
 
         Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(ubicacion!=null) {
+            ubiLat = loc.getLatitude();
+            ubiLong = loc.getLatitude();
             Log.d("Latitud", String.valueOf(loc.getLatitude()));
             Log.d("Longitud", String.valueOf(loc.getLongitude()));
 

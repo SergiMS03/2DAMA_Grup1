@@ -28,7 +28,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText_cognoms"
+                android:id="@+id/editText_nom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#77EC62"
@@ -46,7 +46,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText_email"
+                android:id="@+id/editText_cognoms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#77EC62"
@@ -64,7 +64,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText_nom"
+                android:id="@+id/editText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#77EC62"

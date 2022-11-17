@@ -135,15 +135,16 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
     });
 });
 
-app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req", (req, res) => {
+app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req/:ubiLat/:ubiLong", (req, res) => {
     console.log("Conexió realitzada");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
             console.log(err)
         }else{
+            console.log(req.params.nom)
             con.query(userTools.insertClient(req.params.nom, req.params.cognoms, req.params.email, req.params.pwd, 
-                req.params.descripcio, req.params.tel, req.params.artist_req), (err) => {
+                req.params.descripcio, req.params.tel, req.params.artist_req, req.params.ubiLat, req.params.ubiLong), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
