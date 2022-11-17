@@ -45,9 +45,6 @@
             android:name=".carrito"
             android:exported="false" />
         <activity
-            android:name=".main_page"
-            android:exported="false" />
-        <activity
             android:name=".sign_up"
             android:exported="true">
         </activity>
@@ -57,10 +54,13 @@
         </activity>
         <activity
             android:name=".login"
-            android:exported="true">
+            android:exported="true"/>
+        <activity
+            android:name=".main_page"
+            android:exported="true"
+            android:theme="@style/Theme.2DAMA_GRUP1.NoActionBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>

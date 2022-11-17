@@ -9,9 +9,9 @@ function getAllProducts () {
 /*SELECTS*/
 
 /*INSERTS*/
-function insertProduct (nom_producte, preu, stock, descripcio){
+function insertProduct (nom_producte, preu, stock, descripcio, id_venedor){
   return ("INSERT INTO PRODUCTE VALUES (NULL,'"+ nom_producte + "', '" + preu + "', '" + stock + "', '"
-  + descripcio + "', '"+ null +"', 4)");
+  + descripcio + "', '"+ null +"', "+ id_venedor +")");
 }
 /*INSERTS*/
 

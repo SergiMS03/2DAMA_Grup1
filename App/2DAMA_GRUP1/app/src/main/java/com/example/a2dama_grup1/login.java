@@ -19,15 +19,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class login extends AppCompatActivity {
+public class login extends AppCompatActivity{
 
     private EditText email;
     private EditText pwd;
     String URL = "http://192.168.17.135:";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,12 +117,12 @@ public class login extends AppCompatActivity {
                     displayToast("Alguna dada no és correcte");
                 }
                 else{
-                    JSONArray userArr = new JSONArray(s);
-                    for (int i = 0; i < userArr.length(); i++) {
-                        JSONObject userObj = userArr.getJSONObject(i);
-                        }
+                    JSONObject userObj = new JSONObject(s);
+                    objectUser USER = new objectUser(userObj.getInt("id_usuari"), userObj.getString("nom"), userObj.getString("cognoms"), userObj.getString("email"), userObj.getString("rol"), userObj.getString("descripcio"), userObj.getString("tel"));
+                    String nom = userObj.getString("nom");
                     displayToast("Benvigut!");
-                    Intent intent = new Intent(login.this, main_page.class);
+                    Intent intent = new Intent(login.this, upload_product.class);
+                    intent.putExtra("USER", (Serializable) USER);
                     startActivity(intent);
                 }
             } catch (Exception e) {

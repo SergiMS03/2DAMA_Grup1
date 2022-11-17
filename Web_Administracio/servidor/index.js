@@ -105,13 +105,15 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
         if (err){
             res.json(false);
         }else{
-            con.query(userTools.getAllUser(), (err, result, fields)=> {
+            con.query(userTools.getAllUsers(), (err, result, fields)=> {
                 if(err){
                     res.json(false);
                 }
                 for (let i = 0; i < result.length && !auth; i++) {
-                    if(result[i].email == req.body.email){
-                        if(result[i].pwd == req.body.pwd){
+                    console.log(result[i].email == req.params.email);
+                    console.log(result[i].pwd == req.params.pwd);
+                    if(result[i].email == req.params.email){
+                        if(result[i].pwd == req.params.pwd){
                             auth = true
                             arrRes.id_usuari = (result[i].id_usuari);
                             arrRes.nom = (result[i].nom);
@@ -125,7 +127,7 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
                         }
                     }
                 }
-                res.json(arrRes);
+                res.send(arrRes);
                 console.log(arrRes);
                 con.end();
             });            
@@ -154,7 +156,7 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req", (req, 
     });
 });
 
-app.get("/uploadProduct/:product_name/:price/:stock/:descripcio", (req, res) => {
+app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:user", (req, res) => {
     console.log("Conexió realitzada");
     con = conexion.getCon();
     con.connect(function(err){
@@ -162,7 +164,7 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio", (req, res) => 
             console.log(err)
         }else{
             con.query(productTools.insertProduct(req.params.product_name, req.params.price, req.params.stock, 
-                req.params.descripcio), (err) => {
+                req.params.descripcio, req.params.user), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)

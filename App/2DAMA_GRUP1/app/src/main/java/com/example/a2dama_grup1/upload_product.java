@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -58,14 +59,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class upload_product extends AppCompatActivity{
+public class upload_product extends AppCompatActivity implements Serializable {
 
+    objectUser USER;
     private EditText product_name;
     private EditText price;
     private EditText stock;
     private EditText product_description;
     private ImageButton image;
-    Date fecha = new Date();
     String pathImage;
     ApiService apiService;
     Bitmap mBitmap;
@@ -76,7 +77,7 @@ public class upload_product extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_product);
-
+        USER = (objectUser) getIntent().getSerializableExtra("USER");
         product_name = (EditText) (findViewById(R.id.editText_nomProducte_upload));
         price = (EditText) (findViewById(R.id.editText_precio_upload));
         stock = (EditText) (findViewById(R.id.editText_stock_upload));
@@ -105,7 +106,7 @@ public class upload_product extends AppCompatActivity{
 
     public void clickUploadProduct(View view){
         String HOST = URL+"3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
-                +stock.getText()+"/"+product_description.getText();
+                +stock.getText()+"/"+product_description.getText()+"/"+USER.id_usuari;
         if(product_name.getText()==null || price.getText() == null || stock.getText() ==null){
             displayToast("Les dades del nom, preu o stock estan buides");
         }else{

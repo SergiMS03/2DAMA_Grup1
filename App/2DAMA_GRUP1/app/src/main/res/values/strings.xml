@@ -31,6 +31,8 @@
     <string name="uploadDescripcion">Descripción</string>
     <string name="mainpageProductosDestacados">Productos Destacados</string>
     <string name="mainpageProductosProx">Productos por Proximidad</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
 
     <string-array name="ProductTitles">
         <item>A</item>
