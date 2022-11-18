@@ -49,6 +49,11 @@ public class objectProduct {
         return stock;
     }
 
+    public String idVenedorToString(){
+        String id_venedor = Integer.toString(this.id_vendedor);
+        return id_venedor;
+    }
+
     public int getId_producte() {
         return id_producte;
     }

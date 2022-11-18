@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,7 +74,7 @@ public class upload_product extends AppCompatActivity implements Serializable {
     ApiService apiService;
     Bitmap mBitmap;
     TextView textView;
-    String URL = "http://192.168.17.135:";
+    String URL = new objectIP().ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,11 +118,12 @@ public class upload_product extends AppCompatActivity implements Serializable {
 
 
     public void clickUploadProduct(View view){
-        String HOST = URL+"3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
-                +stock.getText()+"/"+product_description.getText()+"/"+USER.id_usuari;
-        if(product_name.getText()==null || price.getText() == null || stock.getText() ==null){
+        Editable nom = product_name.getText();
+        if(product_name.getText().length() <= 0 || price.getText().length() <= 0 || stock.getText().length() <= 0){
             displayToast("Les dades del nom, preu o stock estan buides");
         }else{
+            String HOST = URL+"3000/uploadProduct/"+product_name.getText()+"/"+price.getText()+"/"
+                    +stock.getText()+"/"+product_description.getText()+"/"+USER.id_usuari;
             new productToServer().execute(HOST);
         }
     }

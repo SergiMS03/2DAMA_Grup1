@@ -28,7 +28,7 @@ public class login extends AppCompatActivity{
 
     private EditText email;
     private EditText pwd;
-    String URL = "http://192.168.17.135:";
+    String URL = new objectIP().ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

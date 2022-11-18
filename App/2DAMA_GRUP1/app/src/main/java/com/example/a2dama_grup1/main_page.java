@@ -34,16 +34,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class main_page extends AppCompatActivity{
+    objectUser USER;
     ArrayList<objectProduct> ppProducts= new ArrayList<>();
     RecyclerView recyclerViewHoritzontal;
     RecyclerView recyclerViewVertical;
-    String URL = "http://192.168.17.135:";
+    String URL = new objectIP().ip;
 
     private DrawerLayout drawer;
 
@@ -62,6 +64,7 @@ public class main_page extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        USER = (objectUser) getIntent().getSerializableExtra("USER");
         String host = URL+"3000/getProducts";
         new getProducts().execute(host);
     }
@@ -75,6 +78,7 @@ public class main_page extends AppCompatActivity{
         int id = item.getItemId();
         if(id == R.id.menu_profile_id){
             Intent intent = new Intent(main_page.this, user_profile.class);
+            intent.putExtra("USER", (Serializable) USER);
             startActivity(intent);
         } else if(id == R.id.menu_logout_id){
             Intent intent = new Intent(main_page.this, login.class);
@@ -95,6 +99,7 @@ public class main_page extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(main_page.this, product_info.class);
+                intent.putExtra("USER", (Serializable) USER);
                 intent.putExtra("ID_PRODUCTO", Integer.toString(ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte()));
                 startActivity(intent);
             }

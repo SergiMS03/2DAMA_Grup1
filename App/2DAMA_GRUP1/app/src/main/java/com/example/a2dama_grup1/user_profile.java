@@ -8,11 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.Serializable;
+
 public class user_profile extends AppCompatActivity {
+    objectUser USER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        USER = (objectUser) getIntent().getSerializableExtra("USER");
         setContentView(R.layout.activity_user_profile);
     }
 
@@ -35,6 +39,7 @@ public class user_profile extends AppCompatActivity {
 
     public void clickUpload (View view){
         Intent intent = new Intent(user_profile.this, upload_product.class );
+        intent.putExtra("USER", (Serializable) USER);
         startActivity(intent);
     }
 }

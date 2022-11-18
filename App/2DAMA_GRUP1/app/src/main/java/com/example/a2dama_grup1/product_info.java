@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,26 +21,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class product_info extends AppCompatActivity {
-
+    objectUser USER;
     TextView title;
     TextView description;
     TextView price;
     TextView stock;
     ImageView img;
     objectProduct product = new objectProduct();
-    String URL = "http://192.168.1.45:";
+    String URL = new objectIP().ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        USER = (objectUser) getIntent().getSerializableExtra("USER");
         setContentView(R.layout.activity_product_info);
-        Intent intent = getIntent();
-        String idProduct = intent.getStringExtra("ID_PRODUCTO");
+        String idProduct = getIntent().getStringExtra("ID_PRODUCTO");
         title = findViewById(R.id.productInfoName);
         description = findViewById(R.id.productInfoDescription);
         price = findViewById(R.id.productInfoPrice);
@@ -53,6 +55,13 @@ public class product_info extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.overflow, menu);
         return true;
+    }
+
+    public void openChat(View view){
+        Intent intent = new Intent(product_info.this, missatge.class);
+        intent.putExtra("USER", (Serializable) USER);
+        intent.putExtra("seller", product.idVenedorToString());
+        startActivity(intent);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -128,7 +137,7 @@ public class product_info extends AppCompatActivity {
                 JSONArray productArr = new JSONArray(s);
                 JSONObject productObj = productArr.getJSONObject(0);
                 product = new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor"));
-                product.setImg(new Image().Download(URL+":5500/servidor/"+ product.getPathImg()));
+                product.setImg(new Image().Download(URL+"5500/servidor/"+ product.getPathImg()));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

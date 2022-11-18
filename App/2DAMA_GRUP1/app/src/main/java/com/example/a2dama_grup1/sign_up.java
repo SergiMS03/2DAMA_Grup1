@@ -25,6 +25,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -44,6 +45,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     private double ubiLat;
     private double ubiLong;
     TextView coordenadas;
+    String URL = new objectIP().ip;
 
 
     @Override
@@ -67,7 +69,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {//Probar POST!!!
         Log.i("LOGINFO", "onClick: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        String HOST = "http://192.168.43.56:3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
+        String HOST = URL+"3000/signUp/"+nom.getText()+"/"+cognoms.getText()+"/"
                 +email.getText()+"/"+pwd.getText()+"/"+descripcio.getText()+"/"+tel.getText()+"/"+ artist_req.isChecked()+"/"+ubiLat+"/"+ubiLong;
         new signUp().execute(HOST);
     }
@@ -162,8 +164,9 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener{
             try {
                 if(s.equals("0\n")){
                     displayToast("Registre correcte");
-                    Intent intent = new Intent(sign_up.this, main_page.class);
-                    startActivity(intent);
+                    Intent replyIntent = new Intent(sign_up.this, main_page.class);
+                    setResult(RESULT_OK, replyIntent);
+                    finish();
                 }
                 else{
                     displayToast("Alguna dada no és correcte");

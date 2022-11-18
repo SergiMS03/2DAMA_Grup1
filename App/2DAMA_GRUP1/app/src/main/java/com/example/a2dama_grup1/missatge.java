@@ -13,6 +13,7 @@ public class missatge extends AppCompatActivity {
 
     String s1[];
     RecyclerView recyclerViewMissatge;
+    String URL = new objectIP().ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

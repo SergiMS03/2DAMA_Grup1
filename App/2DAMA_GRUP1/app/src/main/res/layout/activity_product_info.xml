@@ -80,6 +80,7 @@
 
     <Button
         android:id="@+id/productInfoReservar"
+        android:onClick="openChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#62ECC0"
