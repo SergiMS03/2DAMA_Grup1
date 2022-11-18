@@ -43,7 +43,7 @@ public class main_page extends AppCompatActivity{
     ArrayList<objectProduct> ppProducts= new ArrayList<>();
     RecyclerView recyclerViewHoritzontal;
     RecyclerView recyclerViewVertical;
-    String URL = "http://192.168.1.45:";
+    String URL = "http://192.168.17.135:";
 
     private DrawerLayout drawer;
 
@@ -168,7 +168,8 @@ public class main_page extends AppCompatActivity{
                 for (int i = 0; i < productArr.length(); i++) {
                     JSONObject productObj = productArr.getJSONObject(i);
                     ppProducts.add(new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float) productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor")));
-                    ppProducts.get(i).setImg(new Image().Download(URL+":5500/servidor/" + ppProducts.get(i).getPathImg()));
+                    Bitmap image= new Image().Download(URL+"5500/servidor/" + ppProducts.get(i).getPathImg());
+                    ppProducts.get(i).setImg(image);
                 }
                 createRecycler();
             } catch (JSONException e) {
