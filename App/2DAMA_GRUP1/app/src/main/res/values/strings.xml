@@ -86,5 +86,6 @@
     <string name="descripcio_product_info">DESCRIPCIÓN</string>
     <string name="product_name_info">PRODUCT NAME</string>
     <string name="upload_image_upProduct">Subir imagen</string>
+    <string name="profile_update_pwd">Password</string>
 
 </resources>

@@ -24,21 +24,22 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton1"
+                android:id="@+id/profile_floating_dades"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_info" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/profile_btn_dades"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
-
                 android:text="@string/profileDatosButton" />
         </TableRow>
 
@@ -47,21 +48,22 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton2"
+                android:id="@+id/profile_floating_productList"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_email" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/profile_btn_productList"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
-
                 android:text="@string/profileProductosButton" />
         </TableRow>
 
@@ -70,17 +72,19 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floating_btn_upload"
+                android:id="@+id/profie_floating_upload"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_email" />
 
             <Button
-                android:id="@+id/upload_product_btn"
+                android:id="@+id/profile_btn_upload"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
@@ -93,18 +97,20 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton3"
+                android:id="@+id/profile_floating_reservas"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/stat_notify_more" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/profile_btn_reservas"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
 
@@ -116,21 +122,22 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton4"
+                android:id="@+id/profile_floating_historial"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:clickable="false"
                 app:srcCompat="?android:attr/actionModeFindDrawable" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/profile_btn_historial"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
-
                 android:text="@string/profileHistorialButton" />
         </TableRow>
 
@@ -139,18 +146,20 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton5"
+                android:id="@+id/profile_floataing_artistRequest"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginBottom="10dp"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_info" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/profile_btn_artistRquest"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
 
@@ -162,7 +171,7 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton6"
+                android:id="@+id/profile_floating_deleteAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -170,7 +179,7 @@
                 app:srcCompat="@android:drawable/ic_delete" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/profile_btn_deleteAccount"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"

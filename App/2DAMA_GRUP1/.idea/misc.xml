@@ -7,6 +7,7 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.12260343087790111" />
         <entry key="..\:/Users/CASA/Desktop/Programas Sergi/2DAMA_Grup1/App/2DAMA_GRUP1/app/src/main/res/layout/login.xml" value="0.358695652173913" />
         <entry key="app/src/main/res/layout-night/activity_main_page.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout-night/activity_user_update.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/carrito.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/login.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/login_night.xml" value="0.35208333333333336" />
@@ -21,6 +22,7 @@
         <entry key="app/src/main/res/layout/activity_reservas.xml" value="0.19655797101449277" />
         <entry key="app/src/main/res/layout/activity_upload_product.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_user_update.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/carrito.xml" value="0.25" />
         <entry key="app/src/main/res/layout/featured_products.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/login.xml" value="0.5" />
