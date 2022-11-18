@@ -91,6 +91,18 @@
                     >ELIMINA</v-btn>
                         </v-layout>
                     </td>
+                    <td v-if="mode == 0">
+                      <v-layout justify-center>
+                          <v-btn
+                    elevation="2"
+                    raised
+                    rounded
+                    x-small
+                    @click="banUser(row.item.id_usuari)"
+                    color="yellow"
+                  >BAN</v-btn>
+                      </v-layout>
+                  </td>
                     <td v-if="mode == 1">
                         <v-layout justify-center>
                         <v-btn
