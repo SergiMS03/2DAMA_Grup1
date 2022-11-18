@@ -9,186 +9,177 @@
     tools:context=".user_profile">
 
     <ImageView
-        android:id="@+id/productInfoImage"
+        android:id="@+id/profileImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="@android:drawable/ic_dialog_info" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#77EC62"
-
-            android:text="@string/profileDatosButton" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#77EC62"
-
-            android:text="@string/profileProductosButton" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_btn_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
-
-        <Button
-            android:id="@+id/upload_product_btn"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#77EC62"
-            android:onClick="clickUpload"
-            android:text="@string/profile_upload_product" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="@android:drawable/stat_notify_more" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#77EC62"
-
-            android:text="@string/profileReservasButton" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton4"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="?android:attr/actionModeFindDrawable" />
+            android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#77EC62"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_dialog_info" />
 
-            android:text="@string/profileHistorialButton" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#77EC62"
 
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
+                android:text="@string/profileDatosButton" />
+        </TableRow>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="@android:drawable/ic_dialog_info" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#77EC62"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
 
-            android:text="@string/profileArtistaButton" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#77EC62"
 
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
+                android:text="@string/profileProductosButton" />
+        </TableRow>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="false"
-            app:srcCompat="@android:drawable/ic_delete" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#EC6262"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating_btn_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
 
-            android:text="@string/profileDeleteButton" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/upload_product_btn"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#77EC62"
+                android:onClick="clickUpload"
+                android:text="@string/profile_upload_product" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/stat_notify_more" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#77EC62"
+
+                android:text="@string/profileReservasButton" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="?android:attr/actionModeFindDrawable" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#77EC62"
+
+                android:text="@string/profileHistorialButton" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_dialog_info" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#77EC62"
+
+                android:text="@string/profileArtistaButton" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_delete" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#EC6262"
+
+                android:text="@string/profileDeleteButton" />
+        </TableRow>
+    </TableLayout>
 
 
 </LinearLayout>

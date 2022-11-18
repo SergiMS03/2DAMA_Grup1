@@ -80,5 +80,11 @@
     <string name="menu_my_profile">My Profile</string>
     <string name="menu_upload">Upload</string>
     <string name="menu_logOut">Log Out</string>
+    <string name="reservar_btn">CHAT</string>
+    <string name="stock_product_info">Stock</string>
+    <string name="price_product_info">Preu</string>
+    <string name="descripcio_product_info">DESCRIPCIÓN</string>
+    <string name="product_name_info">PRODUCT NAME</string>
+    <string name="upload_image_upProduct">Subir imagen</string>
 
 </resources>
