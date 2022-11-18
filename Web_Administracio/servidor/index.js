@@ -313,6 +313,27 @@ app.post("/manageArtist", (req, res) => {
 
 });
 
+app.post("/banUser", (req, res) => {
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            console.log(err);
+        }else{
+                console.log(req.body.id_usuari)
+                con.query(userTools.banUser(req.body.id_usuari) , (err, fields)=> {
+                    if(err){
+                        console.log(err);
+                        res.json(false);
+                    }
+                    res.json(true);  
+                }); 
+            
+            con.end();       
+        }
+    });
+
+});
+
 app.post("/getProducts", (req, res) => {
     console.log("INICIAT GETPRODUCTS");
     var arrRes = [];
