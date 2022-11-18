@@ -60,7 +60,8 @@ var app = new Vue({
                     { text: 'email', value: 'email', align: 'center' },
                     { text: 'tel', value: 'tel', align: 'center' },
                     { text: 'rol', value: 'rol', align: 'center' },
-                    { text: "ELIMINA", value: "controls", sortable: false, align: 'center' }
+                    { text: "ELIMINA", value: "controls", sortable: false, align: 'center' },
+                    { text: "BAN", value: "controls", sortable: false, align: 'center' }
                     ],
                 console.log(data);
                 console.log(this.mode);
