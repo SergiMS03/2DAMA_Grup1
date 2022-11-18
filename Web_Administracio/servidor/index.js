@@ -63,9 +63,16 @@ app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
         if (err){
             console.log(err)
         }else{
+            linkFile = ""
             console.log("Canvian path");
-            console.log(file.path);
-            con.query(productTools.updatePathImage(file.path), (err) => {
+            if(file.path.includes("\\")){//Si el path es de Windows cambia la contrabarra per barra
+            var aaa = file.path.split('\\');
+            linkFile = aaa[0] + "/" + aaa[1];
+            }else{//Path Linux
+                linkFile = file.path;
+            }
+            console.log(linkFile);
+            con.query(productTools.updatePathImage(linkFile), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
@@ -396,21 +403,22 @@ app.post("/delProduct", (req, res) => {
     });
 });
 
-app.post("/getMissatges", (req, res) => {
+app.get("/getMissatges/:id_producte/:id_venedor/:id_comprador", (req, res) => {
     var arrRes = [];
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
-            res.json(false);
+            res.send(false);
         }else{
-            con.query(missatgeTools.getMissatges() , (err, result, fields)=> {
+            con.query(missatgeTools.getMissatges(req.params.id_producte, req.params.id_venedor, req.params.id_comprador) , (err, result, fields)=> {
                 if(err){
-                    res.json(false);
+                    res.send(false);
                 }
                 for (let i = 0; i < result.length; i++) {
-                    arrRes.push(result[i]);
+                    arrRes.emisor = (result[i].emisor);
+                    arrRes.missatge = (result[i].missatge);
                 }
-                res.json(arrRes);
+                res.send(arrRes);
                 con.end();
             });           
         }

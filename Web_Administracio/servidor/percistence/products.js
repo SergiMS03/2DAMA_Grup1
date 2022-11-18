@@ -23,6 +23,7 @@ function delProduct (product_id) {
 
 /*UPDATE*/
 function updatePathImage(path_img){
+  console.log(path_img)
   return ("UPDATE PRODUCTE SET path_img='"+ path_img +"' WHERE id_producte = (SELECT MAX(id_producte) FROM PRODUCTE)")
 }
 /*UPDATE*/

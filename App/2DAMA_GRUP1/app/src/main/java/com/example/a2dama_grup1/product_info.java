@@ -3,7 +3,6 @@ package com.example.a2dama_grup1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,9 +57,10 @@ public class product_info extends AppCompatActivity {
     }
 
     public void openChat(View view){
-        Intent intent = new Intent(product_info.this, missatge.class);
+        Intent intent = new Intent(product_info.this, chat.class);
         intent.putExtra("USER", (Serializable) USER);
-        intent.putExtra("seller", product.idVenedorToString());
+        intent.putExtra("PRODUCT", product.id_producteToString());
+        intent.putExtra("SELLER", product.idVenedorToString());
         startActivity(intent);
     }
 

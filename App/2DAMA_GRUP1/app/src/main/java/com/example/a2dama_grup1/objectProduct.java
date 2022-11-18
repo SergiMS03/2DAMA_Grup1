@@ -2,6 +2,8 @@ package com.example.a2dama_grup1;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 public class objectProduct {
 
     int id_producte;
@@ -37,6 +39,11 @@ public class objectProduct {
     }
 
     public objectProduct(){
+    }
+
+    public String id_producteToString(){
+        String id_producte = Integer.toString(this.id_producte);
+        return id_producte;
     }
 
     public String priceToString(){

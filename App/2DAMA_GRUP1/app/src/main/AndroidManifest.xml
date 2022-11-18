@@ -28,7 +28,7 @@
             android:name=".user_profile"
             android:exported="false" />
         <activity
-            android:name=".missatge"
+            android:name=".chat"
             android:exported="false" />
         <activity
             android:name=".product_info"
