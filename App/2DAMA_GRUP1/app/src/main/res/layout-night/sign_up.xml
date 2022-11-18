@@ -36,7 +36,7 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/cognoms_signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -72,7 +72,7 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/pwd_signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -105,10 +105,10 @@
                 android:layout_height="wrap_content"
                 android:background="#77EC62"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/descripcio_sign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -144,7 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" "
-                android:textColor="#FFFFFF" />
+                android:textColor="#f5f5f5" />
 
             <RadioButton
                 android:id="@+id/btn_solicitar_artista"

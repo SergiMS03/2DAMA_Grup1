@@ -13,13 +13,13 @@
         tools:context=".sign_up">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/upadte_profile_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/nom_signUp"
+            android:id="@+id/profile_update_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -29,7 +29,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/inputUserLogin"
+            android:id="@+id/input_update_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#77EC62"
@@ -37,7 +37,7 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/profile_update_cognoms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -47,25 +47,25 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/inputPasswordLogin"
+            android:id="@+id/input_update_cognoms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#77EC62"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/profile_update_pwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/pwd_signUp"
+            android:text="@string/profile_update_pwd"
             android:textAlignment="viewStart"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/inputd_update_pwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#77EC62"
@@ -73,7 +73,7 @@
             android:inputType="textPassword" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/profile_update_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -83,15 +83,15 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextPassword3"
+            android:id="@+id/input_update_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#77EC62"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/profile_update_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -101,7 +101,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/input_update_description"
             android:layout_width="match_parent"
             android:layout_height="94dp"
             android:background="#77EC62"

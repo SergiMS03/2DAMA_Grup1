@@ -90,6 +90,26 @@ var app = new Vue({
                 console.log(error);
               });
           },
+          banUser: function (id_usuari, reply){
+            fetch("http://localhost:3000/banUser", {
+              method:"POST",
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept':'application/json'
+                },
+                mode: 'cors',
+                cache: 'default',
+                body: JSON.stringify({ id_usuari: id_usuari})
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data)
+                this.getUsers();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          },
           getArtistRequest: function () {
             this.mode = 1;
             fetch("http://localhost:3000/artistRequest", {
@@ -144,6 +164,7 @@ var app = new Vue({
                 console.log(error);
               });
           },
+          
           getProducts: function () {
             this.mode = 2;
             const myHeaders = new Headers();

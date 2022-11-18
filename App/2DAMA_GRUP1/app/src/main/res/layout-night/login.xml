@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".sign_up">
+    tools:context=".login">
 
     <TextView
-        android:id="@+id/nom_signUp"
+        android:id="@+id/nom_signIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
@@ -27,7 +27,7 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/pwd_SignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -59,16 +59,19 @@
             android:layout_marginRight="15dp"
             android:backgroundTint="#77EC62"
             android:text="@string/loginButton"
+            android:onClick="checkLogIn"
             android:textColor="#000000" />
 
         <Button
-            android:id="@+id/userUpdateButton"
+            android:id="@+id/logIn_to_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:backgroundTint="#62ECC0"
             android:text="@string/registerButton"
-            android:textColor="#000000" />
+            android:onClick="openSignUp"
+            android:textColor="#000000"
+            />
     </LinearLayout>
 
 </LinearLayout>

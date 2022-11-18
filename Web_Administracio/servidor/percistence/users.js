@@ -1,6 +1,6 @@
 /*SELECTS*/
 function getAllUsers () {
-  return ("SELECT * FROM USUARI");
+  return ("SELECT * FROM USUARI WHERE ban= 0");
 };
 
 function getUser (usuari_id) {
@@ -43,6 +43,10 @@ function isArtist (usuari_id) {
 function declineArtist (usuari_id) {
   return ("UPDATE USUARI SET artist_req = false WHERE id_usuari = "+ usuari_id);
 };
+
+function banUser (usuari_id) {
+  return ("UPDATE USUARI SET ban = true WHERE id_usuari = "+ usuari_id);
+};
 /* UPDATES */
 
-module.exports = {getAllUsers, getUser, delUser, getAdmins, insertClient, getArtistReq, isArtist, declineArtist};
+module.exports = {getAllUsers, getUser, delUser, getAdmins, insertClient, getArtistReq, isArtist, declineArtist, banUser};
