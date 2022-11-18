@@ -73,8 +73,11 @@ public class main_page extends AppCompatActivity{
 
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-        if(id == R.id.menu_upload_id){
-            Intent intent = new Intent(main_page.this, upload_product.class);
+        if(id == R.id.menu_profile_id){
+            Intent intent = new Intent(main_page.this, user_profile.class);
+            startActivity(intent);
+        } else if(id == R.id.menu_logout_id){
+            Intent intent = new Intent(main_page.this, login.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

@@ -6,6 +6,7 @@
         <entry key="../../../../../../../../../dades/dades/Sergi/Android/2DAMA_Grup1/App/2DAMA_GRUP1/app/src/main/res/layout/activity_product_info.xml" value="0.35208333333333336" />
         <entry key="../../../../../layout/custom_preview.xml" value="0.12260343087790111" />
         <entry key="..\:/Users/CASA/Desktop/Programas Sergi/2DAMA_Grup1/App/2DAMA_GRUP1/app/src/main/res/layout/login.xml" value="0.358695652173913" />
+        <entry key="app/src/main/res/layout-night/activity_main_page.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/carrito.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/login.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/login_night.xml" value="0.35208333333333336" />
@@ -14,6 +15,7 @@
         <entry key="app/src/main/res/layout/activity_historial.xml" value="0.19655797101449277" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_missatge.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/activity_product_info.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_resenyas.xml" value="0.19655797101449277" />
         <entry key="app/src/main/res/layout/activity_reservas.xml" value="0.19655797101449277" />
@@ -28,6 +30,7 @@
         <entry key="app/src/main/res/layout/proximity_products.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.32760416666666664" />
+        <entry key="app/src/main/res/menu/overflow.xml" value="0.35208333333333336" />
       </map>
     </option>
   </component>

@@ -24,6 +24,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -92,12 +94,22 @@ public class upload_product extends AppCompatActivity implements Serializable {
         });
     }
 
-    //NO FUNCIONA
-    public boolean onSupportNavigateUp(){
-        onBackPressed();
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow, menu);
         return true;
     }
-    //////////////
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.menu_profile_id){
+            Intent intent = new Intent(this, user_profile.class);
+            startActivity(intent);
+        } else if(id == R.id.menu_logout_id){
+            Intent intent = new Intent(this, login.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void displayToast (String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();

@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +48,23 @@ public class product_info extends AppCompatActivity {
 
         String host = URL+"3000/getProduct/"+ idProduct;
         new getProduct().execute(host);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.menu_profile_id){
+            Intent intent = new Intent(this, user_profile.class);
+            startActivity(intent);
+        } else if(id == R.id.menu_logout_id){
+            Intent intent = new Intent(this, login.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class getProduct extends AsyncTask<String, Void, String> {
