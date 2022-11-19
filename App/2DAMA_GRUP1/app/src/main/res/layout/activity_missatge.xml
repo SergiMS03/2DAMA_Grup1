@@ -32,10 +32,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMissatge"
         android:layout_width="match_parent"
-        android:layout_height="593dp" />
+        android:layout_height="350dp" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/input_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -43,4 +45,12 @@
         android:ems="10"
         android:hint="@string/inputMissatge"
         android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickSendMessage"
+        android:text="Enviar" />
+
 </LinearLayout>

@@ -5,10 +5,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +37,7 @@ public class missatge extends AppCompatActivity {
     ArrayList<objectMessage> missatgeList = new ArrayList<>();
     RecyclerView recyclerViewMissatge;
     String URL = new objectIP().ip;
+    private EditText msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +49,8 @@ public class missatge extends AppCompatActivity {
     }
 
     public void createRecycler() {
-        setContentView(R.layout.activity_chat_list);
-        recyclerViewMissatge = findViewById(R.id.recyclerChats);
+        setContentView(R.layout.activity_missatge);
+        recyclerViewMissatge = findViewById(R.id.recyclerViewMissatge);
 
         MyAdapterMissatge chatAdapter = new MyAdapterMissatge(this, missatgeList, USER.id_usuari);
         recyclerViewMissatge.setAdapter(chatAdapter);
@@ -69,6 +73,21 @@ public class missatge extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void displayToast (String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    public void clickSendMessage(View view){
+        msg = (EditText) (findViewById(R.id.input_msg));
+        if(msg.getText().length() <= 0){
+            displayToast("El missatge és buit!");
+        }else{
+            String HOST = URL+"3000/sendMessage/"+ID_CHAT+"/"+USER.id_usuari+"/"
+                    +msg.getText();
+            new getMessages().execute(HOST);
+        }
     }
 
     public class getMessages extends AsyncTask<String, Void, String> {

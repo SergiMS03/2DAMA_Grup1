@@ -34,6 +34,11 @@ public class user_profile extends AppCompatActivity {
             Intent intent = new Intent(this, login.class);
             startActivity(intent);
         }
+        else if(id == R.id.chats){
+            Intent intent = new Intent(this, chatList.class);
+            intent.putExtra("USER", (Serializable) USER);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 

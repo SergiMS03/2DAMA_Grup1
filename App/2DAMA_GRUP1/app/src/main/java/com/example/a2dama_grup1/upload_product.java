@@ -109,6 +109,11 @@ public class upload_product extends AppCompatActivity implements Serializable {
             Intent intent = new Intent(this, login.class);
             startActivity(intent);
         }
+        else if(id == R.id.chats){
+            Intent intent = new Intent(this, chatList.class);
+            intent.putExtra("USER", (Serializable) USER);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -118,7 +123,6 @@ public class upload_product extends AppCompatActivity implements Serializable {
 
 
     public void clickUploadProduct(View view){
-        Editable nom = product_name.getText();
         if(product_name.getText().length() <= 0 || price.getText().length() <= 0 || stock.getText().length() <= 0){
             displayToast("Les dades del nom, preu o stock estan buides");
         }else{

@@ -186,6 +186,28 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:user", (req, re
     });
 });
 
+app.get("/sendMessage/:id_chat/:id_emisor/:missatge", (req, res) => {
+    console.log("Conexió realitzada");
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            console.log(err)
+        }else{
+            console.log("Enviant Missatge")
+            con.query(missatgeTools.insertMessage(req.params.id_chat, req.params.id_emisor, req.params.missatge), 
+            (err) => {
+                if(err){
+                    console.log(err);
+                    res.json(false)
+                }
+                console.log("Succesfull");
+                res.send('0');
+                con.end();
+             });   
+        }
+    });
+});
+
 
 
 app.post("/logInAdmin", (req, res) => {

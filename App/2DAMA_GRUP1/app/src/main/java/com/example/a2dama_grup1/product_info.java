@@ -77,6 +77,10 @@ public class product_info extends AppCompatActivity {
         } else if(id == R.id.menu_logout_id){
             Intent intent = new Intent(this, login.class);
             startActivity(intent);
+        }else if(id == R.id.chats){
+            Intent intent = new Intent(this, chatList.class);
+            intent.putExtra("USER", (Serializable) USER);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
