@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +28,8 @@ import java.net.URL;
 
 public class product_info extends AppCompatActivity {
     objectUser USER;
+    String idProduct;
+    String idVendedor;
     TextView title;
     TextView description;
     TextView price;
@@ -38,9 +41,10 @@ public class product_info extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        USER = (objectUser) getIntent().getSerializableExtra("USER");
         setContentView(R.layout.activity_product_info);
-        String idProduct = getIntent().getStringExtra("ID_PRODUCTO");
+        USER = (objectUser) getIntent().getSerializableExtra("USER");
+        idProduct = getIntent().getStringExtra("ID_PRODUCTO");
+        idVendedor = getIntent().getStringExtra("ID_VENDEDOR");
         title = findViewById(R.id.productInfoName);
         description = findViewById(R.id.productInfoDescription);
         price = findViewById(R.id.productInfoPrice);
@@ -57,11 +61,12 @@ public class product_info extends AppCompatActivity {
     }
 
     public void openChat(View view){
-        Intent intent = new Intent(product_info.this, chat.class);
+        new createChat().execute(URL+"3000/createChat/"+USER.id_usuari+"/"+idVendedor+"/"+idProduct);
+        /*Intent intent = new Intent(product_info.this, chat.class);
         intent.putExtra("USER", (Serializable) USER);
         intent.putExtra("PRODUCT", product.id_producteToString());
         intent.putExtra("SELLER", product.idVenedorToString());
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -141,15 +146,100 @@ public class product_info extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            buildProductInfo(product);
+            buildProductInfo();
         }
     }
 
-    private void buildProductInfo(objectProduct product) {
+    private void buildProductInfo() {
         title.setText(product.getNom_producte());
         description.setText(product.getDescripcio());
         price.setText(product.priceToString());
         stock.setText(product.stockToString());
         img.setImageBitmap(product.getImg());
     }
+
+    /////////////////////////////////////////////
+    /////////////////////////////////////////////
+    /////////////////////////////////////////////
+    /////////////////////////////////////////////
+
+    public void displayToast (String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+
+    public class createChat extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return dades(strings[0]);
+        }
+
+        private String dades(String queryString){
+            HttpURLConnection con = null;
+            BufferedReader reader = null;
+            String result = null;
+
+            try{
+                String url = queryString;
+                Uri builtURI = Uri.parse(url).buildUpon().build();
+                URL requestURL = new URL(builtURI.toString());
+                con = (HttpURLConnection) requestURL.openConnection();
+                con.setRequestMethod("GET");
+                con.connect();
+
+                InputStream inputStream = con.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder builder = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                    builder.append("\n");
+                }
+                if (builder.length() == 0) {
+                    // Stream was empty. No point in parsing.
+                    return null;
+                }
+
+                result = builder.toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally{
+                if (con != null)
+                    con.disconnect();
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        protected void onPostExecute(String s){
+            try {
+                if(s.equals("0\n")){
+                    Intent intent = new Intent(product_info.this, missatge.class);
+                    intent.putExtra("USER", (Serializable) USER);
+                    intent.putExtra("PRODUCT", product.id_producteToString());
+                    intent.putExtra("SELLER", product.idVenedorToString());
+                    startActivity(intent);
+                }
+                else{
+                    displayToast("No s'ha pogut contactar amb el venedor");
+                    }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

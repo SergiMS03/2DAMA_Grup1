@@ -87,5 +87,15 @@
     <string name="product_name_info">PRODUCT NAME</string>
     <string name="upload_image_upProduct">Subir imagen</string>
     <string name="profile_update_pwd">Password</string>
+    <string name="title_activity_chat_list">chatList</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Messages">Messages</string>
 
 </resources>

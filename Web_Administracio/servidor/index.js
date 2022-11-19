@@ -11,7 +11,8 @@ const IMAGE_UPLOAD_DIR = "./image"
 
 var userTools = require("./percistence/users.js");
 var productTools = require("./percistence/products.js");
-var missatgeTools = require("./percistence/missatges.js");
+var chatTools = require("./percistence/chats.js");
+var missatgeTools = require("./percistence/messages.js");
 var conexion = require("./percistence/bdConnection.js");
 
 app.use(bp.json())
@@ -365,6 +366,30 @@ app.post("/getProducts", (req, res) => {
 
 });
 
+/*app.get("/getProducts2/:id_producte", (req, res) => {
+    console.log("INICIAT GETPRODUCTS2");
+    var arrRes = [];
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.send(false);
+        }else{
+            con.query(chatTools.getChats(req.params.id_producte) , (err, result, fields)=> {
+                if(err){
+                    res.send(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.send(arrRes);
+                console.log(arrRes);
+                con.end();
+            });           
+        }
+    });
+
+});*/
+
 app.get("/getProduct/:id_producte", (req, res) => {
     console.log("INICIAT GETPRODUCT");
     var queryResult;
@@ -403,25 +428,73 @@ app.post("/delProduct", (req, res) => {
     });
 });
 
-app.get("/getMissatges/:id_producte/:id_venedor/:id_comprador", (req, res) => {
-    var arrRes = [];
+
+app.get("/createChat/:id_comprador/:id_venededor/:id_producto", (req, res) => {
     con = conexion.getCon();
     con.connect(function(err){
+        console.log("Creant chat");
+        console.log(req.params.id_comprador, req.params.id_venededor, req.params.id_producto);
         if (err){
-            res.send(false);
+            console.log(err);
+            res.send('1');
         }else{
-            con.query(missatgeTools.getMissatges(req.params.id_producte, req.params.id_venedor, req.params.id_comprador) , (err, result, fields)=> {
+            con.query(chatTools.createChat(req.params.id_comprador, req.params.id_venededor, req.params.id_producto) , (err)=> {
                 if(err){
-                    res.send(false);
+                    console.log(err);
+                    res.send('1');
                 }
-                for (let i = 0; i < result.length; i++) {
-                    arrRes.emisor = (result[i].emisor);
-                    arrRes.missatge = (result[i].missatge);
+                else{
+                    res.send('0');
                 }
-                res.send(arrRes);
                 con.end();
             });           
         }
     });
 
+});
+
+app.get("/getChat/:id_usuari", (req, res) => {
+    var arrRes = [];
+    console.log("getChats");
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.send(false);
+        }else{
+            con.query(chatTools.getChats(req.params.id_usuari) , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                console.log(arrRes);
+                con.end();
+            });                
+        }
+    });
+});
+
+app.get("/getMissatge/:id_chat", (req, res) => {
+    var arrRes = [];
+    console.log("getMissatge");
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.send(false);
+        }else{
+            con.query(missatgeTools.getMissatgeChat(req.params.id_chat) , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                console.log(arrRes);
+                con.end();
+            });                
+        }
+    });
 });

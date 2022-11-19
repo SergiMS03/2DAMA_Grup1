@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.2DAMA_GRUP1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#8EE727</item>
+        <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -22,6 +22,8 @@
     <style name="Theme.2DAMA_GRUP1.edit_text">
 
     </style>
+    <style name="Theme.2DAMA_GRUP1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.2DAMA_GRUP1.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

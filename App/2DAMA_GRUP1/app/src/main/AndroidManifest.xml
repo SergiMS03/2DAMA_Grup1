@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.a2dama_grup1">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    package="com.example.a2dama_grup1" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <application
         android:allowBackup="true"
+        android:background="#77EC62"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,10 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2DAMA_GRUP1"
-        android:background="#77EC62"
         android:usesCleartextTraffic="true"
+        tools:targetApi="31" >
+        <activity
+            android:name=".chatList"
+            android:exported="false" />
 
-        tools:targetApi="31">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDA5Tf2iKrWY24w9OO1K6u43o1UQ3Vp5xU" />
@@ -28,7 +33,7 @@
             android:name=".user_profile"
             android:exported="false" />
         <activity
-            android:name=".chat"
+            android:name=".missatge"
             android:exported="false" />
         <activity
             android:name=".product_info"
@@ -38,23 +43,24 @@
             android:exported="false" />
         <activity
             android:name=".sign_up"
-            android:exported="true">
+            android:exported="true" >
         </activity>
         <activity
             android:name=".upload_product"
-            android:exported="true">
+            android:exported="true" >
         </activity>
         <activity
             android:name=".main_page"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".login"
-            android:exported="true"
-            >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
+
 </manifest>

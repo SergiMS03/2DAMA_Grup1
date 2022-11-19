@@ -47,8 +47,6 @@ public class main_page extends AppCompatActivity{
     RecyclerView recyclerViewVertical;
     String URL = new objectIP().ip;
 
-    private DrawerLayout drawer;
-
     public class ScreenSlidePageFragment extends Fragment {
 
         @Override
@@ -80,7 +78,12 @@ public class main_page extends AppCompatActivity{
             Intent intent = new Intent(main_page.this, user_profile.class);
             intent.putExtra("USER", (Serializable) USER);
             startActivity(intent);
-        } else if(id == R.id.menu_logout_id){
+        }else if(id == R.id.chats){
+            Intent intent = new Intent(main_page.this, chatList.class);
+            intent.putExtra("USER", (Serializable) USER);
+            startActivity(intent);
+        }
+        else if(id == R.id.menu_logout_id){
             Intent intent = new Intent(main_page.this, login.class);
             startActivity(intent);
         }
@@ -101,6 +104,7 @@ public class main_page extends AppCompatActivity{
                 Intent intent = new Intent(main_page.this, product_info.class);
                 intent.putExtra("USER", (Serializable) USER);
                 intent.putExtra("ID_PRODUCTO", Integer.toString(ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_producte()));
+                intent.putExtra("ID_VENDEDOR", Integer.toString(ppProducts.get(recyclerViewVertical.getChildAdapterPosition(view)).getId_vendedor()));
                 startActivity(intent);
             }
         });

@@ -45,7 +45,7 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:text="Titol"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>

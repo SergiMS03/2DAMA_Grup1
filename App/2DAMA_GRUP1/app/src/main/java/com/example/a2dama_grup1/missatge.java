@@ -1,17 +1,21 @@
 package com.example.a2dama_grup1;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -22,12 +26,12 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class chat extends AppCompatActivity {
-    String PRODUCT_ID;
-    String SELLER_ID;
+public class missatge extends AppCompatActivity {
+    String ID_CHAT;
     objectUser USER;
-    String s1[];
+    ArrayList<objectMessage> missatgeList = new ArrayList<>();
     RecyclerView recyclerViewMissatge;
     String URL = new objectIP().ip;
 
@@ -35,18 +39,19 @@ public class chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         USER = (objectUser) getIntent().getSerializableExtra("USER");
-        PRODUCT_ID = getIntent().getStringExtra("PRODUCT");
-        SELLER_ID = getIntent().getStringExtra("SELLER");
-        String HOST = URL+ "3000/getMissatges/"+PRODUCT_ID+"/"+SELLER_ID+"/"+USER.id_usuari;
+        ID_CHAT = getIntent().getStringExtra("ID_CHAT");
+        String HOST = URL+ "3000/getMissatge/"+ID_CHAT;
         new getMessages().execute(HOST);
-        setContentView(R.layout.activity_missatge);
-        recyclerViewMissatge = findViewById(R.id.recyclerViewMissatge);
+    }
 
-        s1 = getResources().getStringArray(R.array.ProductTitles);
+    public void createRecycler() {
+        setContentView(R.layout.activity_chat_list);
+        recyclerViewMissatge = findViewById(R.id.recyclerChats);
 
-        MyAdapterMissatge MyAdapterMissatge = new MyAdapterMissatge(this, s1);
-        recyclerViewMissatge.setAdapter(MyAdapterMissatge);
+        MyAdapterMissatge chatAdapter = new MyAdapterMissatge(this, missatgeList, USER.id_usuari);
+        recyclerViewMissatge.setAdapter(chatAdapter);
         recyclerViewMissatge.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewMissatge.setFocusable(false);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -126,6 +131,16 @@ public class chat extends AppCompatActivity {
 
         protected void onPostExecute(String s){
             super.onPostExecute(s);
+            try {
+                JSONArray missatgeArr = new JSONArray(s);
+                for (int i = 0; i < missatgeArr.length(); i++) {
+                    JSONObject missatgeObj = missatgeArr.getJSONObject(i);
+                    missatgeList.add(new objectMessage(missatgeObj.getInt("id_missatge"), missatgeObj.getInt("id_chat"), missatgeObj.getInt("id_emisor"), missatgeObj.getString("missatge")));
+                }
+                createRecycler();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -6,6 +6,9 @@
         android:id="@+id/menu_profile_id"
         android:title="@string/menu_my_profile" />
     <item
+        android:id="@+id/chats"
+        android:title="@string/Messages" />
+    <item
         android:id="@+id/menu_logout_id"
         android:title="@string/menu_logOut" />
 </menu>
