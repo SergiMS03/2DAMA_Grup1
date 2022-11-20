@@ -388,30 +388,6 @@ app.post("/getProducts", (req, res) => {
 
 });
 
-/*app.get("/getProducts2/:id_producte", (req, res) => {
-    console.log("INICIAT GETPRODUCTS2");
-    var arrRes = [];
-    con = conexion.getCon();
-    con.connect(function(err){
-        if (err){
-            res.send(false);
-        }else{
-            con.query(chatTools.getChats(req.params.id_producte) , (err, result, fields)=> {
-                if(err){
-                    res.send(false);
-                }
-                for (let i = 0; i < result.length; i++) {
-                    arrRes.push(result[i]);
-                }
-                res.send(arrRes);
-                console.log(arrRes);
-                con.end();
-            });           
-        }
-    });
-
-});*/
-
 app.get("/getProduct/:id_producte", (req, res) => {
     console.log("INICIAT GETPRODUCT");
     var queryResult;

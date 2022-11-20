@@ -11,6 +11,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 
@@ -32,10 +34,9 @@ public class chatList extends AppCompatActivity {
     RecyclerView recyclerChats;
     ArrayList<objectChat> ListaChat = new ArrayList<>();
     objectUser USER;
+    objectProduct PRODUCT = new objectProduct();
     String URL = new objectIP().ip;
     @Override
-
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +53,39 @@ public class chatList extends AppCompatActivity {
         chatAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(chatList.this, missatge.class);
                 intent.putExtra("USER", (Serializable) USER);
                 intent.putExtra("ID_CHAT", Integer.toString(ListaChat.get(recyclerChats.getChildAdapterPosition(view)).getId_chat()));
+                intent.putExtra("ID_PRODUCT", Integer.toString(ListaChat.get(recyclerChats.getChildAdapterPosition(view)).getId_producte()));
                 startActivity(intent);
             }
         });
         recyclerChats.setAdapter(chatAdapter);
         recyclerChats.setLayoutManager(new LinearLayoutManager(this));
         recyclerChats.setFocusable(false);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.menu_profile_id){
+            Intent intent = new Intent(this, user_profile.class);
+            startActivity(intent);
+        } else if(id == R.id.menu_logout_id){
+            Intent intent = new Intent(this, login.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.chats){
+            Intent intent = new Intent(this, chatList.class);
+            intent.putExtra("USER", (Serializable) USER);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class getChats extends AsyncTask<String, Void, String> {

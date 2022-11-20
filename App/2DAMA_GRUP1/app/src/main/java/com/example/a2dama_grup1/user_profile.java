@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class user_profile extends AppCompatActivity {
     objectUser USER;
@@ -41,10 +43,17 @@ public class user_profile extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    public void displayToast (String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 
     public void clickUpload (View view){
-        Intent intent = new Intent(user_profile.this, upload_product.class );
-        intent.putExtra("USER", (Serializable) USER);
-        startActivity(intent);
+        if(USER.rol.equals("artist") || USER.rol.equals("admin")) {
+            Intent intent = new Intent(user_profile.this, upload_product.class);
+            intent.putExtra("USER", (Serializable) USER);
+            startActivity(intent);
+        }else{
+            displayToast("No tens aquesta opció desbloquejada. Sol·licita ser artista.");
+        }
     }
 }

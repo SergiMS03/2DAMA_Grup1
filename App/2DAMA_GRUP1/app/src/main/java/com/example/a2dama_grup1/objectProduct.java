@@ -2,9 +2,10 @@ package com.example.a2dama_grup1;
 
 import android.graphics.Bitmap;
 
+import java.io.NotSerializableException;
 import java.io.Serializable;
 
-public class objectProduct {
+public class objectProduct{
 
     int id_producte;
     String nom_producte;

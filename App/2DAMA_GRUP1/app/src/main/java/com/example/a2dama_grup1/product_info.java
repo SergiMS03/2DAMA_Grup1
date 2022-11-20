@@ -25,6 +25,7 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class product_info extends AppCompatActivity {
     objectUser USER;
@@ -62,11 +63,6 @@ public class product_info extends AppCompatActivity {
 
     public void openChat(View view){
         new createChat().execute(URL+"3000/createChat/"+USER.id_usuari+"/"+idVendedor+"/"+idProduct);
-        /*Intent intent = new Intent(product_info.this, chat.class);
-        intent.putExtra("USER", (Serializable) USER);
-        intent.putExtra("PRODUCT", product.id_producteToString());
-        intent.putExtra("SELLER", product.idVenedorToString());
-        startActivity(intent);*/
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -231,11 +227,7 @@ public class product_info extends AppCompatActivity {
         protected void onPostExecute(String s){
             try {
                 if(s.equals("0\n")){
-                    Intent intent = new Intent(product_info.this, missatge.class);
-                    intent.putExtra("USER", (Serializable) USER);
-                    intent.putExtra("PRODUCT", product.id_producteToString());
-                    intent.putExtra("SELLER", product.idVenedorToString());
-                    startActivity(intent);
+                    displayToast("Xat creat, ves a la pàgina missatges!");
                 }
                 else{
                     displayToast("No s'ha pogut contactar amb el venedor");

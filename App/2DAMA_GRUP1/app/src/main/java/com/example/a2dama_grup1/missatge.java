@@ -11,6 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +36,11 @@ import java.util.ArrayList;
 
 public class missatge extends AppCompatActivity {
     String ID_CHAT;
+    String id_product;
     objectUser USER;
+    objectProduct product;
+    TextView product_name;
+    ImageView image_product;
     ArrayList<objectMessage> missatgeList = new ArrayList<>();
     RecyclerView recyclerViewMissatge;
     String URL = new objectIP().ip;
@@ -43,7 +50,9 @@ public class missatge extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         USER = (objectUser) getIntent().getSerializableExtra("USER");
+        id_product = getIntent().getStringExtra("ID_PRODUCT");
         ID_CHAT = getIntent().getStringExtra("ID_CHAT");
+
         String HOST = URL+ "3000/getMissatge/"+ID_CHAT;
         new getMessages().execute(HOST);
     }
@@ -156,7 +165,80 @@ public class missatge extends AppCompatActivity {
                     JSONObject missatgeObj = missatgeArr.getJSONObject(i);
                     missatgeList.add(new objectMessage(missatgeObj.getInt("id_missatge"), missatgeObj.getInt("id_chat"), missatgeObj.getInt("id_emisor"), missatgeObj.getString("missatge")));
                 }
+                new getProduct().execute( URL+"3000/getProduct/"+ id_product);
                 createRecycler();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public class getProduct extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return dades(strings[0]);
+        }
+
+        private String dades(String queryString){
+            HttpURLConnection con = null;
+            BufferedReader reader = null;
+            String result = null;
+
+            try{
+                String url = queryString;
+                Uri builtURI = Uri.parse(url).buildUpon().build();
+                URL requestURL = new URL(builtURI.toString());
+                con = (HttpURLConnection) requestURL.openConnection();
+                con.setRequestMethod("GET");
+                con.connect();
+
+                InputStream inputStream = con.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder builder = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                    builder.append("\n");
+                }
+                if (builder.length() == 0) {
+                    // Stream was empty. No point in parsing.
+                    return null;
+                }
+
+                result = builder.toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally{
+                if (con != null)
+                    con.disconnect();
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        protected void onPostExecute(String s){
+            try {
+                JSONArray productArr = new JSONArray(s);
+                JSONObject productObj = productArr.getJSONObject(0);
+                product = new objectProduct(productObj.getInt("id_producte"), productObj.getString("nom_producte"), (float)productObj.getDouble("preu"), productObj.getInt("stock"), productObj.getString("descripcio"), productObj.getString("path_img"), productObj.getInt("id_vendedor"));
+                product.setImg(new Image().Download(URL+"5500/servidor/"+ product.getPathImg()));
+                product_name = findViewById(R.id.nomProductMissatge);
+                image_product = findViewById(R.id.missatgeImage);
+                product_name.setText(product.nom_producte);
+                image_product.setImageBitmap(product.img);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

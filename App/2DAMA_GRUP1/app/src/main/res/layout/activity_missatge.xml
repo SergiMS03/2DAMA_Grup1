@@ -15,13 +15,13 @@
         android:text="@string/productNameMissatge"
         android:gravity="center"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/profileButtonMainPage"
-        app:layout_constraintEnd_toStartOf="@+id/profileButtonMainPage"
+        app:layout_constraintBottom_toBottomOf="@+id/missatgeImage"
+        app:layout_constraintEnd_toStartOf="@+id/missatgeImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/profileButtonMainPage"
+    <ImageView
+        android:id="@+id/missatgeImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
