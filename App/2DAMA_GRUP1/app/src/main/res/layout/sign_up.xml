@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
     android:orientation="vertical"
     tools:context=".sign_up">
 
@@ -25,14 +24,15 @@
                 android:text="@string/nom_signUp"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/lateralesSignUp"/>
 
             <EditText
                 android:id="@+id/editText_nom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#77EC62"
-                android:ems="10"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -43,14 +43,15 @@
                 android:text="@string/cognoms_signUp"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/lateralesSignUp"/>
 
             <EditText
                 android:id="@+id/editText_cognoms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#77EC62"
-                android:ems="10"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -61,14 +62,15 @@
                 android:text="@string/email_signUp"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/lateralesSignUp"/>
 
             <EditText
                 android:id="@+id/editText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#77EC62"
-                android:ems="10"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -79,14 +81,15 @@
                 android:text="@string/pwd_signUp"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/lateralesSignUp"/>
 
             <EditText
                 android:id="@+id/editText_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#77EC62"
-                android:ems="10"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:inputType="textPassword" />
 
             <TextView
@@ -97,14 +100,15 @@
                 android:text="@string/tlf_signUp"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/lateralesSignUp"/>
 
             <EditText
                 android:id="@+id/editText_tlf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#77EC62"
-                android:ems="10"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:inputType="number" />
 
             <TextView
@@ -115,15 +119,16 @@
                 android:text="@string/descripcio_signUp"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/lateralesSignUp"/>
 
             <EditText
                 android:id="@+id/editText_descripcio"
                 android:layout_width="match_parent"
                 android:layout_height="94dp"
-                android:background="#77EC62"
-                android:ems="10"
                 android:gravity="start|top"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:inputType="textMultiLine" />
 
             <androidx.fragment.app.FragmentContainerView
@@ -131,13 +136,17 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
                 android:layout_marginTop="10dp" />
 
             <Button
                 android:id="@+id/button_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Usar Ubicación actual" />
+                android:text="Usar Ubicación actual"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"/>
 
             <TextView
                 android:id="@+id/UbicacionTextView"
@@ -150,7 +159,10 @@
                 android:id="@+id/btn_solicitar_artista"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_solicitar_artista" />
+                android:text="@string/btn_solicitar_artista"
+                android:layout_marginStart="@dimen/lateralesSignUp"
+                android:layout_marginEnd="@dimen/lateralesSignUp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,9 +176,8 @@
                     android:id="@+id/registerButton_signUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#62ECC0"
-                    android:text="@string/registrarse_btn_signUp"
-                    android:textColor="#000000" />
+                    android:backgroundTint="@color/green"
+                    android:text="@string/registrarse_btn_signUp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

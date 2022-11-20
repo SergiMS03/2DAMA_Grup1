@@ -4,24 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
     android:orientation="vertical"
     tools:context=".user_profile">
 
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_dades"
@@ -36,8 +30,8 @@
                 android:id="@+id/profile_btn_dades"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
                 android:text="@string/profileDatosButton" />
@@ -45,7 +39,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_productList"
@@ -69,7 +64,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profie_floating_upload"
@@ -84,8 +80,8 @@
                 android:id="@+id/profile_btn_upload"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#77EC62"
                 android:onClick="clickUpload"
@@ -94,7 +90,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_reservas"
@@ -119,7 +116,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_historial"
@@ -143,14 +141,16 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floataing_artistRequest"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_info" />
 
@@ -168,7 +168,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_deleteAccount"

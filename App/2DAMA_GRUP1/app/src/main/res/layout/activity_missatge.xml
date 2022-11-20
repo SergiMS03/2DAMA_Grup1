@@ -11,7 +11,7 @@
         android:id="@+id/nomProductMissatge"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#77EC62"
+        android:background="@color/green"
         android:text="@string/productNameMissatge"
         android:gravity="center"
         android:textStyle="bold"
@@ -46,7 +46,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/speech_balloon_right"
+
         android:hint="@string/inputMissatge"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,6 +63,7 @@
         android:layout_marginBottom="10dp"
         android:onClick="clickSendMessage"
         android:text="Enviar"
+        android:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/input_msg" />
