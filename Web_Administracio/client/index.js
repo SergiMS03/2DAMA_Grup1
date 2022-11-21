@@ -3,6 +3,7 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data:{
         credentials: {email:"", pwd:""},
+        admin:[],
         rol: '',
         mode: 0,
         users: [],
@@ -29,7 +30,7 @@ var app = new Vue({
                         response.json()
                 ).then((data) => {
                         if(data.rol == 'admin'){
-                            this.rol = data.rol
+                            this.admin = data
                             this.getUsers();
                         }
                     }
@@ -183,7 +184,7 @@ var app = new Vue({
                         text: 'ID Producte',
                         align: 'center',
                         sortable: true,
-                        value: 'id_usuari',
+                        value: 'id_producte',
                     },
                     { text: 'nom', value: 'nom', align: 'center'},
                     { text: 'preu', value: 'preu', align: 'center' },

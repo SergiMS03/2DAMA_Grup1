@@ -17,7 +17,7 @@
 <!-- LOGIN --><!-- LOGIN --><!-- LOGIN --><!-- LOGIN --><!-- LOGIN -->
 <body>
     <v-app align="center" id="app">
-        <v-container v-if="rol != 'admin'" fill-height class="spacing-playground mb-16">
+        <v-container v-if="admin.rol != 'admin'" fill-height class="spacing-playground mb-16">
         <v-row justify = "center" align-items = "center">
         <v-col cols = "10" sm = "5">
             <v-sheet class = "mx-auto">
@@ -46,7 +46,7 @@
     <!-- LOGIN --><!-- LOGIN --><!-- LOGIN --><!-- LOGIN --><!-- LOGIN -->
     <!-- PANEL ADMIN --><!-- PANEL ADMIN --><!-- PANEL ADMIN --><!-- PANEL ADMIN --><!-- PANEL ADMIN -->
         
-        <template v-if="rol == 'admin'">
+        <template v-if="admin.rol == 'admin'">
           <template>
             <div>
               <v-toolbar app
@@ -71,7 +71,7 @@
                     </v-avatar>
                   </v-flex>
                   <v-flex>
-                    <p class="mt-3 headline">{{rol}}</p>
+                    <p class="mt-3 headline">{{admin.nom}} {{admin.cognoms}}</p>
                   </v-flex>
                   <v-divider></v-divider>
                     <v-btn
