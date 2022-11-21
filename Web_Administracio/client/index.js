@@ -3,10 +3,11 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data:{
         credentials: {email:"", pwd:""},
-        rol: 'admin',//CAMBIAR ESTO, SOLO PARA TRBAJAR MÁS COMODO
+        rol: '',
         mode: 0,
         users: [],
-        headers:[]
+        headers:[],
+        drawer: false
     },
     methods: {
     logIn: function(){
