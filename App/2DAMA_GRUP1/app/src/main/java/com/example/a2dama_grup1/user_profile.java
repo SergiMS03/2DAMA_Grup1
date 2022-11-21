@@ -4,17 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class user_profile extends AppCompatActivity {
     objectUser USER;
+    String URL = new objectIP().ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +61,7 @@ public class user_profile extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
+
     public void clickUpload (View view){
         if(USER.rol.equals("artist") || USER.rol.equals("admin")) {
             Intent intent = new Intent(user_profile.this, upload_product.class);
@@ -57,6 +69,87 @@ public class user_profile extends AppCompatActivity {
             startActivity(intent);
         }else{
             displayToast("No tens aquesta opció desbloquejada. Sol·licita ser artista.");
+        }
+    }
+
+
+    public void clickArtist(View view){
+        String HOST = URL+"3000/artistReqFromProfile/"+USER.id_usuari;
+        new artistReqFromProfile().execute(URL);
+    }
+
+    public class artistReqFromProfile extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Log.i("LOGINFO", "do in Background: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+            return dades(strings[0]);
+        }
+
+        private String dades(String queryString){
+            HttpURLConnection con = null;
+            BufferedReader reader = null;
+            String result = null;
+
+            try{
+                Log.i("LOGINFO", "dades: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+                String url = queryString;
+                Uri builtURI = Uri.parse(url).buildUpon().build();
+                java.net.URL requestURL = new URL(builtURI.toString());
+                con = (HttpURLConnection) requestURL.openConnection();
+                con.setRequestMethod("GET");
+                con.connect();
+
+                InputStream inputStream = con.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder builder = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                    builder.append("\n");
+                }
+                if (builder.length() == 0) {
+                    return null;
+                }
+
+                result = builder.toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally{
+                if (con != null)
+                    con.disconnect();
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        protected void onPostExecute(String s){
+            super.onPostExecute(s);
+            try {
+                if(s.equals("0\n")){
+                    displayToast("Sol·licitud enviada correctament!");
+                    finish();
+                }
+                else{
+                    displayToast("Error!!!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

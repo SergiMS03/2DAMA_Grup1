@@ -36,6 +36,11 @@ function insertClient (nom, cognoms, email, pwd, descripcio, tel, artistRequest,
 /*INSERTS*/
 
 /* UPDATES */
+
+function artistReqFromProfile (usuari_id) {
+  return ("UPDATE USUARI SET artist_req = 1 WHERE id_usuari = "+ usuari_id);
+};
+
 function isArtist (usuari_id) {
   return ("UPDATE USUARI SET rol = 'artist', artist_req = false WHERE id_usuari = "+ usuari_id);
 };
@@ -49,4 +54,4 @@ function banUser (usuari_id) {
 };
 /* UPDATES */
 
-module.exports = {getAllUsers, getUser, delUser, getAdmins, insertClient, getArtistReq, isArtist, declineArtist, banUser};
+module.exports = {getAllUsers, getUser, delUser, getAdmins, insertClient, getArtistReq, isArtist, declineArtist, banUser, artistReqFromProfile};

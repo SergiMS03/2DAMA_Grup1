@@ -19,21 +19,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_dades"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_info" />
 
             <Button
                 android:id="@+id/profile_btn_dades"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#77EC62"
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
                 android:text="@string/profileDatosButton" />
         </TableRow>
 
@@ -44,21 +36,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_productList"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_email" />
 
             <Button
                 android:id="@+id/profile_btn_productList"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#77EC62"
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
                 android:text="@string/profileProductosButton" />
         </TableRow>
 
@@ -69,21 +53,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profie_floating_upload"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_email" />
 
             <Button
                 android:id="@+id/profile_btn_upload"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#77EC62"
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
                 android:onClick="clickUpload"
                 android:text="@string/profile_upload_product" />
         </TableRow>
@@ -95,22 +71,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_reservas"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/stat_notify_more" />
 
             <Button
                 android:id="@+id/profile_btn_reservas"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#77EC62"
-
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
                 android:text="@string/profileReservasButton" />
         </TableRow>
 
@@ -121,21 +88,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_historial"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="?android:attr/actionModeFindDrawable" />
 
             <Button
                 android:id="@+id/profile_btn_historial"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#77EC62"
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
                 android:text="@string/profileHistorialButton" />
         </TableRow>
 
@@ -147,22 +106,14 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floataing_artistRequest"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_dialog_info" />
 
             <Button
                 android:id="@+id/profile_btn_artistRquest"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#77EC62"
-
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
+                android:onClick="clickArtist"
                 android:text="@string/profileArtistaButton" />
         </TableRow>
 
@@ -173,20 +124,14 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/profile_floating_deleteAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.iconsProfile"
                 android:clickable="false"
                 app:srcCompat="@android:drawable/ic_delete" />
 
             <Button
                 android:id="@+id/profile_btn_deleteAccount"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
+                style="@style/Theme.2DAMA_GRUP1.buttonsProfile"
                 android:backgroundTint="#EC6262"
-
                 android:text="@string/profileDeleteButton" />
         </TableRow>
     </TableLayout>

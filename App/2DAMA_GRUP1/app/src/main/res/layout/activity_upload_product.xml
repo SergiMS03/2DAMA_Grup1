@@ -18,20 +18,13 @@
 
         <TextView
             android:id="@+id/id_nomProducte_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/uploadProdcutName"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            style="@style/Theme.2DAMA_GRUP1.textView"
+            android:text="@string/uploadProdcutName"/>
 
         <EditText
             android:id="@+id/editText_nomProducte_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#77EC62"
-            android:ems="10"
+            style="@style/Theme.2DAMA_GRUP1.input"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -45,20 +38,13 @@
 
         <TextView
             android:id="@+id/id_precio_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/uploadProductPrice"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            style="@style/Theme.2DAMA_GRUP1.textView"
+            android:text="@string/uploadProductPrice" />
 
         <EditText
             android:id="@+id/editText_precio_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#77EC62"
-            android:ems="10"
+            style="@style/Theme.2DAMA_GRUP1.input"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -72,33 +58,21 @@
 
         <TextView
             android:id="@+id/id_stock_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/uploadStock"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            style="@style/Theme.2DAMA_GRUP1.textView"
+            android:text="@string/uploadStock" />
 
         <EditText
             android:id="@+id/editText_stock_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#77EC62"
-            android:ems="10"
+            style="@style/Theme.2DAMA_GRUP1.input"
             android:inputType="textPersonName" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/id_descripcio_upload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/uploadDescripcion"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        style="@style/Theme.2DAMA_GRUP1.textView"
+        android:text="@string/uploadDescripcion"/>
 
     <EditText
         android:id="@+id/editText_descripcio_upload"
@@ -107,19 +81,12 @@
         android:background="#77EC62"
         android:ems="10"
         android:gravity="start|top"
-
         android:inputType="textMultiLine" />
 
     <TextView
         android:id="@+id/id_imagen_upload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/upload_image_upProduct"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        style="@style/Theme.2DAMA_GRUP1.textView"
+        android:text="@string/upload_image_upProduct"/>
 
     <ImageButton
         android:id="@+id/uploadImage_btn"

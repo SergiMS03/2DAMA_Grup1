@@ -208,6 +208,119 @@ app.get("/sendMessage/:id_chat/:id_emisor/:missatge", (req, res) => {
     });
 });
 
+app.get("/getChat/:id_usuari", (req, res) => {
+    var arrRes = [];
+    console.log("getChats");
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.send(false);
+        }else{
+            con.query(chatTools.getChats(req.params.id_usuari) , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                console.log(arrRes);
+                con.end();
+            });                
+        }
+    });
+});
+
+app.get("/getMissatge/:id_chat", (req, res) => {
+    var arrRes = [];
+    console.log("getMissatge");
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.send(false);
+        }else{
+            con.query(missatgeTools.getMissatgeChat(req.params.id_chat) , (err, result, fields)=> {
+                if(err){
+                    res.json(false);
+                }
+                for (let i = 0; i < result.length; i++) {
+                    arrRes.push(result[i]);
+                }
+                res.json(arrRes);
+                console.log(arrRes);
+                con.end();
+            });                
+        }
+    });
+});
+
+app.get("/getProduct/:id_producte", (req, res) => {
+    console.log("INICIAT GETPRODUCT");
+    var queryResult;
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            res.json(false);
+        }else{
+            con.query(productTools.getProduct(req.params.id_producte) , (err, result, fields)=> {
+                queryResult = result
+                res.json(queryResult);
+                console.log(queryResult);
+                con.end();
+            });           
+        }
+    });
+
+});
+
+app.get("/createChat/:id_comprador/:id_venededor/:id_producto", (req, res) => {
+    con = conexion.getCon();
+    con.connect(function(err){
+        console.log("Creant chat");
+        console.log(req.params.id_comprador, req.params.id_venededor, req.params.id_producto);
+        if (err){
+            console.log(err);
+            res.send('1');
+        }else{
+            con.query(chatTools.createChat(req.params.id_comprador, req.params.id_venededor, req.params.id_producto) , (err)=> {
+                if(err){
+                    console.log(err);
+                    res.send('1');
+                }
+                else{
+                    res.send('0');
+                }
+                con.end();
+            });           
+        }
+    });
+});
+
+app.get("/artistReqFromProfile/:usuari_id", (req, res) => {
+    con = conexion.getCon();
+    con.connect(function(err){
+        console.log("Enviant petició");
+        console.log(req.params.usuari_id);
+        if (err){
+            console.log(err);
+            res.send('1');
+        }else{
+            con.query(userTools.artistReqFromProfile(req.params.usuari_id) , (err)=> {
+                if(err){
+                    console.log(err);
+                    res.send('1');
+                }
+                else{
+                    res.send('0');
+                }
+                con.end();
+            });           
+        }
+    });
+});
+
+/********   POST  **********/
+
 
 
 app.post("/logInAdmin", (req, res) => {
@@ -249,25 +362,21 @@ app.post("/logInAdmin", (req, res) => {
 
 app.post("/delUser", (req, res) => {
     console.log(req.body.id_usuari);
-    /*if(req.session.cookie.rol == 'admin'){*/
-        con = conexion.getCon();
-        con.connect(function(err){
-            if (err){
-                console.log(err)
-            }else{
-                con.query(userTools.delUser(req.body.id_usuari), (err) => {
-                    if(err){
-                        console.log(err);
-                        res.json(false)
-                    }
-                    res.json(true);
-                    con.end();
-                });   
-            }
-        });
-    /*}else{
-        res.json(false);
-    }*/
+    con = conexion.getCon();
+    con.connect(function(err){
+        if (err){
+            console.log(err)
+        }else{
+            con.query(userTools.delUser(req.body.id_usuari), (err) => {
+                if(err){
+                    console.log(err);
+                    res.json(false)
+                }
+                res.json(true);
+                con.end();
+            });   
+        }
+    });
 });
 
 app.post("/getUsers", (req, res) => {
@@ -388,24 +497,6 @@ app.post("/getProducts", (req, res) => {
 
 });
 
-app.get("/getProduct/:id_producte", (req, res) => {
-    console.log("INICIAT GETPRODUCT");
-    var queryResult;
-    con = conexion.getCon();
-    con.connect(function(err){
-        if (err){
-            res.json(false);
-        }else{
-            con.query(productTools.getProduct(req.params.id_producte) , (err, result, fields)=> {
-                queryResult = result
-                res.json(queryResult);
-                console.log(queryResult);
-                con.end();
-            });           
-        }
-    });
-
-});
 
 
 app.post("/delProduct", (req, res) => {
@@ -427,72 +518,5 @@ app.post("/delProduct", (req, res) => {
 });
 
 
-app.get("/createChat/:id_comprador/:id_venededor/:id_producto", (req, res) => {
-    con = conexion.getCon();
-    con.connect(function(err){
-        console.log("Creant chat");
-        console.log(req.params.id_comprador, req.params.id_venededor, req.params.id_producto);
-        if (err){
-            console.log(err);
-            res.send('1');
-        }else{
-            con.query(chatTools.createChat(req.params.id_comprador, req.params.id_venededor, req.params.id_producto) , (err)=> {
-                if(err){
-                    console.log(err);
-                    res.send('1');
-                }
-                else{
-                    res.send('0');
-                }
-                con.end();
-            });           
-        }
-    });
 
-});
 
-app.get("/getChat/:id_usuari", (req, res) => {
-    var arrRes = [];
-    console.log("getChats");
-    con = conexion.getCon();
-    con.connect(function(err){
-        if (err){
-            res.send(false);
-        }else{
-            con.query(chatTools.getChats(req.params.id_usuari) , (err, result, fields)=> {
-                if(err){
-                    res.json(false);
-                }
-                for (let i = 0; i < result.length; i++) {
-                    arrRes.push(result[i]);
-                }
-                res.json(arrRes);
-                console.log(arrRes);
-                con.end();
-            });                
-        }
-    });
-});
-
-app.get("/getMissatge/:id_chat", (req, res) => {
-    var arrRes = [];
-    console.log("getMissatge");
-    con = conexion.getCon();
-    con.connect(function(err){
-        if (err){
-            res.send(false);
-        }else{
-            con.query(missatgeTools.getMissatgeChat(req.params.id_chat) , (err, result, fields)=> {
-                if(err){
-                    res.json(false);
-                }
-                for (let i = 0; i < result.length; i++) {
-                    arrRes.push(result[i]);
-                }
-                res.json(arrRes);
-                console.log(arrRes);
-                con.end();
-            });                
-        }
-    });
-});
