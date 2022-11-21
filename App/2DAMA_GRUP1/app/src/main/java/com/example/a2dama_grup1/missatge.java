@@ -1,6 +1,7 @@
 package com.example.a2dama_grup1;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -49,6 +50,7 @@ public class missatge extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         USER = (objectUser) getIntent().getSerializableExtra("USER");
         id_product = getIntent().getStringExtra("ID_PRODUCT");
         ID_CHAT = getIntent().getStringExtra("ID_CHAT");

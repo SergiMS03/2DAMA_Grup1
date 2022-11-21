@@ -3,6 +3,7 @@ package com.example.a2dama_grup1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,8 @@ public class user_profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         USER = (objectUser) getIntent().getSerializableExtra("USER");
         setContentView(R.layout.activity_user_profile);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

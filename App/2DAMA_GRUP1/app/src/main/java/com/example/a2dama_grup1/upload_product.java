@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
@@ -80,6 +81,8 @@ public class upload_product extends AppCompatActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_product);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         USER = (objectUser) getIntent().getSerializableExtra("USER");
         product_name = (EditText) (findViewById(R.id.editText_nomProducte_upload));
         price = (EditText) (findViewById(R.id.editText_precio_upload));
