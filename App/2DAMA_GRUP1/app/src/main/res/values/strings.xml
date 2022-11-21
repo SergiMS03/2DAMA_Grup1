@@ -75,18 +75,18 @@
     <string name="productNameMissatge">Product name</string>
     <string name="inputMissatge">Escribe un mensaje</string>
 
-    <string name="subir_producto">Upload</string>
-    <string name="profile_upload_product">UPLOAD</string>
-    <string name="menu_my_profile">My Profile</string>
-    <string name="menu_upload">Upload</string>
-    <string name="menu_logOut">Log Out</string>
+    <string name="subir_producto">Subir</string>
+    <string name="profile_upload_product">Subir</string>
+    <string name="menu_my_profile">Mi perfil</string>
+    <string name="menu_upload">Subir</string>
+    <string name="menu_logOut">Cerrar sesión</string>
     <string name="reservar_btn">CHAT</string>
     <string name="stock_product_info">Stock</string>
-    <string name="price_product_info">Preu</string>
+    <string name="price_product_info">Precio</string>
     <string name="descripcio_product_info">DESCRIPCIÓN</string>
-    <string name="product_name_info">PRODUCT NAME</string>
+    <string name="product_name_info">Nombre del producto</string>
     <string name="upload_image_upProduct">Subir imagen</string>
-    <string name="profile_update_pwd">Password</string>
+    <string name="profile_update_pwd">Contraseña</string>
     <string name="title_activity_chat_list">chatList</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
