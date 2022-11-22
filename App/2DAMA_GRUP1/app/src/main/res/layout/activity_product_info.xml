@@ -47,7 +47,7 @@
             android:layout_marginStart="@dimen/MaginsDescripcióProducte"
             android:layout_marginTop="@dimen/fab_margin"
             android:layout_marginEnd="@dimen/MaginsDescripcióProducte"
-            android:text="@string/descripcio_product_info"
+            android:text=""
             android:textStyle="bold" />
     </LinearLayout>
 
