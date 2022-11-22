@@ -38,20 +38,16 @@
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Theme.2DAMA_GRUP1.buttonsLogin"
             android:layout_marginTop="32dp"
-            android:backgroundTint="@color/green"
             android:onClick="checkLogIn"
             android:layout_marginEnd="10dp"
             android:text="@string/loginButton" />
 
         <Button
             android:id="@+id/logIn_to_signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Theme.2DAMA_GRUP1.buttonsLogin"
             android:layout_marginTop="32dp"
-            android:backgroundTint="@color/green"
             android:onClick="openSignUp"
             android:layout_marginStart="10dp"
             android:text="@string/registerButton" />
