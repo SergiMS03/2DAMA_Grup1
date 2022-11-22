@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">2DAMA_GRUP1</string>
-    <string name="app_name">2DAMA_GRUP1</string>
     <string name="nom_signUp">Nom</string>
     <string name="cognoms_signUp">Cognoms</string>
     <string name="pwd_signUp">Contrasenya</string>
@@ -19,11 +18,11 @@
     <string name="carritoCantidad">Quantitat</string>
     <string name="carritoPrecio">Preu</string>
     <string name="carritoReservar">Reservar</string>
-    <string name="profileDatosButton">DADES</string>
+    <string name="profileDatosButton">Dades</string>
     <string name="profileProductosButton">Productes</string>
     <string name="profileReservasButton">Reservas</string>
     <string name="profileHistorialButton">Historial</string>
-    <string name="profileArtistaButton">ARTISTA</string>
+    <string name="profileArtistaButton">Artista</string>
     <string name="profileDeleteButton">Eliminar Compte</string>
     <string name="userUpdateButton">Actualitzar Perfil</string>
     <string name="uploadProdcutName">Nom del Producte</string>

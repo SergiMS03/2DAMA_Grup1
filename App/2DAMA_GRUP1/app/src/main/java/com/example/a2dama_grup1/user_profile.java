@@ -2,6 +2,8 @@ package com.example.a2dama_grup1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -21,7 +23,6 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class user_profile extends AppCompatActivity {
     objectUser USER;
@@ -74,8 +75,7 @@ public class user_profile extends AppCompatActivity {
 
 
     public void clickArtist(View view){
-        String HOST = URL+"3000/artistReqFromProfile/"+USER.id_usuari;
-        new artistReqFromProfile().execute(URL);
+        mostrarAlert();
     }
 
     public class artistReqFromProfile extends AsyncTask<String, Void, String> {
@@ -151,5 +151,25 @@ public class user_profile extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void mostrarAlert (){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Solicitud Artista");
+        alert.setMessage("Seguro que quieres enviar la solicitud?");
+        alert.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String HOST = URL+"3000/artistReqFromProfile/"+USER.id_usuari;
+                        new artistReqFromProfile().execute(HOST);
+                    }
+                });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        displayToast("No s'ha enviat solicitud");
+                    }
+                });
+        alert.show();
     }
 }

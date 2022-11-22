@@ -1,4 +1,6 @@
 <resources>
       <dimen name="fab_margin">16dp</dimen>
     <dimen name="lateralesSignUp">20dp</dimen>
+    <dimen name="marginRowsUserProfile">10dp</dimen>
+    <dimen name="MaginsDescripcióProducte">20dp</dimen>
 </resources>

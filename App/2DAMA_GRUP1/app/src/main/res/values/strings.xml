@@ -17,11 +17,11 @@
     <string name="carritoCantidad">Cantidad</string>
     <string name="carritoPrecio">Precio</string>
     <string name="carritoReservar">Reservar</string>
-    <string name="profileDatosButton">DATOS</string>
+    <string name="profileDatosButton">Datos</string>
     <string name="profileProductosButton">Productos</string>
     <string name="profileReservasButton">Reservas</string>
     <string name="profileHistorialButton">Historial</string>
-    <string name="profileArtistaButton">ARTISTA</string>
+    <string name="profileArtistaButton">Artista</string>
     <string name="profileDeleteButton">Eliminar Cuenta</string>
     <string name="userUpdateButton">Actualizar Perfil</string>
     <string name="uploadProdcutName">Nombre del Producto</string>
@@ -33,44 +33,6 @@
     <string name="mainpageProductosProx">Productos por Proximidad</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
-
-    <string-array name="ProductTitles">
-        <item>A</item>
-        <item>B</item>
-        <item>C</item>
-        <item>D</item>
-        <item>E</item>
-        <item>F</item>
-        <item>G</item>
-        <item>H</item>
-        <item>A</item>
-        <item>B</item>
-        <item>C</item>
-        <item>D</item>
-        <item>E</item>
-        <item>F</item>
-        <item>G</item>
-        <item>H</item>
-    </string-array>
-
-    <string-array name="ProductPrices">
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-        <item>100€</item>
-    </string-array>
 
     <string name="productNameMissatge">Product name</string>
     <string name="inputMissatge">Escribe un mensaje</string>

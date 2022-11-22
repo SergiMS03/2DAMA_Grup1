@@ -8,6 +8,14 @@
     android:gravity="center"
     tools:context=".login">
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/plastic_precios_login" />
+
     <EditText
         android:id="@+id/inputUserLogin"
         android:layout_width="match_parent"

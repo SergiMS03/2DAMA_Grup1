@@ -22,6 +22,9 @@
         <entry key="..\:/Users/CASA/Desktop/Programas Sergi/2DAMA_Grup1/App/2DAMA_GRUP1/app/src/main/res/layout/proximity_products.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CASA/Desktop/Programas Sergi/2DAMA_Grup1/App/2DAMA_GRUP1/app/src/main/res/layout/sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CASA/Desktop/Programas Sergi/2DAMA_Grup1/App/2DAMA_GRUP1/app/src/main/res/menu/overflow.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/drawable/descripcion_info_product.xml" value="0.3315" />
+        <entry key="app/src/main/res/drawable/speech_balloon_left.xml" value="0.3315" />
+        <entry key="app/src/main/res/drawable/speech_balloon_right.xml" value="0.3535" />
         <entry key="app/src/main/res/layout-night/activity_main_page.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/activity_user_update.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout-night/carrito.xml" value="0.35208333333333336" />
@@ -41,7 +44,7 @@
         <entry key="app/src/main/res/layout/activity_user_update.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/carrito.xml" value="0.25" />
         <entry key="app/src/main/res/layout/featured_products.xml" value="0.35208333333333336" />
-        <entry key="app/src/main/res/layout/login.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/missatge_row.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/my_row.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.28894927536231885" />
