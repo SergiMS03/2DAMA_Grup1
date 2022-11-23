@@ -3,7 +3,7 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data:{
         credentials: {email:"", pwd:""},
-        admin:[],
+        admin:{},
         rol: '',
         mode: 0,
         users: [],
@@ -14,8 +14,6 @@ var app = new Vue({
     logIn: function(){
         this.credentials.email = document.getElementById('email').value;
         this.credentials.pwd = document.getElementById('pwd').value;
-        console.log(this.credentials.email);
-        console.log(this.credentials.pwd);
         fetch("http://localhost:3000/logInAdmin", {
                     method:"POST",
                     headers: {
@@ -64,9 +62,7 @@ var app = new Vue({
                     { text: 'rol', value: 'rol', align: 'center' },
                     { text: "ELIMINA", value: "controls", sortable: false, align: 'center' },
                     { text: "BAN", value: "controls", sortable: false, align: 'center' }
-                    ],
-                console.log(data);
-                console.log(this.mode);
+                    ]
               })
               .catch((error) => {
                 console.log(error);
@@ -85,7 +81,6 @@ var app = new Vue({
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 this.getUsers();
               })
               .catch((error) => {
@@ -105,7 +100,6 @@ var app = new Vue({
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data)
                 this.getUsers();
               })
               .catch((error) => {
@@ -139,8 +133,7 @@ var app = new Vue({
                     { text: 'tel', value: 'tel', align: 'center' },
                     { text: 'rol', value: 'rol', align: 'center' },
                     { text: "PETITION", value: "controls", sortable: false, align: 'center' }
-                    ],
-                console.log(data);
+                    ]
               })
               .catch((error) => {
                 console.log(error);
@@ -159,7 +152,6 @@ var app = new Vue({
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data)
                 this.getArtistRequest();
               })
               .catch((error) => {
@@ -192,9 +184,7 @@ var app = new Vue({
                     { text: 'path IMG', value: 'path IMG', align: 'center' },
                     { text: 'Venedor ID', value: 'Venedor ID', align: 'center' },
                     { text: "ELIMINA", value: "controls", sortable: false, align: 'center' }
-                    ],
-                console.log(data);
-                console.log(this.mode);
+                    ]
               })
               .catch((error) => {
                 console.log(error);
@@ -213,12 +203,14 @@ var app = new Vue({
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 this.getProducts();
               })
               .catch((error) => {
                 console.log(error);
               });
+          },
+          logOut: function (){
+            this.admin = {}
           }
         }}
 );

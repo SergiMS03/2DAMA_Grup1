@@ -18,14 +18,14 @@ var conexion = require("./percistence/bdConnection.js");
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
-app.use(session({
+/* app.use(session({
     secret: "TermoTanqueDeÑoquis",
     resave: true,
     saveUninitialized: true,
     cookie:{
         rol: ''
     }
-}));
+})); */
 
 app.use(cors({
     origin: function(origin, callback){
@@ -48,7 +48,7 @@ var upload = multer({ storage: storage })
 
 // Upload Single File
 app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
-    console.log("hola")
+    console.log("uploadfile")
     const file = req.file
     if (!file) {
         const error = new Error('Please upload a file')
@@ -61,11 +61,11 @@ app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
     }
     con = conexion.getCon();
     con.connect(function(err){
+        console.log("Canvian path");
         if (err){
             console.log(err)
         }else{
             linkFile = ""
-            console.log("Canvian path");
             if(file.path.includes("\\")){//Si el path es de Windows cambia la contrabarra per barra
             var aaa = file.path.split('\\');
             linkFile = aaa[0] + "/" + aaa[1];
@@ -118,8 +118,6 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
                     res.json(false);
                 }
                 for (let i = 0; i < result.length && !auth; i++) {
-                    console.log(result[i].email == req.params.email);
-                    console.log(result[i].pwd == req.params.pwd);
                     if(result[i].email == req.params.email){
                         if(result[i].pwd == req.params.pwd){
                             auth = true
@@ -129,14 +127,12 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
                             req.session.cookie.rol = result[i].rol;
-                            console.log(req.session.cookie.rol);
                             arrRes.descripcio = (result[i].descripcio);
                             arrRes.tel = (result[i].tel);
                         }
                     }
                 }
                 res.send(arrRes);
-                console.log(arrRes);
                 con.end();
             });            
         }
@@ -144,20 +140,18 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
 });
 
 app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req/:ubiLat/:ubiLong", (req, res) => {
-    console.log("Conexió realitzada");
+    console.log("signUp");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
             console.log(err)
         }else{
-            console.log(req.params.nom)
             con.query(userTools.insertClient(req.params.nom, req.params.cognoms, req.params.email, req.params.pwd, 
                 req.params.descripcio, req.params.tel, req.params.artist_req, req.params.ubiLat, req.params.ubiLong), (err) => {
                 if(err){
                     console.log(err);
                     res.json(false)
                 }
-                console.log("Succesfull");
                 res.send('0');
                 con.end();
              });   
@@ -166,7 +160,7 @@ app.get("/signUp/:nom/:cognoms/:email/:pwd/:descripcio/:tel/:artist_req/:ubiLat/
 });
 
 app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:user", (req, res) => {
-    console.log("Conexió realitzada");
+    console.log("uploadProduct");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
@@ -187,7 +181,7 @@ app.get("/uploadProduct/:product_name/:price/:stock/:descripcio/:user", (req, re
 });
 
 app.get("/sendMessage/:id_chat/:id_emisor/:missatge", (req, res) => {
-    console.log("Conexió realitzada");
+    console.log("sendMessage");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
@@ -224,7 +218,6 @@ app.get("/getChat/:id_usuari", (req, res) => {
                     arrRes.push(result[i]);
                 }
                 res.json(arrRes);
-                console.log(arrRes);
                 con.end();
             });                
         }
@@ -247,7 +240,6 @@ app.get("/getMissatge/:id_chat", (req, res) => {
                     arrRes.push(result[i]);
                 }
                 res.json(arrRes);
-                console.log(arrRes);
                 con.end();
             });                
         }
@@ -255,7 +247,7 @@ app.get("/getMissatge/:id_chat", (req, res) => {
 });
 
 app.get("/getProduct/:id_producte", (req, res) => {
-    console.log("INICIAT GETPRODUCT");
+    console.log("getProduct");
     var queryResult;
     con = conexion.getCon();
     con.connect(function(err){
@@ -265,7 +257,6 @@ app.get("/getProduct/:id_producte", (req, res) => {
             con.query(productTools.getProduct(req.params.id_producte) , (err, result, fields)=> {
                 queryResult = result
                 res.json(queryResult);
-                console.log(queryResult);
                 con.end();
             });           
         }
@@ -274,10 +265,9 @@ app.get("/getProduct/:id_producte", (req, res) => {
 });
 
 app.get("/createChat/:id_comprador/:id_venededor/:id_producto", (req, res) => {
+    console.log("createChat");
     con = conexion.getCon();
     con.connect(function(err){
-        console.log("Creant chat");
-        console.log(req.params.id_comprador, req.params.id_venededor, req.params.id_producto);
         if (err){
             console.log(err);
             res.send('1');
@@ -297,10 +287,9 @@ app.get("/createChat/:id_comprador/:id_venededor/:id_producto", (req, res) => {
 });
 
 app.get("/artistReqFromProfile/:usuari_id", (req, res) => {
+    console.log("artistReqFromProfile");
     con = conexion.getCon();
     con.connect(function(err){
-        console.log("Enviant petició");
-        console.log(req.params.usuari_id);
         if (err){
             console.log(err);
             res.send('1');
@@ -345,7 +334,6 @@ app.post("/logInAdmin", (req, res) => {
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
                             req.session.cookie.rol = result[i].rol;
-                            console.log(req.session.cookie.rol);
                             arrRes.descripcio = (result[i].descripcio);
                             arrRes.tel = (result[i].tel);
                         }
@@ -361,7 +349,7 @@ app.post("/logInAdmin", (req, res) => {
 
 
 app.post("/delUser", (req, res) => {
-    console.log(req.body.id_usuari);
+    console.log("delUser");
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
@@ -453,12 +441,12 @@ app.post("/manageArtist", (req, res) => {
 });
 
 app.post("/banUser", (req, res) => {
+    console.log("banUser")
     con = conexion.getCon();
     con.connect(function(err){
         if (err){
             console.log(err);
         }else{
-                console.log(req.body.id_usuari)
                 con.query(userTools.banUser(req.body.id_usuari) , (err, fields)=> {
                     if(err){
                         console.log(err);
@@ -474,7 +462,7 @@ app.post("/banUser", (req, res) => {
 });
 
 app.post("/getProducts", (req, res) => {
-    console.log("INICIAT GETPRODUCTS");
+    console.log("getProducts");
     var arrRes = [];
     con = conexion.getCon();
     con.connect(function(err){
@@ -489,7 +477,6 @@ app.post("/getProducts", (req, res) => {
                     arrRes.push(result[i]);
                 }
                 res.json(arrRes);
-                console.log(arrRes);
                 con.end();
             });           
         }
@@ -500,6 +487,7 @@ app.post("/getProducts", (req, res) => {
 
 
 app.post("/delProduct", (req, res) => {
+    console.log("delProduct")
     con = conexion.getCon();
     con.connect(function(err){
         if (err){

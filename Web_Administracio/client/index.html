@@ -60,7 +60,7 @@
                 <v-spacer></v-spacer>
           
                 <v-btn icon>
-                  <v-icon>mdi-export</v-icon>
+                  <v-icon @click="logOut">mdi-export</v-icon>
                 </v-btn>
               </v-toolbar>
               <v-navigation-drawer color="#A1F9A5" app v-model="drawer" temporary>
@@ -98,26 +98,6 @@
                       color="#A1F9A5"
                       ><v-icon>mdi-message</v-icon>&nbsp;PRODUCTES</v-btn>
                     <v-divider></v-divider>
-                  
-                  <!-- <v-list-item>
-                    <v-list-item-avatar>
-                      <v-icon>mdi-account</v-icon>
-                    </v-list-item-avatar>
-            
-                    <v-list-item-content>
-                      <p>USUARIOS</p>
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-flex mt-4>
-                    <v-icon>mdi-account</v-icon>
-                    
-                  </v-flex>
-                  <v-flex mt-4>
-                    <v-icon>fa-envelope</i></v-icon>
-                  </v-flex> -->
-
-                   
-
                 </v-layout>
                 
                 
@@ -125,7 +105,6 @@
           </template>
             <v-container>
               <template>
-                <!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS -->
                 <v-data-table
                
                   :headers="headers"
@@ -207,12 +186,6 @@
                   </tr>
 
 
-
-
-
-
-
-
                   <tr v-if="mode == 2">
                     <td><v-layout justify-center>
                         {{row.item.id_producte}}
@@ -253,79 +226,12 @@
                     </v-layout>
                       </td>
                   </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
               </template>
               </v-data-table>
-              <!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS --><!-- CLIENTS -->
               </template>
-              <!-- <template>
-                  <v-navigation-drawer permanent
-                  left
-                  absolute>
-                    <v-list-item>
-                      <v-list-item-content>
-                        <v-sheet class = "mx-auto">
-                            <v-img src="./imgs/plastic_precios_login.png" alt="Plastic_Precios" width="100" height="100"></v-img><br>
-                        </v-sheet>
-                        <v-list-item-title class="text-h6">
-                          ADMIN PANEL
-                        </v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-              
-                    <v-divider></v-divider>
-              
-                    <v-list
-                      dense
-                      nav
-                    >
-                    <br>
-                    <v-btn
-                    block
-                    elevation="2"
-                    @click="getUsers"
-                    color="#A1F9A5"
-                    >CLIENTS</v-btn>
-                    <br>
-                    <v-divider></v-divider>
-                    <br>
-                    <v-btn
-                    block
-                    elevation="2"
-                    @click="getArtistRequest"
-                    color="#A1F9A5"
-                    >ARTIST_REQ</v-btn>
-                    <br>
-                    <v-divider></v-divider>
-                    <br>
-                    <v-btn
-                    block
-                    elevation="2"
-                    @click="getProducts"
-                    color="#A1F9A5"
-                    >PRODUCTES</v-btn>
-                    <br>
-                    <v-divider></v-divider>
-                    </v-list>
-                  </v-navigation-drawer>
-              </template> -->
             </v-container>
           </template> 
     </v-app>
-    <!-- PANEL ADMIN --><!-- PANEL ADMIN --><!-- PANEL ADMIN --><!-- PANEL ADMIN --><!-- PANEL ADMIN -->
     <script src="index.js"></script>
-    <script>app.getUsers()</script><!-- BORRAR, SOLO PARA TRABAJAR MÁS COMODO -->
 </body>
 </html>

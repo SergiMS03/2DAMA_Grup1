@@ -10,6 +10,6 @@ import retrofit2.http.Part;
 
 public interface ApiService {
         @Multipart
-        @POST("http://192.168.17.135:3000/uploadFile")
+        @POST("http://141.147.19.41:3000/uploadFile")
         Call<ResponseBody> postImage(@Part MultipartBody.Part image, @Part("myFile") RequestBody name);
 }
