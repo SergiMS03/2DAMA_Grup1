@@ -116,7 +116,6 @@ app.get("/logInClient/:email/:pwd", (req, res) => {
                             arrRes.cognoms = (result[i].cognoms);
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
-                            req.session.cookie.rol = result[i].rol;
                             arrRes.descripcio = (result[i].descripcio);
                             arrRes.tel = (result[i].tel);
                         }
@@ -323,7 +322,6 @@ app.post("/logInAdmin", (req, res) => {
                             arrRes.cognoms = (result[i].cognoms);
                             arrRes.email = (result[i].email);
                             arrRes.rol = (result[i].rol);
-                            req.session.cookie.rol = result[i].rol;
                             arrRes.descripcio = (result[i].descripcio);
                             arrRes.tel = (result[i].tel);
                         }

@@ -14,7 +14,7 @@ var app = new Vue({
     logIn: function(){
         this.credentials.email = document.getElementById('email').value;
         this.credentials.pwd = document.getElementById('pwd').value;
-        fetch("http://localhost:3000/logInAdmin", {
+        fetch("http://141.147.19.41:3000/logInAdmin", {
                     method:"POST",
                     headers: {
                         'Content-Type' : 'application/json',
@@ -39,7 +39,7 @@ var app = new Vue({
         getUsers: function () {
             this.mode = 0;
             const myHeaders = new Headers();
-            fetch("http://localhost:3000/getUsers", {
+            fetch("http://141.147.19.41:3000/getUsers", {
               method: "POST",
               headers: myHeaders,
               mode: "cors",
@@ -69,7 +69,7 @@ var app = new Vue({
               });
           },
           delUser: function (id_usuari) {
-            fetch("http://localhost:3000/delUser", {
+            fetch("http://141.147.19.41:3000/delUser", {
               method:"POST",
                           headers: {
                               'Content-Type' : 'application/json',
@@ -88,7 +88,7 @@ var app = new Vue({
               });
           },
           banUser: function (id_usuari, reply){
-            fetch("http://localhost:3000/banUser", {
+            fetch("http://141.147.19.41:3000/banUser", {
               method:"POST",
                 headers: {
                     'Content-Type' : 'application/json',
@@ -108,7 +108,7 @@ var app = new Vue({
           },
           getArtistRequest: function () {
             this.mode = 1;
-            fetch("http://localhost:3000/artistRequest", {
+            fetch("http://141.147.19.41:3000/artistRequest", {
               method:"POST",
                           headers: {
                               'Content-Type' : 'application/json',
@@ -140,7 +140,7 @@ var app = new Vue({
               });
           },
           acceptDeclineArtist: function (id_usuari, reply){
-            fetch("http://localhost:3000/manageArtist", {
+            fetch("http://141.147.19.41:3000/manageArtist", {
               method:"POST",
                 headers: {
                     'Content-Type' : 'application/json',
@@ -162,7 +162,7 @@ var app = new Vue({
           getProducts: function () {
             this.mode = 2;
             const myHeaders = new Headers();
-            fetch("http://localhost:3000/getProducts", {
+            fetch("http://141.147.19.41:3000/getProducts", {
               method: "POST",
               headers: myHeaders,
               mode: "cors",
@@ -191,7 +191,7 @@ var app = new Vue({
               });
           },
           delProduct: function (id_producte) {
-            fetch("http://localhost:3000/delProduct", {
+            fetch("http://141.147.19.41:3000/delProduct", {
               method:"POST",
                           headers: {
                               'Content-Type' : 'application/json',

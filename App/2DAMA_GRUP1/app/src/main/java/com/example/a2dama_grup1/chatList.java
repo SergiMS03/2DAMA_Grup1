@@ -151,7 +151,7 @@ public class chatList extends AppCompatActivity {
                 for (int i = 0; i < chatArr.length(); i++) {
                     JSONObject chatObj = chatArr.getJSONObject(i);
                     ListaChat.add(new objectChat(chatObj.getInt("id_chat"), chatObj.getInt("id_venedor"), chatObj.getInt("id_comprador"), chatObj.getInt("id_producte"), chatObj.getString("nom_producte"), chatObj.getString("path_img")));
-                    Bitmap image= new Image().Download(URL+"5500/servidor/" + ListaChat.get(i).getPath_img());
+                    Bitmap image= new Image().Download(URL+"80/servidor/" + ListaChat.get(i).getPath_img());
                     ListaChat.get(i).setImg(image);
                 }
                 createRecycler();
