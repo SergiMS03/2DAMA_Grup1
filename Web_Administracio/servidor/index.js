@@ -1,6 +1,5 @@
 const express = require("express");
 const bp = require('body-parser')
-const session = require('express-session');
 const app = express();
 const cors = require('cors');
 const PORT = 3000;
@@ -17,15 +16,6 @@ var conexion = require("./percistence/bdConnection.js");
 
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
-
-/* app.use(session({
-    secret: "TermoTanqueDeÑoquis",
-    resave: true,
-    saveUninitialized: true,
-    cookie:{
-        rol: ''
-    }
-})); */
 
 app.use(cors({
     origin: function(origin, callback){
