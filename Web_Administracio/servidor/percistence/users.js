@@ -24,12 +24,15 @@ function delUser (usuari_id) {
 
 /*INSERTS*/
 function insertClient (nom, cognoms, email, pwd, descripcio, tel, artistRequest, ubiLat, ubiLong) {
-  if(artistRequest){
+  console.log(artistRequest)
+  let artist_req = 0;
+  if(artistRequest == 'true'){
     artist_req = 1;
   }
   else{
     artist_req = 0;
   }
+  console.log(artist_req)
   return ("INSERT INTO USUARI VALUES (NULL,'"+ nom + "', '" + cognoms + "', '" + email + "', '"
   + pwd + "', 'client', '" + descripcio +"', '"+ tel +"', '"+ artist_req +"', 0 ,"+ ubiLat +", "+ ubiLong +")");
 };
