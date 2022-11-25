@@ -4,104 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".upload_product">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
-
         <TextView
             android:id="@+id/id_nomProducte_upload"
-            android:layout_weight="1"
-            style="@style/Theme.2DAMA_GRUP1.textView"
-            android:text="@string/uploadProdcutName"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/uploadProdcutName"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/lateralesSignUp"/>
 
-        <EditText
+        <EditText style="@style/Theme.2DAMA_GRUP1.input"
             android:id="@+id/editText_nomProducte_upload"
-            style="@style/Theme.2DAMA_GRUP1.input"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
+            android:layout_marginStart="@dimen/lateralesSignUp"
+            android:layout_marginEnd="@dimen/lateralesSignUp"
+            android:inputType="textPersonName"/>
 
         <TextView
             android:id="@+id/id_precio_upload"
-            android:layout_weight="1"
-            style="@style/Theme.2DAMA_GRUP1.textView"
-            android:text="@string/uploadProductPrice" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/uploadProductPrice"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/lateralesSignUp" />
 
-        <EditText
+        <EditText style="@style/Theme.2DAMA_GRUP1.input"
             android:id="@+id/editText_precio_upload"
-            style="@style/Theme.2DAMA_GRUP1.input"
-            android:inputType="textPersonName" />
+            android:layout_marginStart="@dimen/lateralesSignUp"
+            android:layout_marginEnd="@dimen/lateralesSignUp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/id_stock_upload"
-            android:layout_weight="1"
-            style="@style/Theme.2DAMA_GRUP1.textView"
-            android:text="@string/uploadStock" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/uploadStock"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/lateralesSignUp" />
 
-        <EditText
+        <EditText style="@style/Theme.2DAMA_GRUP1.input"
             android:id="@+id/editText_stock_upload"
-            style="@style/Theme.2DAMA_GRUP1.input"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:layout_marginStart="@dimen/lateralesSignUp"
+            android:layout_marginEnd="@dimen/lateralesSignUp"/>
 
-    </LinearLayout>
 
     <TextView
-        android:id="@+id/id_descripcio_upload"
-        style="@style/Theme.2DAMA_GRUP1.textView"
-        android:text="@string/uploadDescripcion"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/uploadDescripcion"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/lateralesSignUp"/>
 
     <EditText
         android:id="@+id/editText_descripcio_upload"
+        android:background="@drawable/description_zone"
         android:layout_width="match_parent"
-        android:layout_height="106dp"
-        android:background="#77EC62"
-        android:ems="10"
+        android:layout_height="94dp"
         android:gravity="start|top"
+        android:layout_marginStart="@dimen/lateralesSignUp"
+        android:layout_marginEnd="@dimen/lateralesSignUp"
         android:inputType="textMultiLine" />
 
-    <TextView
-        android:id="@+id/id_imagen_upload"
-        style="@style/Theme.2DAMA_GRUP1.textView"
-        android:text="@string/upload_image_upProduct"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
 
-    <ImageButton
-        android:id="@+id/uploadImage_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:background="@color/white"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        <TextView
+            android:id="@+id/id_imagen_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_image_upProduct"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/uploadImage_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/uploadImage_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_imagen_upload"
+            app:srcCompat="@drawable/ic_launcher_background" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/id_btn_upload"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#62ECC0"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:text="@string/subir_producto"
         android:onClick="clickUploadProduct"
         android:textColor="#000000" />

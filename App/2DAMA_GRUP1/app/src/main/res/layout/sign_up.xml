@@ -124,6 +124,7 @@
 
             <EditText
                 android:id="@+id/editText_descripcio"
+                android:background="@drawable/description_zone"
                 android:layout_width="match_parent"
                 android:layout_height="94dp"
                 android:gravity="start|top"

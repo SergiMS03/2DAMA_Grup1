@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import java.io.NotSerializableException;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 public class objectProduct{
 
@@ -48,7 +49,9 @@ public class objectProduct{
     }
 
     public String priceToString(){
-        String price = preu + "€";
+        String pattern = "0.00€";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        String price = decimalFormat.format(preu);
         return price;
     }
 

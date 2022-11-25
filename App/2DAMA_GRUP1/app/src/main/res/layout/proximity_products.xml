@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:background="@drawable/speech_balloon_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -37,6 +38,7 @@
                     android:gravity="center"
                     android:text="Price"
                     android:textSize="24dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
@@ -46,6 +48,7 @@
                     android:gravity="center"
                     android:text="Titol"
                     android:textSize="17dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
