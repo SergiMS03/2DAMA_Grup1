@@ -97,7 +97,7 @@ public class missatge extends AppCompatActivity {
         }else{
             String HOST = URL+"3000/sendMessage/"+ID_CHAT+"/"+USER.id_usuari+"/"
                     +msg.getText();
-            new getMessages().execute(HOST);
+            new sendMessages().execute(HOST);
         }
     }
 
@@ -244,6 +244,72 @@ public class missatge extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public class sendMessages extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return dades(strings[0]);
+        }
+
+        private String dades(String queryString){
+            HttpURLConnection con = null;
+            BufferedReader reader = null;
+            String result = null;
+
+            try{
+                Log.i("LOGINFO", "dades: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+                String url = queryString;
+                Uri builtURI = Uri.parse(url).buildUpon().build();
+                java.net.URL requestURL = new URL(builtURI.toString());
+                con = (HttpURLConnection) requestURL.openConnection();
+                con.setRequestMethod("GET");
+                con.connect();
+
+                InputStream inputStream = con.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder builder = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                    builder.append("\n");
+                }
+                if (builder.length() == 0) {
+                    // Stream was empty. No point in parsing.
+                    return null;
+                }
+
+                result = builder.toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally{
+                if (con != null)
+                    con.disconnect();
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        protected void onPostExecute(String s){
+            super.onPostExecute(s);
+            missatgeList.clear();
+            String HOST = URL+ "3000/getMissatge/"+ID_CHAT;
+            new getMessages().execute(HOST);
         }
     }
 }
