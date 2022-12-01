@@ -120,7 +120,7 @@ public class login extends AppCompatActivity{
                     JSONObject userObj = new JSONObject(s);
                     objectUser USER = new objectUser(userObj.getInt("id_usuari"), userObj.getString("nom"), userObj.getString("cognoms"), userObj.getString("email"), userObj.getString("rol"), userObj.getString("descripcio"), userObj.getString("tel"));
                     displayToast("Benvigut!");
-                    Intent intent = new Intent(login.this, main_page.class);
+                    Intent intent = new Intent(login.this, BarraNav.class);
                     intent.putExtra("USER", (Serializable) USER);
                     startActivity(intent);
                 }

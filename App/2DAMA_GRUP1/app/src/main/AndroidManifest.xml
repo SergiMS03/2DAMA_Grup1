@@ -53,6 +53,11 @@
             android:name=".main_page"
             android:exported="true" />
         <activity
+            android:name=".BarraNav"
+            android:exported="true"
+            android:label="@string/title_activity_barra_nav"
+            android:theme="@style/Theme.2DAMA_GRUP1.NoActionBar"/>
+        <activity
             android:name=".login"
             android:exported="true" >
             <intent-filter>

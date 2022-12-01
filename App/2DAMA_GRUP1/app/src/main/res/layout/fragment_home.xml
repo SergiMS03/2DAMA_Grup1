@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".main_page">
+    tools:context=".ui.home.HomeFragment">
 
 
     <SearchView
-        android:id="@+id/cercador_mainPagea"
+        android:id="@+id/cercador_mainPage"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:background="#77EC62"
@@ -22,7 +22,7 @@
 
 
     <TextView
-        android:id="@+id/productosDestacados_maina"
+        android:id="@+id/productosDestacados_main"
         style="@style/Theme.2DAMA_GRUP1.TitlesMainPage"
         android:layout_marginTop="16dp"
         android:gravity="center"
@@ -33,18 +33,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cercador_mainPagea" />
+        app:layout_constraintTop_toBottomOf="@+id/cercador_mainPage" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerHoritzontala"
+        android:id="@+id/recyclerHoritzontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productosDestacados_maina" />
+        app:layout_constraintTop_toBottomOf="@+id/productosDestacados_main" />
 
     <TextView
-        android:id="@+id/productosProximidad_maina"
+        android:id="@+id/productosProximidad_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -55,17 +55,17 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerHoritzontala" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHoritzontal" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerVerticala"
+        android:id="@+id/recyclerVertical"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productosProximidad_maina">
+        app:layout_constraintTop_toBottomOf="@+id/productosProximidad_main">
 
     </androidx.recyclerview.widget.RecyclerView>
 
