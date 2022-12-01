@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -18,7 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2dama_grup1.databinding.ActivityBarraNavBinding;
 
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
+import java.util.Locale;
 
 public class BarraNav extends AppCompatActivity {
 
@@ -43,6 +47,10 @@ public class BarraNav extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        TextView name = binding.navView.getHeaderView(0).findViewById(R.id.navBarName);
+        TextView rol = binding.navView.getHeaderView(0).findViewById(R.id.navBarRol);
+        name.setText(USER.nom.toUpperCase(Locale.ROOT)+ " "+ USER.cognoms.toUpperCase(Locale.ROOT));
+        rol.setText(USER.rol.toUpperCase(Locale.ROOT));
         binding.navView.getMenu().findItem(R.id.nav_home).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
